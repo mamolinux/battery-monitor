@@ -71,9 +71,10 @@ That's all. **Battery Monitor (Stable)** is installed on your system.
 
 ### For Arch Linux and its derivatives
 
-Both the stable version and the beta version are available in the [Arch User Repository](https://aur.archlinux.org/):
+The stable version, git version and the beta version are available in the [Arch User Repository](https://aur.archlinux.org/):
 
 Stable: [`battery-monitor`](https://aur.archlinux.org/packages/battery-monitor)
+Git: [`battery-monitor-git`](https://aur.archlinux.org/packages/battery-monitor-git)
 Beta: [`battery-monitor-devel-git`](https://aur.archlinux.org/packages/battery-monitor-devel-git)
 
 If you're not sure how to use the AUR, please see the [Manjaro](https://wiki.manjaro.org/index.php/Arch_User_Repository) and [Arch](https://wiki.archlinux.org/index.php/Arch_User_Repository#What_is_the_AUR.3F) wiki entries about it. You will need an [AUR helper](https://wiki.archlinux.org/index.php/AUR_helpers) to install packages.
@@ -232,4 +233,4 @@ He is our official package maintainer in AUR. He has put Arch users' life at eas
 
 ### [Benjamin Staffin](https://github.com/benley)
 
-Improved the build process and added modern Python setuptools packaging.
+He has improved the build process and added modern Python setuptools packaging. Please take a minute to thank him.
