@@ -14,9 +14,9 @@ setuptools.setup(
     package_data={
         '': ['icons/*.png'],
     },
-    classifiers=(
+    classifiers=[
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
         "Operating System :: POSIX :: Linux",
-    ),
+    ],
 )

@@ -7,4 +7,4 @@ Icon=%ICON_PATH%
 Comment=A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux.
 NoDisplay=false
 Categories=Utility;
-Name[en_US]=battery-monitor-autostart.desktop
+Name[en_US]=Battery Monitor

@@ -25,8 +25,8 @@ class AppIndicator:
 
     This class will show Battery Monitor icon in system tray.
     """
-
-    TEST_MODE: bool
+    if platform.python_version() >= '3.6':
+        TEST_MODE: bool
 
     def __init__(self, TEST_MODE: bool = False):
         self.indicator = AppIndicator3.Indicator.new(APPINDICATOR_ID, ICONS['app'], AppIndicator3.IndicatorCategory.SYSTEM_SERVICES)

@@ -25,9 +25,10 @@ class Notification:
 
     Triggers informative and effective notification on every change of battery state.
     """
-
-    last_notification: str
-    last_percentage: int
+    
+    if platform.python_version() >= '3.6':
+        last_notification: str
+        last_percentage: int
 
     def __init__(self, type: str) -> None:
         # initiating notification
@@ -40,11 +41,14 @@ class Notification:
         self.last_notification = ''
         self.notifier = Notify.Notification.new(head, body, icon)
         self.notifier.set_urgency(Notify.Urgency.CRITICAL)
-        try:
-            self.notifier.show()
-        except GLib.GError as e:
-            # fixing GLib.GError: g-dbus-error-quark blindly
-            pass
+        # TODO: This is like fighting against ourselves. Make better fix.
+        # silence 'success' notification
+        if (type != "success"):
+            try:
+                self.notifier.show()
+            except GLib.GError as e:
+                # fixing GLib.GError: g-dbus-error-quark blindly
+                pass
         self.config = configparser.ConfigParser()
         self.load_config()
 
@@ -168,7 +172,8 @@ class Notification:
         elif state == 'charging':
             if (percentage != self.last_percentage and
                 remaining != "discharging at zero rate - will never fully discharge" and
-                self.last_notification!="upper_threshold_warning"):
+                self.last_notification!="upper_threshold_warning" and
+                percentage >= self.upper_threshold_warning):
                     self.last_percentage = percentage
                     self.last_notification!="upper_threshold_warning"
                     self.show_notification(type="upper_threshold_warning",

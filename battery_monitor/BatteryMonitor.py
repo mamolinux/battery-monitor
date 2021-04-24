@@ -10,8 +10,9 @@ from .config import TEST_CASES
 
 
 class BatteryMonitor:
-    raw_battery_info: str
-    processed_battery_info: Dict[str, str]
+    if platform.python_version() >= '3.6':
+        raw_battery_info: str
+        processed_battery_info: Dict[str, str]
 
     def __init__(self, TEST_MODE):
         self.TEST_MODE = TEST_MODE
