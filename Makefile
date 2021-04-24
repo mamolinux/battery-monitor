@@ -1,4 +1,4 @@
-SHELL := /bin/sh
+SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 .DELETE_ON_ERROR:
 .DEFAULT_GOAL := all
@@ -16,7 +16,7 @@ all: install
 .PHONY: install
 install: battery-monitor.desktop battery-monitor-autostart.desktop
 	@echo You must be root to install.
-	python setup.py install --prefix=$(DESTDIR)$(PREFIX)
+	python3 setup.py install --prefix=$(DESTDIR)$(PREFIX)
 	install -Dm644 battery-monitor-autostart.desktop $(DESTDIR)/etc/xdg/autostart/battery-monitor-autostart.desktop
 	install -Dm644 battery-monitor.desktop $(DESTDIR)$(PREFIX)/share/applications/battery-monitor.desktop
 	install -Dm644 battery_monitor/icons/icon.png $(DESTDIR)$(PREFIX)/share/pixmaps/battery-monitor.png
@@ -24,5 +24,5 @@ install: battery-monitor.desktop battery-monitor-autostart.desktop
 
 .PHONY: clean
 clean:
-	python setup.py clean
-	rm -f *.desktop
+	python3 setup.py clean
+	rm -rf *.desktop battery_monitor.egg-info build dist
