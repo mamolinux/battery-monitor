@@ -4,6 +4,7 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := all
 
 PREFIX ?= /usr
+# PREFIX ?= /home/himadri/.local
 
 .PHONY: all
 all: install
@@ -16,8 +17,9 @@ all: install
 .PHONY: install
 install: battery-monitor.desktop battery-monitor-autostart.desktop
 	@echo You must be root to install.
+	@mkdir -p $(DESTDIR)$(PREFIX)/lib/python3.8/site-packages/
 	python3 setup.py install --prefix=$(DESTDIR)$(PREFIX)
-	install -Dm644 battery-monitor-autostart.desktop $(DESTDIR)/etc/xdg/autostart/battery-monitor-autostart.desktop
+	# install -Dm644 battery-monitor-autostart.desktop $(DESTDIR)/etc/xdg/autostart/battery-monitor-autostart.desktop
 	install -Dm644 battery-monitor.desktop $(DESTDIR)$(PREFIX)/share/applications/battery-monitor.desktop
 	install -Dm644 battery_monitor/icons/icon.png $(DESTDIR)$(PREFIX)/share/pixmaps/battery-monitor.png
 	@echo Installation completed!

@@ -3,6 +3,7 @@
 # standard library
 import random
 import subprocess
+import platform
 from typing import Dict
 
 # imports from current project

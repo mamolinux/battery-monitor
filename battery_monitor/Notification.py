@@ -3,6 +3,7 @@
 # standard library
 import configparser
 import os
+import platform
 import time
 
 # third-party library
@@ -103,12 +104,15 @@ class Notification:
         icon = ICONS[type]
         self.notifier.update(head, body, icon)
         try:
-            self.notifier.show()
+            for i in range(5):
+                self.notifier.show()
+                os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
+                time.sleep(self.notification_stability)
         except GLib.GError as e:
             # fixing GLib.GError: g-dbus-error-quark blindly
             # To Do: investigate the main reason and make a fix
             pass
-        time.sleep(self.notification_stability)
+        # time.sleep(self.notification_stability)
         self.notifier.close()
 
     def show_specific_notifications(self, monitor: BatteryMonitor):

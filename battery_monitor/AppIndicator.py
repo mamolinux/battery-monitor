@@ -3,6 +3,7 @@
 # standard library
 import subprocess
 import time
+import platform
 from threading import Thread
 
 # third-party library

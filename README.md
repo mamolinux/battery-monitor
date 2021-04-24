@@ -1,5 +1,5 @@
 
-# Battery Monitor
+# [Battery Monitor]( https://hsbasu.github.io/battery-monitor)
 
 Battery Monitor is a utility tool developed on Python3 and PyGtk3. It will notify the user about charging, discharging, not charging and critically low battery state of the battery on Linux (surely if the battery is present).
 
@@ -94,7 +94,7 @@ If you're not sure how to use the AUR, please see the [Manjaro](https://wiki.man
 ### For Beta Testers
 
 ```
-wget https://github.com/maateen/battery-monitor/archive/devel.zip
+wget https://github.com/hsbasu/battery-monitor/archive/devel.zip
 ```
 ```
 unzip devel.zip
@@ -134,37 +134,37 @@ Here, you can set the battery percentage levels at which you want to get notific
 
 If you change any configuration, it will be in action only after next reboot.
 
-![Battery Monitor GUI](https://github.com/maateen/battery-monitor/raw/gh-pages/battery-monitor-gui.png)
+![Battery Monitor GUI](https://github.com/hsbasu/battery-monitor/raw/gh-pages/battery-monitor-gui.png)
 
 ## Issue Tracking
 
-If you find a bug, please open a new issue with details: [https://github.com/maateen/battery-monitor/issues](https://github.com/maateen/battery-monitor/issues)
+If you find a bug, please open a new issue with details: [https://github.com/hsbasu/battery-monitor/issues](https://github.com/hsbasu/battery-monitor/issues)
 
 ## Screenshots
 
 #### Initial State
 
-![Initial State](https://github.com/maateen/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_20_42_29.png)
+![Initial State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_20_42_29.png)
 
 #### Charging State
 
-![Charging State](https://github.com/maateen/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_20_42_52.png)
+![Charging State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_20_42_52.png)
 
 #### Discharging State
 
-![Discharging State](https://github.com/maateen/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_20_42_42.png)
+![Discharging State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_20_42_42.png)
 
 #### Not Charging State
 
-![Not Charging State](https://github.com/maateen/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_21_11_49.png)
+![Not Charging State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_21_11_49.png)
 
 #### Critically Low Battery State
 
-![Critically Low Battery State](https://github.com/maateen/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_23_03_09_54.png)
+![Critically Low Battery State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_23_03_09_54.png)
 
 ## Roadmap
 
-Please take a look at our [milestones](https://github.com/maateen/battery-monitor/milestones) to get a clear idea about our roadmap. They are dynamic and they can change frequently on user requests.
+Please take a look at our [milestones](https://github.com/hsbasu/battery-monitor/milestones) to get a clear idea about our roadmap. They are dynamic and they can change frequently on user requests.
 
 ## Changelog
 
@@ -230,6 +230,8 @@ Please take a look at our [milestones](https://github.com/maateen/battery-monito
 - [x] Initial release.
 
 ## Contributors
+
+### [Himadri Sekhar Basu](https://github.com/hsbasu)
 
 ### [Safwan Rahman](https://github.com/safwanrahman)
 

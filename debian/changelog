@@ -1,0 +1,60 @@
+v0.6
+
+  - [x] Restructured and reformatted the whole project.
+  - [x] Added system tray icon ([Issue #46](https://github.com/maateen/battery-monitor/issues/46))
+  - [x] Fixed [issue #51](https://github.com/maateen/battery-monitor/issues/51)
+  - [x] Added some new icons ([Issue #53](https://github.com/maateen/battery-monitor/issues/53))
+  - [x] Added Ubuntu 18.04 LTS support ([Issue #55](https://github.com/maateen/battery-monitor/issues/55))
+  - [x] Fixed [issue #61](https://github.com/maateen/battery-monitor/issues/61)
+
+v0.5.4
+
+  - [x] Fixed [issue #48](https://github.com/maateen/battery-monitor/issues/48)
+
+v0.5.3
+
+  - [x] Fixed [issue #45](https://github.com/maateen/battery-monitor/issues/45)
+  - [x] Support for Ubuntu 17.10 has been added.
+
+v0.5.2
+
+  - [x] Fixed [issue #41](https://github.com/maateen/battery-monitor/issues/41)
+  - [x] Fixed [issue #42](https://github.com/maateen/battery-monitor/issues/42)
+  - [x] Introduced a Test feature for developers.
+
+v0.5.1
+
+  - [x] Fixed [issue #35](https://github.com/maateen/battery-monitor/issues/35)
+  - [x] Fixed [issue #39](https://github.com/maateen/battery-monitor/issues/39)
+
+v0.5
+
+  - [x] Developed a GUI to manage the custom warning easily.
+  - [x] Minimized CPU consumption.
+  - [x] Added Makefile for easy installation and up-gradation.
+  - [x] Re-structured the project.
+  -  [x] Support for Ubuntu 14.04, 16.04, 16.10 and 17.04 has been added.
+
+v0.4
+
+  - [x] Reformatted the code in a new style.
+  - [x] Optimized the code in a way so that Battery Monitor consumes a little resource of your PC.
+
+v0.3
+
+  - [x] Fixed [issue #7](https://github.com/maateen/battery-monitor/issues/7), decreased CPU consuming from 40% to below 0.7%
+  - [x] Fixed [issue #4](https://github.com/maateen/battery-monitor/issues/4), Added warning at 30% battery life (temporary solution, will be replaced by a GUI in near future).
+  - [x] Fixed [issue #6](https://github.com/maateen/battery-monitor/issues/6), Added an entry in dash.
+
+v0.2.1
+
+  - [x] Added trusty support.
+
+v0.2
+
+  - [x] Added **Critically Low Battery** warning when the battery is below 10%.
+  - [x] Added `ctrl+C` pressing support to stop the `battery-monitor` command on terminal.
+
+v0.1
+
+  - [x] Initial release.
