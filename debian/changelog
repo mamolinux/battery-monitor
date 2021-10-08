@@ -1,60 +1,285 @@
-v0.6
+battery-monitor (0.6-beta-4-bionic) bionic; urgency=medium
 
-  - [x] Restructured and reformatted the whole project.
-  - [x] Added system tray icon ([Issue #46](https://github.com/maateen/battery-monitor/issues/46))
-  - [x] Fixed [issue #51](https://github.com/maateen/battery-monitor/issues/51)
-  - [x] Added some new icons ([Issue #53](https://github.com/maateen/battery-monitor/issues/53))
-  - [x] Added Ubuntu 18.04 LTS support ([Issue #55](https://github.com/maateen/battery-monitor/issues/55))
-  - [x] Fixed [issue #61](https://github.com/maateen/battery-monitor/issues/61)
+  * Pressing OK will close Settings window
 
-v0.5.4
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Thu, 31 May 2018 20:30:08 +0600
 
-  - [x] Fixed [issue #48](https://github.com/maateen/battery-monitor/issues/48)
+battery-monitor (0.6-beta-4-artful) artful; urgency=medium
 
-v0.5.3
+  * Pressing OK will close Settings window
 
-  - [x] Fixed [issue #45](https://github.com/maateen/battery-monitor/issues/45)
-  - [x] Support for Ubuntu 17.10 has been added.
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Thu, 31 May 2018 20:28:59 +0600
 
-v0.5.2
+battery-monitor (0.6-beta-4-xenial) xenial; urgency=medium
 
-  - [x] Fixed [issue #41](https://github.com/maateen/battery-monitor/issues/41)
-  - [x] Fixed [issue #42](https://github.com/maateen/battery-monitor/issues/42)
-  - [x] Introduced a Test feature for developers.
+  * Pressing OK will close Settings window
 
-v0.5.1
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Thu, 31 May 2018 20:27:43 +0600
 
-  - [x] Fixed [issue #35](https://github.com/maateen/battery-monitor/issues/35)
-  - [x] Fixed [issue #39](https://github.com/maateen/battery-monitor/issues/39)
+battery-monitor (0.6-beta-4-trusty) trusty; urgency=medium
 
-v0.5
+  * Pressing OK will close Settings window
 
-  - [x] Developed a GUI to manage the custom warning easily.
-  - [x] Minimized CPU consumption.
-  - [x] Added Makefile for easy installation and up-gradation.
-  - [x] Re-structured the project.
-  -  [x] Support for Ubuntu 14.04, 16.04, 16.10 and 17.04 has been added.
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Thu, 31 May 2018 20:24:22 +0600
 
-v0.4
+battery-monitor (0.6-beta-3-bionic1) bionic; urgency=medium
 
-  - [x] Reformatted the code in a new style.
-  - [x] Optimized the code in a way so that Battery Monitor consumes a little resource of your PC.
+  * Fixed issue #61 - https://github.com/maateen/battery-monitor/issues/61
 
-v0.3
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Mon, 28 May 2018 23:37:54 +0600
 
-  - [x] Fixed [issue #7](https://github.com/maateen/battery-monitor/issues/7), decreased CPU consuming from 40% to below 0.7%
-  - [x] Fixed [issue #4](https://github.com/maateen/battery-monitor/issues/4), Added warning at 30% battery life (temporary solution, will be replaced by a GUI in near future).
-  - [x] Fixed [issue #6](https://github.com/maateen/battery-monitor/issues/6), Added an entry in dash.
+battery-monitor (0.6-beta-3-artful) artful; urgency=medium
 
-v0.2.1
+  * Fixed issue #61 - https://github.com/maateen/battery-monitor/issues/61
 
-  - [x] Added trusty support.
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Mon, 28 May 2018 23:36:59 +0600
 
-v0.2
+battery-monitor (0.6-beta-3-xenial) xenial; urgency=medium
 
-  - [x] Added **Critically Low Battery** warning when the battery is below 10%.
-  - [x] Added `ctrl+C` pressing support to stop the `battery-monitor` command on terminal.
+  * Fixed issue #61 - https://github.com/maateen/battery-monitor/issues/61
 
-v0.1
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Mon, 28 May 2018 23:35:15 +0600
 
-  - [x] Initial release.
+battery-monitor (0.6-beta-3-trusty) trusty; urgency=medium
+
+  * Fixed issue #61 - https://github.com/maateen/battery-monitor/issues/61
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Mon, 28 May 2018 23:21:14 +0600
+
+battery-monitor (0.6-beta-2-bionic) bionic; urgency=medium
+
+  * Restructured and reformatted the whole project.
+  * Added system tray icon (Issue #46 - https://github.com/maateen/battery-monitor/issues/46)
+  * Fixed issue #51 - https://github.com/maateen/battery-monitor/issues/51
+  * Added some new icons (Issue #53 - https://github.com/maateen/battery-monitor/issues/53)
+  * Added Ubuntu 18.04 LTS support (Issue #55 - https://github.com/maateen/battery-monitor/issues/55)
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Sun, 27 May 2018 02:40:43 +0600
+
+battery-monitor (0.6-beta-2-artful) artful; urgency=medium
+
+  * Restructured and reformatted the whole project.
+  * Added system tray icon (Issue #46 - https://github.com/maateen/battery-monitor/issues/46)
+  * Fixed issue #51 - https://github.com/maateen/battery-monitor/issues/51
+  * Added some new icons (Issue #53 - https://github.com/maateen/battery-monitor/issues/53)
+  * Added Ubuntu 18.04 LTS support (Issue #55 - https://github.com/maateen/battery-monitor/issues/55)
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Sun, 27 May 2018 02:39:14 +0600
+
+battery-monitor (0.6-beta-1-xenial) xenial; urgency=medium
+
+  * Restructured and reformatted the whole project.
+  * Added system tray icon (Issue #46 - https://github.com/maateen/battery-monitor/issues/46)
+  * Fixed issue #51 - https://github.com/maateen/battery-monitor/issues/51
+  * Added some new icons (Issue #53 - https://github.com/maateen/battery-monitor/issues/53)
+  * Added Ubuntu 18.04 LTS support (Issue #55 - https://github.com/maateen/battery-monitor/issues/55)
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Sun, 27 May 2018 02:35:55 +0600
+
+battery-monitor (0.6-beta-1-trusty) trusty; urgency=medium
+
+  * Restructured and reformatted the whole project.
+  * Added system tray icon (Issue #46 - https://github.com/maateen/battery-monitor/issues/46)
+  * Fixed issue #51 - https://github.com/maateen/battery-monitor/issues/51
+  * Added some new icons (Issue #53 - https://github.com/maateen/battery-monitor/issues/53)
+  * Added Ubuntu 18.04 LTS support (Issue #55 - https://github.com/maateen/battery-monitor/issues/55)
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Sun, 27 May 2018 01:59:45 +0600
+
+battery-monitor (0.5.4-artful) artful; urgency=medium
+
+  * Fixed issue #48 - https://github.com/maateen/battery-monitor/issues/48
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Tue, 25 Jul 2017 18:55:58 +0600
+
+battery-monitor (0.5.4-zesty) zesty; urgency=medium
+
+  * Fixed issue #48 - https://github.com/maateen/battery-monitor/issues/48
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Tue, 25 Jul 2017 18:55:01 +0600
+
+battery-monitor (0.5.4-yakkety) yakkety; urgency=medium
+
+  * Fixed issue #48 - https://github.com/maateen/battery-monitor/issues/48
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Tue, 25 Jul 2017 18:54:10 +0600
+
+battery-monitor (0.5.4-xenial) xenial; urgency=medium
+
+  * Fixed issue #48 - https://github.com/maateen/battery-monitor/issues/48
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Tue, 25 Jul 2017 18:53:20 +0600
+
+battery-monitor (0.5.4-trusty) trusty; urgency=medium
+
+  * Fixed issue #48 - https://github.com/maateen/battery-monitor/issues/48
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Tue, 25 Jul 2017 18:35:18 +0600
+
+battery-monitor (0.5.3-artful) artful; urgency=medium
+
+  * Fixed issue #45 - https://github.com/maateen/battery-monitor/issues/45
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Tue, 30 May 2017 17:36:22 +0600
+
+battery-monitor (0.5.3-zesty) zesty; urgency=medium
+
+  * Fixed issue #45 - https://github.com/maateen/battery-monitor/issues/45
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Tue, 30 May 2017 17:35:34 +0600
+
+battery-monitor (0.5.3-yakkety) yakkety; urgency=medium
+
+  * Fixed issue #45 - https://github.com/maateen/battery-monitor/issues/45
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Tue, 30 May 2017 17:34:39 +0600
+
+battery-monitor (0.5.3-xenial) xenial; urgency=medium
+
+  * Fixed issue #45 - https://github.com/maateen/battery-monitor/issues/45
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Tue, 30 May 2017 17:33:27 +0600
+
+battery-monitor (0.5.3-trusty) trusty; urgency=medium
+
+  * Fixed issue #45 - https://github.com/maateen/battery-monitor/issues/45
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Tue, 30 May 2017 17:28:47 +0600
+
+battery-monitor (0.5.2-zesty) zesty; urgency=medium
+
+  * Fixed issue #41 - https://github.com/maateen/battery-monitor/issues/41
+  * Fixed issue #42 - https://github.com/maateen/battery-monitor/issues/42
+  * Introduced a Test feature for developers.
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Wed, 03 May 2017 18:36:46 +0600
+
+battery-monitor (0.5.2-yakkety) yakkety; urgency=medium
+
+  * Fixed issue #41 - https://github.com/maateen/battery-monitor/issues/41
+  * Fixed issue #42 - https://github.com/maateen/battery-monitor/issues/42
+  * Introduced a Test feature for developers.
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Wed, 03 May 2017 18:35:00 +0600
+
+battery-monitor (0.5.2-xenial) xenial; urgency=medium
+
+  * Fixed issue #41 - https://github.com/maateen/battery-monitor/issues/41
+  * Fixed issue #42 - https://github.com/maateen/battery-monitor/issues/42
+  * Introduced a Test feature for developers.
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Wed, 03 May 2017 18:33:09 +0600
+
+battery-monitor (0.5.2-trusty) trusty; urgency=medium
+
+  * Fixed issue #41 - https://github.com/maateen/battery-monitor/issues/41
+  * Fixed issue #42 - https://github.com/maateen/battery-monitor/issues/42
+  * Introduced a Test feature for developers.
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Wed, 03 May 2017 18:01:39 +0600
+
+battery-monitor (0.5.1-zesty1) zesty; urgency=medium
+
+  * Fixed issue #35 - https://github.com/maateen/battery-monitor/issues/35
+  * Fixed issue #39 - https://github.com/maateen/battery-monitor/issues/39
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Fri, 17 Mar 2017 15:27:56 +0600
+
+battery-monitor (0.5.1-yakkety1) yakkety; urgency=medium
+
+  * Fixed issue #35 - https://github.com/maateen/battery-monitor/issues/35
+  * Fixed issue #39 - https://github.com/maateen/battery-monitor/issues/39
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Fri, 17 Mar 2017 15:26:41 +0600
+
+battery-monitor (0.5.1-xenial1) xenial; urgency=medium
+
+  * Fixed issue #35 - https://github.com/maateen/battery-monitor/issues/35
+  * Fixed issue #39 - https://github.com/maateen/battery-monitor/issues/39
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Fri, 17 Mar 2017 15:23:20 +0600
+
+battery-monitor (0.5.1-trusty1) trusty; urgency=medium
+
+  * Fixed issue #35 - https://github.com/maateen/battery-monitor/issues/35
+  * Fixed issue #39 - https://github.com/maateen/battery-monitor/issues/39
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Fri, 17 Mar 2017 15:17:06 +0600
+
+battery-monitor (0.5-zesty) zesty; urgency=medium
+
+  * Developing a GUI to manage the custom warning easily.
+  * Minimizing CPU consumption.
+  * Adding Makefile for easy installation and upgradation.
+  * Re-structuring the project
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Wed, 15 Mar 2017 12:23:35 +0600
+
+battery-monitor (0.5-yakkety) yakkety; urgency=medium
+
+  * Developing a GUI to manage the custom warning easily.
+  * Minimizing CPU consumption.
+  * Adding Makefile for easy installation and upgradation.
+  * Re-structuring the project
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Wed, 15 Mar 2017 12:22:13 +0600
+
+battery-monitor (0.5-xenial1) xenial; urgency=medium
+
+  * Developing a GUI to manage the custom warning easily.
+  * Minimizing CPU consumption.
+  * Adding Makefile for easy installation and upgradation.
+  * Re-structuring the project
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Wed, 15 Mar 2017 12:19:57 +0600
+
+battery-monitor (0.5-trusty2) trusty; urgency=medium
+
+  * Developing a GUI to manage the custom warning easily.
+  * Minimizing CPU consumption.
+  * Adding Makefile for easy installation and upgradation.
+  * Re-structuring the project
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Tue, 14 Mar 2017 23:46:15 +0600
+
+battery-monitor (0.4-xenial) xenial; urgency=medium
+
+  * Reformatting the code in a new style.
+  * Optimizing the code in a way so that Battery Monitor consumes a little resource of your PC.
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Wed, 03 Aug 2016 07:27:12 +0600
+
+battery-monitor (0.3-xenial) xenial; urgency=medium
+
+  * Fixing issue #7, decreasing CPU consuming from 40% to below 0.7%
+  * Fixing issue #4, Adding warning at 30% battery life (temporary solution, will be replaced by a GUI in near future)
+  * Fixing issue #6, Adding an entry in dash.
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Thu, 28 Jul 2016 07:27:12 +0600
+
+battery-monitor (0.3-trusty) trusty; urgency=medium
+
+  * Fixing issue #7, decreasing CPU consuming from 40% to below 0.7%
+  * Fixing issue #4, Adding warning at 30% battery life (temporary solution, will be replaced by a GUI in near future)
+  * Fixing issue #6, Adding an entry in dash.
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Thu, 28 Jul 2016 05:27:12 +0600
+
+battery-monitor (0.2.1-trusty1) trusty; urgency=medium
+
+  * Adding low battery warning
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Sat, 23 Jul 2016 05:27:12 +0600
+
+battery-monitor (0.2.1-xenial) xenial; urgency=medium
+
+  * Adding low battery warning
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Sat, 23 Jul 2016 01:37:13 +0600
+
+battery-monitor (0.1-xenial) xenial; urgency=medium
+
+  * Initial release. (Closes: #XXXXXX)
+  *
+
+ -- Maksudur Rahman Maateen <maateen@outlook.com>  Fri, 22 Jul 2016 15:05:20 +0600

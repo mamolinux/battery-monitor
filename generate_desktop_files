@@ -1,0 +1,54 @@
+#!/usr/bin/python3
+
+DOMAIN = "battery-monitor"
+PATH = "/usr/share/locale"
+
+import os
+import gettext
+import additionalfiles
+
+os.environ['LANGUAGE'] = "en_US.UTF-8"
+gettext.install(DOMAIN, PATH)
+
+prefix = "[Desktop Entry]\n"
+
+suffix = """Exec=battery-monitor
+Icon=battery-monitor
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+StartupNotify=false
+NotShowIn=KDE;
+"""
+
+additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/battery-monitor.desktop", prefix, _("Battery Monitor"), _("A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux."), suffix)
+
+prefix = "[Desktop Entry]\n"
+
+suffix = """Exec=battery-monitor
+Icon=battery-monitor
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+X-KDE-StartupNotify=false
+OnlyShowIn=KDE;
+"""
+
+additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/battery-monitor.desktop", prefix, _("Battery Monitor"), _("A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux."), suffix, genericName=_("Simple Password Generator"))
+
+# Autostart
+prefix = "[Desktop Entry]\n"
+
+suffix = """Exec=battery-monitor
+Icon=battery-monitor
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+StartupNotify=True
+X-KDE-StartupNotify=True
+"""
+
+additionalfiles.generate(DOMAIN, PATH, "etc/xdg/autostart/battery-monitor-autostart.desktop", prefix, _("Battery Monitor"), _("A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux."), suffix)

@@ -1,0 +1,22 @@
+Source: battery-monitor
+Section: admin
+Priority: optional
+Maintainer: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+
+Package: battery-monitor
+Architecture: all
+Depends: acpi,
+         gir1.2-appindicator3-0.1,
+         python3,
+         python3-gi,
+         python3-configobj,
+         python3-setproctitle,
+         libnotify4,
+         libappindicator3-1,
+         ${misc:Depends},
+Description: Battery Monitor
+ A utility tool, notifies user about
+ charging, discharging and not charging
+ state of the battery on Linux.
