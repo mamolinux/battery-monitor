@@ -1,3 +1,14 @@
+battery-monitor (1.0.0) stable; urgency=medium
+
+  * Setup translation using gettext and update about dialog
+  * Shift to debian packaging from python.
+  * Added support for playing sound.
+  * Feature: Upper threshold warning
+  * Made a svg file for project icon
+  * warning: not supporting Ubuntu 16.04 now
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sun, 10 Oct 2021 12:48:21 +0530
+
 battery-monitor (0.6-beta-4-bionic) bionic; urgency=medium
 
   * Pressing OK will close Settings window
