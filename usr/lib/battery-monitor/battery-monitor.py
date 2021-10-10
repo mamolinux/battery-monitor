@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # standard library
+import setproctitle
 import signal
 import sys
 
@@ -8,11 +9,11 @@ import sys
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
-from gi.repository import GObject
 
 # imports from current project
 from AppIndicator import AppIndicator
 
+setproctitle.setproctitle("battery-monitor")
 
 def main() -> None:
     # checking Test Mode enabled or not

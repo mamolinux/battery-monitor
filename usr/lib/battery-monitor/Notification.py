@@ -2,6 +2,8 @@
 
 # standard library
 import configparser
+import gettext
+import locale
 import os
 import platform
 import time
@@ -17,6 +19,15 @@ from BatteryMonitor import BatteryMonitor
 from config import CONFIG_FILE
 from config import ICONS
 from config import MESSAGES
+
+
+# i18n
+APP = 'battery-monitor'
+LOCALE_DIR = "/usr/share/locale"
+locale.bindtextdomain(APP, LOCALE_DIR)
+gettext.bindtextdomain(APP, LOCALE_DIR)
+gettext.textdomain(APP)
+_ = gettext.gettext
 
 
 class Notification:
@@ -37,7 +48,7 @@ class Notification:
         self.load_config()
         
         # initiating notification
-        Notify.init("Battery Monitor")
+        Notify.init(_("Battery Monitor"))
         message = MESSAGES[type]
         head = message[0]
         body = message[1]

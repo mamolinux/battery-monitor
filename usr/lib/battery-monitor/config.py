@@ -1,12 +1,23 @@
 #!/usr/bin/env python3
 
 # standard library
+import gettext
+import locale
 import os
+
+
+# i18n
+APP = 'battery-monitor'
+LOCALE_DIR = "/usr/share/locale"
+locale.bindtextdomain(APP, LOCALE_DIR)
+gettext.bindtextdomain(APP, LOCALE_DIR)
+gettext.textdomain(APP)
+_ = gettext.gettext
 
 _path = os.path.dirname(os.path.abspath(__file__))
 _icon_path = _path + '/icons/'
 
-APPINDICATOR_ID = 'batterymonitor'
+APPINDICATOR_ID = 'battery-monitor'
 
 CONFIG_FILE = os.path.expanduser('~/.config/battery-monitor/battery-monitor.cfg')
 
@@ -24,7 +35,7 @@ ICONS = {
     "first_custom_warning": "discharging.png",
     "second_custom_warning": "discharging.png",
     "third_custom_warning": "discharging.png",
-    "upper_threshold_warning": "charging.png",
+    "upper_threshold_warning": "charging.png"
 }
 
 for key in ICONS:
@@ -32,81 +43,81 @@ for key in ICONS:
 
 MESSAGES = {
     "success": (
-        u"Battery Monitor",
-        u"Cheers! Your battery is being monitored now."
+        _("Battery Monitor"),
+        _("Cheers! Your battery is being monitored now.")
     ),
 
     "fail": (
-        u"Battery Monitor",
-        u"Alas! Battery is not yet present!"
+        _("Battery Monitor"),
+        _("Alas! Battery is not yet present!")
     ),
 
     "acpi": (
-        u"Battery Monitor",
-        u"Dependency Error! acpi is not installed.",
+        _("Battery Monitor"),
+        _("Dependency Error! acpi is not installed.")
     ),
 
     "charging": (
-        u"Charging",
-        u"Now {battery_percentage} %, {remaining_time}"
+        _("Charging"),
+        _("Now {battery_percentage} %, {remaining_time}")
     ),
 
     "discharging": (
-        u"Discharging",
-        u"Now {battery_percentage} %, {remaining_time}"
+        _("Discharging"),
+        _("Now {battery_percentage} %, {remaining_time}")
     ),
 
     "full": (
-        u"Fully Charged",
-        u"{battery_percentage} % Remaining"
+        _("Fully Charged"),
+        _("{battery_percentage} % Remaining")
     ),
 
     "unknown": (
-        u"Fully Charged",
-        u"{battery_percentage} % Remaining"
+        _("Fully Charged"),
+        _("{battery_percentage} % Remaining")
     ),
 
     "low_battery": (
-        u"Low Battery",
-        u"Now {battery_percentage} %, {remaining_time}"
+        _("Low Battery"),
+        _("Now {battery_percentage} %, {remaining_time}")
     ),
 
     "critical_battery": (
-        u"Critically Low Battery",
-        u"Only {battery_percentage} %, {remaining_time}"
+        _("Critically Low Battery"),
+        _("Only {battery_percentage} %, {remaining_time}")
     ),
 
     "first_custom_warning": (
-        u"First Custom Warning",
-        u"Now {battery_percentage} %, {remaining_time}"
+        _("First Custom Warning"),
+        _("Now {battery_percentage} %, {remaining_time}")
     ),
 
     "second_custom_warning": (
-        u"Second Custom Warning",
-        u"Now {battery_percentage} %, {remaining_time}"
+        _("Second Custom Warning"),
+        _("Now {battery_percentage} %, {remaining_time}")
     ),
 
     "third_custom_warning": (
-        u"Third Custom Warning",
-        u"Now {battery_percentage} %, {remaining_time}"
+        _("Third Custom Warning"),
+        _("Now {battery_percentage} %, {remaining_time}")
     ),
     "upper_threshold_warning": (
-        u"Upper Threshold Warning - Unplug your Charger",
-        u"Now {battery_percentage} %, {remaining_time}"
-    ),
+        _("Upper Threshold Warning - Unplug your Charger"),
+        _("Now {battery_percentage} %, {remaining_time}")
+    )
 }
 
 TEST_CASES = {
     "state": [
-        "Full",
-        "Charging",
-        "Discharging",
+        _("Full"),
+        _("Charging"),
+        _("Discharging")
     ],
     "remaining": [
-        "00:10:12 remaining",
-        "01:47:31 remaining",
-        "02:33:47 remaining",
-        "03:24:25 remaining",
-        "discharging at zero rate - will never fully discharge",
-    ],
+        _("00:10:12 remaining"),
+        _("01:47:31 remaining"),
+        _("02:33:47 remaining"),
+        _("03:24:25 remaining"),
+        _("discharging at zero rate - will never fully discharge")
+    ]
 }

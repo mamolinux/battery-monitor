@@ -2,6 +2,8 @@
 
 # standard library
 import configparser
+import gettext
+import locale
 import os
 
 # third-party library
@@ -14,6 +16,14 @@ from config import CONFIG_FILE
 from config import ICONS
 from ErrorLib import ValidationError
 
+
+# i18n
+APP = 'battery-monitor'
+LOCALE_DIR = "/usr/share/locale"
+locale.bindtextdomain(APP, LOCALE_DIR)
+gettext.bindtextdomain(APP, LOCALE_DIR)
+gettext.textdomain(APP)
+_ = gettext.gettext
 
 
 class SettingsWindow(Gtk.Window):
@@ -36,61 +46,61 @@ class SettingsWindow(Gtk.Window):
 
         self.notebook = Gtk.Notebook()
         self.add(self.notebook)
-        self.notebook.append_page(self.__configuration_page(), Gtk.Label('Configuration'))
+        self.notebook.append_page(self.__configuration_page(), Gtk.Label(_('Configuration')))
 
     def __configuration_page(self):
-        label0 = Gtk.Label('Critical Battery Warning at')
+        label0 = Gtk.Label(_('Critical Battery Warning at'))
         label0.set_justify(Gtk.Justification.LEFT)
         label0.set_halign(Gtk.Align.START)
         label0.set_hexpand(True)
-        label1 = Gtk.Label('Low Battery Warning at')
+        label1 = Gtk.Label(_('Low Battery Warning at'))
         label1.set_justify(Gtk.Justification.LEFT)
         label1.set_halign(Gtk.Align.START)
         label1.set_hexpand(True)
-        label2 = Gtk.Label('Third Custom Warning at')
+        label2 = Gtk.Label(_('Third Custom Warning at'))
         label2.set_justify(Gtk.Justification.LEFT)
         label2.set_halign(Gtk.Align.START)
         label2.set_hexpand(True)
-        label3 = Gtk.Label('Second Custom Warning at')
+        label3 = Gtk.Label(_('Second Custom Warning at'))
         label3.set_justify(Gtk.Justification.LEFT)
         label3.set_halign(Gtk.Align.START)
         label3.set_hexpand(True)
-        label4 = Gtk.Label('First Custom Warning at')
+        label4 = Gtk.Label(_('First Custom Warning at'))
         label4.set_justify(Gtk.Justification.LEFT)
         label4.set_halign(Gtk.Align.START)
         label4.set_hexpand(True)
-        label5 = Gtk.Label('Notification Stability Time')
+        label5 = Gtk.Label(_('Notification Stability Time'))
         label5.set_justify(Gtk.Justification.LEFT)
         label5.set_halign(Gtk.Align.START)
         label5.set_hexpand(True)
 
-        label6 = Gtk.Label('Upper Threshold Warning at')
+        label6 = Gtk.Label(_('Upper Threshold Warning at'))
         label6.set_justify(Gtk.Justification.LEFT)
         label6.set_halign(Gtk.Align.START)
         label6.set_hexpand(True)
 
         self.entry0 = Gtk.Entry()
         self.entry0.set_text(str(self.critical_battery))
-        self.entry0.set_tooltip_text('Set in percentage')
+        self.entry0.set_tooltip_text(_('Set in percentage'))
         self.entry1 = Gtk.Entry()
         self.entry1.set_text(str(self.low_battery))
-        self.entry1.set_tooltip_text('Set in percentage')
+        self.entry1.set_tooltip_text(_('Set in percentage'))
         self.entry2 = Gtk.Entry()
         self.entry2.set_text(str(self.third_custom_warning))
-        self.entry2.set_tooltip_text('Set in percentage, must be smaller than Other Warnings')
+        self.entry2.set_tooltip_text(_('Set in percentage, must be smaller than Other Warnings'))
         self.entry3 = Gtk.Entry()
         self.entry3.set_text(str(self.second_custom_warning))
-        self.entry3.set_tooltip_text('Set in percentage, , must be greater than Third Custom Warning')
+        self.entry3.set_tooltip_text(_('Set in percentage, , must be greater than Third Custom Warning'))
         self.entry4 = Gtk.Entry()
         self.entry4.set_text(str(self.first_custom_warning))
-        self.entry4.set_tooltip_text('Set in percentage, must be greater than Second Custom Warning')
+        self.entry4.set_tooltip_text(_('Set in percentage, must be greater than Second Custom Warning'))
         self.entry5 = Gtk.Entry()
         self.entry5.set_text(str(self.notification_stability))
-        self.entry5.set_tooltip_text('Set in second')
+        self.entry5.set_tooltip_text(_('Set in second'))
 
         self.entry6 = Gtk.Entry()
         self.entry6.set_text(str(self.upper_threshold_warning))
-        self.entry6.set_tooltip_text('Set in percentage')
+        self.entry6.set_tooltip_text(_('Set in percentage'))
 
         save_button = Gtk.Button(label='Save')
         save_button.connect('clicked', self.__save_config)
@@ -170,15 +180,14 @@ class SettingsWindow(Gtk.Window):
             self.__validate_config(self.config['settings'])
             with open(CONFIG_FILE, 'w') as f:
                 self.config.write(f)
-                dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, 'Successfully Saved!')
-                dialog.format_secondary_text(
-                    'You settings have been saved successfully.')
+                dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, _('Successfully Saved!'))
+                dialog.format_secondary_text(_('Your settings have been saved successfully.'))
                 response = dialog.run()
                 if response == Gtk.ResponseType.OK:
                     self.close()
                 dialog.destroy()
         except ValidationError as message:
-            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.ERROR, Gtk.ButtonsType.CANCEL, 'Validation Error!')
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.ERROR, Gtk.ButtonsType.CANCEL, _('Validation Error!'))
             dialog.format_secondary_text(str(message))
             dialog.run()
             dialog.destroy()
@@ -188,31 +197,31 @@ class SettingsWindow(Gtk.Window):
 
         if bool(config['critical_battery']) and bool(config['low_battery']):
             if int(config['critical_battery']) >= int(config['low_battery']):
-                raise ValidationError('The value of low battery warning must be greater than the value of critical battery warning.')
+                raise ValidationError(_('The value of low battery warning must be greater than the value of critical battery warning.'))
         else:
             if bool(config['critical_battery']):
-                raise ValidationError('Low battery warning can not be empty.')
+                raise ValidationError(_('Low battery warning can not be empty.'))
             else:
-                raise ValidationError('Critical battery warning can not be empty.')
+                raise ValidationError(_('Critical battery warning can not be empty.'))
 
         if bool(config['low_battery']) and bool(config['third_custom_warning']):
             if int(config['low_battery']) >= int(config['third_custom_warning']):
-                raise ValidationError('The value of third custom warning must be greater than the value of low battery warning.')
+                raise ValidationError(_('The value of third custom warning must be greater than the value of low battery warning.'))
 
         if bool(config['third_custom_warning']) and bool(config['second_custom_warning']):
             if int(config['third_custom_warning']) >= int(config['second_custom_warning']):
-                raise ValidationError('The value of second custom warning must be greater than the value 0f third custom warning.')
+                raise ValidationError(_('The value of second custom warning must be greater than the value 0f third custom warning.'))
 
         if bool(config['second_custom_warning']) and bool(config['first_custom_warning']):
             if int(config['second_custom_warning']) >= int(config['first_custom_warning']):
-                raise ValidationError('The value of first custom warning must be greater than then value of second custom warning.')
+                raise ValidationError(_('The value of first custom warning must be greater than then value of second custom warning.'))
 
         if bool(config['notification_stability']):
             if int(config['notification_stability']) <= 0:
-                raise ValidationError('Notification stability time must be greater than zero.')
+                raise ValidationError(_('Notification stability time must be greater than zero.'))
         else:
-            raise ValidationError('Notification stability time can not be empty.')
-
+            raise ValidationError(_('Notification stability time can not be empty.'))
+        
         if bool(config['upper_threshold_warning']):
             if int(config['upper_threshold_warning']) <= 0:
-                raise ValidationError('Upper threshold Warning must be greater than zero.')
+                raise ValidationError(_('Upper threshold Warning must be greater than zero.'))

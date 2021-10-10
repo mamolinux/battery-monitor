@@ -1,14 +1,24 @@
 #!/usr/bin/env python3
 
 # standard library
+import gettext
+import locale
+import platform
 import random
 import subprocess
-import platform
 from typing import Dict
 
 # imports from current project
 from config import TEST_CASES
 
+
+# i18n
+APP = 'battery-monitor'
+LOCALE_DIR = "/usr/share/locale"
+locale.bindtextdomain(APP, LOCALE_DIR)
+gettext.bindtextdomain(APP, LOCALE_DIR)
+gettext.textdomain(APP)
+_ = gettext.gettext
 
 class BatteryMonitor:
     if platform.python_version() >= '3.6':
@@ -48,10 +58,9 @@ class BatteryMonitor:
     def get_processed_battery_info(self):
         in_list = (self.raw_battery_info.decode("utf-8", "strict").lower().strip('\n')
                    .split(": ", 1)[1].split(", "))
-        print(in_list)
-        self.processed_battery_info["state"] = in_list[0]
-        self.processed_battery_info["percentage"] = in_list[1]
         try:
+            self.processed_battery_info["state"] = in_list[0]
+            self.processed_battery_info["percentage"] = in_list[1]
             self.processed_battery_info["remaining"] = in_list[2]
         except IndexError:
             pass
