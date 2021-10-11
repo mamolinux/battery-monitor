@@ -1,0 +1,8 @@
+@media screen and (max-width: 1000px) {
+  #newsbar.sidebar {
+    width: 100%;
+  }
+  #articles.article-content{
+    width: 100%;
+  }
+}

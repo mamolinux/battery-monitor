@@ -1,0 +1,56 @@
+html {font-family: 'Open Sans', sans-serif; font-size: 150%;}
+*{box-sizing: border-box;}
+/* body {background-color: powderblue; margin: 5px; text-align: justify; padding: 10px;} */
+body {background-color: #2C001E; color: #AAFF32; margin: 5px; text-align: justify; padding: 10px;}
+
+/* Style the header */
+header {padding: 0.5%;}
+
+/* Style the navigation bar */
+nav {background-color: #7FFF00; padding: 5px; width: 100%; border-radius: 10px;}
+
+/* Style the footer */
+footer {background-color: #666666; color: #AAFF32; padding: 5px; margin: 5px; text-align: center; border-radius: 10px;}
+
+/* Create two columns/boxes that floats next to each other */
+#newsbar {background-color: #2C001E; color: #AAFF32; width: 25%; margin: 2px; margin-top: 10px; padding: 10px; float: left; border-radius: 10px;}
+#articles {background-color: #F1F1F1; width: 73%; margin: 2px; margin-top: 10px; padding: 10px; float: left;}
+
+.w3-left {float: left; text-align: left;}
+.w3-right {float: right; text-align: right;}
+.w3-center {margin: auto; width: 100%; text-align: center;}
+
+.bar {overflow: auto;}
+a:hover.bar {background-color: unset;}
+
+/* Style the list inside the menu */
+/* aside ul {list-style-type: none; padding: 5px;} */
+
+/* all links */
+a {color: #06C2AC; padding: 2px; text-align: center; text-decoration: none; display: inline-block;}
+a:hover {opacity: 1; color: #2C001E; background-color: #06C2AC; border-radius: 10px;}
+/* a {padding: 2px; text-align: center; text-decoration: none; display: inline-block;}
+a:hover {opacity: 1; background-color: yellowgreen;} */
+
+/* all text, image and lists */
+p, li {line-height: 150%;}
+li, ol, ul {margin-left: 1.5%;}
+img {display: block; margin: 5px;}
+
+/* social services at footer */
+img.services {margin: 0px;}
+a.services {opacity: 0.5; padding: 0px;}
+a:hover.services {opacity: 1; background-color: unset; padding: 5px;}
+p.services {line-height: 0px; padding: 2px; margin: 2px;}
+p.crights {margin: 2px;}
+
+/* Code snippets */
+code {background-color: #FDF6E3; color: black; padding: 5px; border-radius: 5px;}
+.code {display: block; max-width: 50%; max-height: 200px; overflow: scroll;}
+
+.line {
+	background: transparent url(styles/icons/line.png) repeat-x;
+	height: 2px;
+	padding: 20px 0 0 0;
+	line-break: 0px;
+}
