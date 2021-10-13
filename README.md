@@ -134,7 +134,7 @@ Here, you can set the battery percentage levels at which you want to get notific
 
 If you change any configuration, it will be in action only after next reboot.
 
-![Battery Monitor GUI](https://github.com/hsbasu/battery-monitor/raw/gh-pages/battery-monitor-gui.png)
+![Battery Monitor GUI](https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/battery-monitor-gui.png)
 
 ## Issue Tracking
 
@@ -144,23 +144,23 @@ If you find a bug, please open a new issue with details: [https://github.com/hsb
 
 #### Initial State
 
-![Initial State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_20_42_29.png)
+![Initial State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/Screenshot_from_2016_07_22_20_42_29.png)
 
 #### Charging State
 
-![Charging State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_20_42_52.png)
+![Charging State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/Screenshot_from_2016_07_22_20_42_52.png)
 
 #### Discharging State
 
-![Discharging State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_20_42_42.png)
+![Discharging State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/Screenshot_from_2016_07_22_20_42_42.png)
 
 #### Not Charging State
 
-![Not Charging State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_22_21_11_49.png)
+![Not Charging State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/Screenshot_from_2016_07_22_21_11_49.png)
 
 #### Critically Low Battery State
 
-![Critically Low Battery State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/Screenshot_from_2016_07_23_03_09_54.png)
+![Critically Low Battery State](https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/Screenshot_from_2016_07_23_03_09_54.png)
 
 ## Roadmap
 
