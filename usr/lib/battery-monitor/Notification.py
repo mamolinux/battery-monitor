@@ -43,7 +43,10 @@ class Notification:
 
     def __init__(self, type: str, TEST_MODE: bool = False) -> None:
         
-        self.monitor = BatteryMonitor(TEST_MODE)
+        try:
+            self.monitor = BatteryMonitor(TEST_MODE)
+        except:
+            pass
         self.config = configparser.ConfigParser()
         self.load_config()
         

@@ -76,17 +76,26 @@ class AppIndicator:
         return menu
 	
     def __run_daemon(self, TEST_MODE: bool = False):
-        # initiaing BatteryMonitor
         try:
-            monitor = BatteryMonitor(TEST_MODE)
-        except subprocess.CalledProcessError as e:
-            # initiaing Notification
-            notification = Notification("acpi")
-            time.sleep(5)
-            del notification
+            try:
+                # initiaing BatteryMonitor
+                monitor = BatteryMonitor(TEST_MODE)
+            except subprocess.CalledProcessError as e:
+                # show notification when acpi is not installed
+                print("No acpi.")
+                notification = Notification("acpi")
+                self.__quit()
+                time.sleep(5)
+        except IndexError as e:
+            # show notification when battery is not present
+            print("Where is my battery?")
+            notification = Notification("fail")
             self.__quit()
-		
+            time.sleep(5)
+            
+        # if battery is present execute the next lines
         # initiaing Notification
+        print("OK, Battery present.")
         notification = Notification("success")
         notification.show_specific_notifications(monitor)
         while True:
