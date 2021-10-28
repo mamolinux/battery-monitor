@@ -36,7 +36,7 @@ X-KDE-StartupNotify=false
 OnlyShowIn=KDE;
 """
 
-additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/battery-monitor.desktop", prefix, _("Battery Monitor"), _("A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux."), suffix, genericName=_("Simple Password Generator"))
+additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/battery-monitor.desktop", prefix, _("Battery Monitor"), _("A utility tool, notifies user about charging, discharging and not charging state of the battery on Linux."), suffix, genericName=_("Battery Monitor"))
 
 # Autostart
 prefix = "[Desktop Entry]\n"
