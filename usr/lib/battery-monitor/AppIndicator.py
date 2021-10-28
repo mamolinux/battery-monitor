@@ -20,7 +20,7 @@ from config import APPINDICATOR_ID
 from config import ICONS
 from AboutWindow import AboutWindow
 from BatteryMonitor import BatteryMonitor
-from Notification import Notification
+from Notification import get_notification
 from SettingsWindow import SettingsWindow
 
 
@@ -83,20 +83,20 @@ class AppIndicator:
             except subprocess.CalledProcessError as e:
                 # show notification when acpi is not installed
                 print("No acpi.")
-                notification = Notification("acpi")
+                notification = get_notification("acpi")
                 self.__quit()
                 time.sleep(5)
         except IndexError as e:
             # show notification when battery is not present
             print("Where is my battery?")
-            notification = Notification("fail")
+            notification = get_notification("fail")
             self.__quit()
             time.sleep(5)
             
         # if battery is present execute the next lines
         # initiaing Notification
         print("OK, Battery present.")
-        notification = Notification("success")
+        notification = get_notification("success")
         notification.show_specific_notifications(monitor)
         while True:
             if monitor.is_updated():

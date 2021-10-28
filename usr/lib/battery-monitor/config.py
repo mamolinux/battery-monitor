@@ -68,7 +68,7 @@ MESSAGES = {
     ),
 
     "full": (
-        _("Fully Charged"),
+        _("Fully Charged - Unplug your Charger"),
         _("{battery_percentage} % Remaining")
     ),
 

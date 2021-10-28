@@ -45,16 +45,16 @@ class BatteryMonitor:
                                             stderr=subprocess.PIPE,
                                             shell=True)
         return raw_info
-
+    
     def is_updated(self):
         current_raw_info = self.get_raw_battery_info()
 
         if self.raw_battery_info != current_raw_info:
             self.raw_battery_info = current_raw_info
             return True
-
+        
         return False
-
+    
     def get_processed_battery_info(self):
         in_list = (self.raw_battery_info.decode("utf-8", "strict").lower().strip('\n')
                    .split(": ", 1)[1].split(", "))
@@ -64,5 +64,5 @@ class BatteryMonitor:
             self.processed_battery_info["remaining"] = in_list[2]
         except IndexError:
             pass
-
+        
         return self.processed_battery_info
