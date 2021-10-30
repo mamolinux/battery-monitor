@@ -1,3 +1,12 @@
+battery-monitor (1.0.1) stable; urgency=medium
+
+  * Update .desktop files via generate_desktop_files (#9)
+  * Show charging/discharging Notification; fixes #5 (#8)
+  * Change source compatibility format to 10
+  * Quit if acpi is not installed or battery is not present
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sat, 30 Oct 2021 21:11:18 +0530
+
 battery-monitor (1.0.0) stable; urgency=medium
 
   * Setup translation using gettext and update about dialog
