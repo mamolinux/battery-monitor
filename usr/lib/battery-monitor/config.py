@@ -24,6 +24,7 @@ CONFIG_FILE = os.path.expanduser('~/.config/battery-monitor/battery-monitor.cfg'
 ICONS = {
     "app": "tray-icon.svg",
     "success": "icon.png",
+    "null": "icon.png",
     "fail": "icon.png",
     "acpi": "icon.png",
     "charging": "charging.png",
@@ -46,6 +47,11 @@ MESSAGES = {
         _("Battery Monitor"),
         _("Cheers! Your battery is being monitored now.")
     ),
+	
+	"null": (
+		_(""),
+		_("")
+	),
 
     "fail": (
         _("Battery Monitor"),

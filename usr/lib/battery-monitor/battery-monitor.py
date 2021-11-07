@@ -16,19 +16,19 @@ from AppIndicator import AppIndicator
 setproctitle.setproctitle("battery-monitor")
 
 def main() -> None:
-    # checking Test Mode enabled or not
-    try:
-        if sys.argv[1] == '--test':
-            TEST_MODE = True
-        else:
-            TEST_MODE = False
-    except IndexError:
-        TEST_MODE = False
+	# checking Test Mode enabled or not
+	try:
+		if sys.argv[1] == '--test':
+			TEST_MODE = True
+		else:
+			TEST_MODE = False
+	except IndexError:
+		TEST_MODE = False
 
-    # initiaing app indicator
-    indicator = AppIndicator(TEST_MODE)
-    Gtk.main()
+	# initiaing app indicator
+	indicator = AppIndicator(TEST_MODE)
+	Gtk.main()
 
 if __name__ == '__main__':
-    signal.signal(signal.SIGINT, signal.SIG_DFL)
-    main()
+	signal.signal(signal.SIGINT, signal.SIG_DFL)
+	main()

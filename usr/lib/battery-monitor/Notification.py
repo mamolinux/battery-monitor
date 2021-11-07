@@ -30,232 +30,236 @@ gettext.textdomain(APP)
 _ = gettext.gettext
 
 
-class get_notification:
-    """Triggers notification on battery state changes.
+class get_notification():
+	"""Triggers notification on battery state changes.
 
-    Triggers informative and effective notification on every change of battery state.
-    """
-    
-    if platform.python_version() >= '3.6':
-        TEST_MODE: bool
-        last_notification: str
-        last_percentage: int
-
-    def __init__(self, notiftype: str, TEST_MODE: bool = False) -> None:
-        
-        try:
-            self.monitor = BatteryMonitor(TEST_MODE)
-        except:
-            pass
-        self.config = configparser.ConfigParser()
-        self.load_config()
-        
-        # initiating notification
-        Notify.init(_("Battery Monitor"))
-        message = MESSAGES[notiftype]
-        head = message[0]
-        body = message[1]
-        icon = ICONS[notiftype]
-        self.last_state = ''
-        self.last_percentage = 0
-        self.last_notification = ''
-        self.notifier = Notify.Notification()
-        self.notification = self.notifier.new(head, body, icon)
-        self.notification.set_urgency(Notify.Urgency.CRITICAL)
-        # TODO: This is like fighting against ourselves. Make better fix.
-        # silence 'success' notification
-        if (notiftype != "success"):
-            try:
-                self.notification.show()
-                time.sleep(self.notification_stability)
-            except GLib.GError as e:
-                # fixing GLib.GError: g-dbus-error-quark blindly
-                pass
-        else:
-            self.notification.show()
-            time.sleep(self.notification_stability)
-        self.notification.close()
-
-    def load_config(self):
-        try:
-            self.config.read(CONFIG_FILE)
-            try:
-                self.critical_battery = int(self.config['settings']['critical_battery'])
-            except ValueError:
-                self.critical_battery = 10
-            try:
-                self.low_battery = int(self.config['settings']['low_battery'])
-            except ValueError:
-                self.low_battery = 30
-            try:
-                self.first_custom_warning = int(self.config['settings']['first_custom_warning'])
-            except ValueError:
-                self.first_custom_warning = -1
-            try:
-                self.second_custom_warning = int(self.config['settings']['second_custom_warning'])
-            except ValueError:
-                self.second_custom_warning = -2
-            try:
-                self.third_custom_warning = int(self.config['settings']['third_custom_warning'])
-            except ValueError:
-                self.third_custom_warning = -3
-            try:
-                self.notification_stability = int(self.config['settings']['notification_stability'])
-            except ValueError:
-                self.notification_stability = 5
-            try:
-                self.upper_threshold_warning = int(self.config['settings']['upper_threshold_warning'])
-            except ValueError:
-                self.upper_threshold_warning = 90
-        except:
-            print('Config file is missing or not readable. Using default configurations.')
-            self.critical_battery = 10
-            self.low_battery = 30
-            self.first_custom_warning = -1
-            self.second_custom_warning = -2
-            self.third_custom_warning = -3
-            self.notification_stability = 5
-            self.upper_threshold_warning = 90
-
-    def show_notification(self, notiftype: str, battery_percentage: int,
-                          remaining_time: str = None, _count: int = None) -> None:
-        
-        message = MESSAGES[notiftype]
-        head = message[0]
-        body = message[1].format(battery_percentage=battery_percentage,
-                                 remaining_time=remaining_time)
-        icon = ICONS[notiftype]
-        # self.notifier.update(head, body, icon)
-        # notification = self.notifier.new(head, body, icon)
-        try:
-            for i in range(_count):
-                if ("charging" or "discharging") in notiftype:
-                    notification = self.notifier.new(head, body, icon)
-                    notification.show()
-                    os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
-                    # time.sleep(self.notification_stability)
-                else:
-                    self.monitor.is_updated()
-                    info = self.monitor.get_processed_battery_info()
-                    state = info["state"]
-                    if state != self.last_state:
-                        continue
-                    notification = self.notifier.new(head, body, icon)
-                    notification.show()
-                    os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
-                    time.sleep(self.notification_stability)
-                    # self.notifier.show()
-                
-        except GLib.GError as e:
-            # fixing GLib.GError: g-dbus-error-quark blindly
-            # To Do: investigate the main reason and make a fix
-            pass
-        # time.sleep(self.notification_stability)
-        # self.notifier.close()
-
-    def show_specific_notifications(self, monitor: BatteryMonitor):
-        """Shows specific notifications depending on the changes of battery state.
-
-        Shows Notification only while state or last notification changes. Notification will not be shown for each percentage change. Sometimes acpi returns remaining time like *discharging at zero rate - will never fully discharge* We will skip it.
-        """
-        info = monitor.get_processed_battery_info()
-        state = info["state"]
-        percentage = int(info["percentage"].replace("%", ""))
-        remaining = info.get("remaining")
-        
-        count = 5
-        
-        if state == 'discharging':
-            if (state != self.last_state and
-                remaining != "discharging at zero rate - will never fully discharge"):
-                self.last_state = state
-                self.last_notification = "discharging"
-                self.show_notification(notiftype="discharging",
-                                       battery_percentage=percentage,
-                                       remaining_time=remaining, _count=1)
-                
-            
-            if (percentage != self.last_percentage and
-                remaining != "discharging at zero rate - will never fully discharge"):
-                self.last_percentage = percentage
-                if percentage <= self.critical_battery:
-                    self.last_notification = "critical_battery"
-                    self.show_notification(notiftype="critical_battery",
-                                           battery_percentage=percentage,
-                                           remaining_time=remaining, _count=count)
-
-                    return "critical_battery"
-
-                elif (percentage <= self.low_battery and
-                      self.last_notification != "low_battery"):
-                    self.last_notification = "low_battery"
-                    self.show_notification(notiftype="low_battery",
-                                           battery_percentage=percentage,
-                                           remaining_time=remaining, _count=count)
-
-                    return "low_battery"
-
-                elif (percentage <= self.third_custom_warning and
-                      self.last_notification != "third_custom_warning"):
-                    self.last_notification = "third_custom_warning"
-                    self.show_notification(notiftype="third_custom_warning",
-                                           battery_percentage=percentage,
-                                           remaining_time=remaining, _count=count)
-
-                    return "third_custom_warning"
-
-                elif (percentage <= self.second_custom_warning and
-                      self.last_notification != "second_custom_warning"):
-                    self.last_notification = "second_custom_warning"
-                    self.show_notification(notiftype="second_custom_warning",
-                                           battery_percentage=percentage,
-                                           remaining_time=remaining, _count=count)
-
-                    return "second_custom_warning"
-
-                elif (percentage <= self.first_custom_warning and
-                      self.last_notification != "first_custom_warning"):
-                    self.last_notification = "first_custom_warning"
-                    self.show_notification(notiftype="first_custom_warning",
-                                           battery_percentage=percentage,
-                                           remaining_time=remaining, _count=count)
-
-                    return "first_custom_warning"
-
-        elif state == 'charging':
-            if (state != self.last_state and
-                remaining != "discharging at zero rate - will never fully discharge"):
-                self.last_state = state
-                self.last_notification = "charging"
-                self.show_notification(notiftype="charging",
-                                       battery_percentage=percentage,
-                                       remaining_time=remaining, _count=1)
-                                       
-            if (percentage != self.last_percentage and
-                remaining != "discharging at zero rate - will never fully discharge" and
-                self.last_notification!="upper_threshold_warning" and
-                percentage >= self.upper_threshold_warning):
-                    self.last_percentage = percentage
-                    self.last_notification!="upper_threshold_warning"
-                    self.show_notification(notiftype="upper_threshold_warning",
-                                           battery_percentage=percentage,
-                                           remaining_time=remaining, _count=count)
-
-                    return "upper_threshold_warning"
-        
-        else:
-            """
-                if last notification = charging, so is charging now than, the preceding block will not work.
-            """
-            if state != self.last_notification and remaining != "discharging at zero rate - will never fully discharge":
-                self.last_notification = state
-                self.last_state = state
-                self.show_notification(notiftype=state,
-                                       battery_percentage=percentage,
-                                       remaining_time=remaining, _count=count)
-
-                return state
-
-    def __del__(self):
-        self.notifier.close()
-        Notify.uninit()
+	Triggers informative and effective notification on every change of battery state.
+	"""
+	
+	if platform.python_version() >= '3.6':
+		TEST_MODE: bool
+		last_notification: str
+		last_percentage: int
+	
+	def __init__(self, notiftype: str, TEST_MODE: bool = False) -> None:
+		
+		try:
+			self.monitor = BatteryMonitor(TEST_MODE)
+		except:
+			pass
+		self.config = configparser.ConfigParser()
+		self.load_config()
+		
+		Notify.init(_("Battery Monitor"))
+		message = MESSAGES[notiftype]
+		head = message[0]
+		body = message[1]
+		icon = ICONS[notiftype]
+		self.last_state = ''
+		self.last_percentage = 0
+		self.last_notification = ''
+		self.notifier = Notify.Notification()
+		self.notification = self.notifier.new(head, body, icon)
+		self.notification.set_urgency(Notify.Urgency.CRITICAL)
+		
+		if (notiftype == "null"):
+			# if notification type is null do not show any notification
+			# just initialize
+			print("This is a null notification to initialize notifications.")
+		else:
+			if (notiftype != "success"):
+				try:
+					self.notification.show()
+					time.sleep(self.notification_stability)
+				except GLib.GError as e:
+					# fixing GLib.GError: g-dbus-error-quark blindly
+					pass
+			else:
+				self.notification.show()
+				time.sleep(self.notification_stability)
+			self.notification.close()
+	
+	def load_config(self):
+		try:
+			self.config.read(CONFIG_FILE)
+			try:
+				self.critical_battery = int(self.config['settings']['critical_battery'])
+			except ValueError:
+				self.critical_battery = 10
+			try:
+				self.low_battery = int(self.config['settings']['low_battery'])
+			except ValueError:
+				self.low_battery = 30
+			try:
+				self.first_custom_warning = int(self.config['settings']['first_custom_warning'])
+			except ValueError:
+				self.first_custom_warning = -1
+			try:
+				self.second_custom_warning = int(self.config['settings']['second_custom_warning'])
+			except ValueError:
+				self.second_custom_warning = -2
+			try:
+				self.third_custom_warning = int(self.config['settings']['third_custom_warning'])
+			except ValueError:
+				self.third_custom_warning = -3
+			try:
+				self.notification_stability = int(self.config['settings']['notification_stability'])
+			except ValueError:
+				self.notification_stability = 5
+			try:
+				self.upper_threshold_warning = int(self.config['settings']['upper_threshold_warning'])
+			except ValueError:
+				self.upper_threshold_warning = 90
+			try:
+				self.success_shown = str(self.config['settings']['success_shown']).lower()
+			except ValueError:
+				self.success_shown = "No"
+		except:
+			print('Config file is missing or not readable. Using default configurations.')
+			self.critical_battery = 10
+			self.low_battery = 30
+			self.first_custom_warning = -1
+			self.second_custom_warning = -2
+			self.third_custom_warning = -3
+			self.notification_stability = 5
+			self.upper_threshold_warning = 90
+			self.success_shown = "No"
+	
+	def show_notification(self, notiftype: str, battery_percentage: int,
+						  remaining_time: str = None, _count: int = None) -> None:
+		
+		message = MESSAGES[notiftype]
+		head = message[0]
+		body = message[1].format(battery_percentage=battery_percentage,
+								 remaining_time=remaining_time)
+		icon = ICONS[notiftype]
+		try:
+			for i in range(_count):
+				if ("charging" or "discharging") in notiftype:
+					notification = self.notifier.new(head, body, icon)
+					# print("here")
+					notification.show()
+					os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
+				else:
+					self.monitor.is_updated()
+					info = self.monitor.get_processed_battery_info()
+					state = info["state"]
+					if state != self.last_state:
+						continue
+					notification = self.notifier.new(head, body, icon)
+					notification.show()
+					os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
+					time.sleep(self.notification_stability)
+				
+		except GLib.GError as e:
+			# fixing GLib.GError: g-dbus-error-quark blindly
+			# To Do: investigate the main reason and make a fix
+			pass
+		# time.sleep(self.notification_stability)
+		# self.notifier.close()
+	
+	def show_specific_notifications(self, monitor: BatteryMonitor):
+		"""Shows specific notifications depending on the changes of battery state.
+		
+		Shows Notification only while state or last notification changes. Notification will not be shown for each percentage change. Sometimes acpi returns remaining time like *discharging at zero rate - will never fully discharge* We will skip it.
+		"""
+		info = monitor.get_processed_battery_info()
+		state = info["state"]
+		percentage = int(info["percentage"].replace("%", ""))
+		remaining = info.get("remaining")
+		
+		count = 5
+		
+		if state == 'discharging':
+			if (state != self.last_state and
+				remaining != "discharging at zero rate - will never fully discharge"):
+				self.last_state = state
+				self.last_notification = "discharging"
+				self.show_notification(notiftype="discharging",
+									   battery_percentage=percentage,
+									   remaining_time=remaining, _count=1)
+				
+			if (percentage != self.last_percentage and
+				remaining != "discharging at zero rate - will never fully discharge"):
+				self.last_percentage = percentage
+				if percentage <= self.critical_battery:
+					self.last_notification = "critical_battery"
+					self.show_notification(notiftype="critical_battery",
+										   battery_percentage=percentage,
+										   remaining_time=remaining, _count=count)
+					
+					return "critical_battery"
+				
+				elif (percentage <= self.low_battery and
+					  self.last_notification != "low_battery"):
+					self.last_notification = "low_battery"
+					self.show_notification(notiftype="low_battery",
+										   battery_percentage=percentage,
+										   remaining_time=remaining, _count=count)
+					
+					return "low_battery"
+				
+				elif (percentage <= self.third_custom_warning and
+					  self.last_notification != "third_custom_warning"):
+					self.last_notification = "third_custom_warning"
+					self.show_notification(notiftype="third_custom_warning",
+										   battery_percentage=percentage,
+										   remaining_time=remaining, _count=count)
+					
+					return "third_custom_warning"
+				
+				elif (percentage <= self.second_custom_warning and
+					  self.last_notification != "second_custom_warning"):
+					self.last_notification = "second_custom_warning"
+					self.show_notification(notiftype="second_custom_warning",
+										   battery_percentage=percentage,
+										   remaining_time=remaining, _count=count)
+					
+					return "second_custom_warning"
+				
+				elif (percentage <= self.first_custom_warning and
+					  self.last_notification != "first_custom_warning"):
+					self.last_notification = "first_custom_warning"
+					self.show_notification(notiftype="first_custom_warning",
+										   battery_percentage=percentage,
+										   remaining_time=remaining, _count=count)
+					
+					return "first_custom_warning"
+		
+		elif state == 'charging':
+			if (state != self.last_state and
+				remaining != "discharging at zero rate - will never fully discharge"):
+				self.last_state = state
+				self.last_notification = "charging"
+				self.show_notification(notiftype="charging",
+									   battery_percentage=percentage,
+									   remaining_time=remaining, _count=1)
+			
+			if (percentage != self.last_percentage and
+				remaining != "discharging at zero rate - will never fully discharge" and
+				self.last_notification!="upper_threshold_warning" and
+				percentage >= self.upper_threshold_warning):
+					self.last_percentage = percentage
+					self.last_notification!="upper_threshold_warning"
+					self.show_notification(notiftype="upper_threshold_warning",
+										   battery_percentage=percentage,
+										   remaining_time=remaining, _count=count)
+					
+					return "upper_threshold_warning"
+		
+		else:
+			"""
+				if last notification = charging, so is charging now than, the preceding block will not work.
+			"""
+			if state != self.last_notification and remaining != "discharging at zero rate - will never fully discharge":
+				self.last_notification = state
+				self.last_state = state
+				self.show_notification(notiftype=state,
+									   battery_percentage=percentage,
+									   remaining_time=remaining, _count=count)
+				
+				return state
+	
+	def __del__(self):
+		self.notifier.close()
+		Notify.uninit()

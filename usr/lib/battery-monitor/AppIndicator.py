@@ -33,81 +33,91 @@ gettext.textdomain(APP)
 _ = gettext.gettext
 
 class AppIndicator:
-    """Class for system tray icon.
-    
-    This class will show Battery Monitor icon in system tray.
-    """
-    if platform.python_version() >= '3.6':
-        TEST_MODE: bool
-    
-    def __init__(self, TEST_MODE: bool = False):
-        self.indicator = AppIndicator3.Indicator.new(APPINDICATOR_ID, ICONS['app'], AppIndicator3.IndicatorCategory.SYSTEM_SERVICES)
-        self.indicator.set_title(_('Battery Monitor'))
-        self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
-		
-        # create menu
-        self.indicator.set_menu(self.__create_menu())
-		
-        # run the daemon
-        self.daemon = Thread(target=self.__run_daemon, args=(TEST_MODE,))
-        self.daemon.setDaemon(True)
-        self.daemon.start()
+	"""Class for system tray icon.
 	
-    def __about_window(self, *args):
-        about_window = AboutWindow()
-        about_window.show()
+	This class will show Battery Monitor icon in system tray.
+	"""
+	if platform.python_version() >= '3.6':
+		TEST_MODE: bool
 	
-    def __create_menu(self):
-        menu = Gtk.Menu()
+	def __init__(self, TEST_MODE: bool = False):
+		self.indicator = AppIndicator3.Indicator.new(APPINDICATOR_ID, ICONS['app'], AppIndicator3.IndicatorCategory.SYSTEM_SERVICES)
+		self.indicator.set_title(_('Battery Monitor'))
+		self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
 		
-        item_settings = Gtk.MenuItem(_('Settings'))
-        item_settings.connect("activate", self.__settings_window)
-        menu.append(item_settings)
+		# create menu
+		self.indicator.set_menu(self.__create_menu())
 		
-        item_about = Gtk.MenuItem(_('About'))
-        item_about.connect("activate", self.__about_window)
-        menu.append(item_about)
-		
-        item_quit = Gtk.MenuItem(_('Quit'))
-        item_quit.connect("activate", self.__quit)
-        menu.append(item_quit)
-        menu.show_all()
-		
-        return menu
+		# run the daemon
+		self.daemon = Thread(target=self.__run_daemon, args=(TEST_MODE,))
+		self.daemon.setDaemon(True)
+		self.daemon.start()
 	
-    def __run_daemon(self, TEST_MODE: bool = False):
-        try:
-            try:
-                # initiaing BatteryMonitor
-                monitor = BatteryMonitor(TEST_MODE)
-            except subprocess.CalledProcessError as e:
-                # show notification when acpi is not installed
-                print("No acpi.")
-                notification = get_notification("acpi")
-                self.__quit()
-                time.sleep(5)
-        except IndexError as e:
-            # show notification when battery is not present
-            print("Where is my battery?")
-            notification = get_notification("fail")
-            self.__quit()
-            time.sleep(5)
-            
-        # if battery is present execute the next lines
-        # initiaing Notification
-        print("OK, Battery present.")
-        notification = get_notification("success")
-        notification.show_specific_notifications(monitor)
-        while True:
-            if monitor.is_updated():
-                notification.show_specific_notifications(monitor)
-            time.sleep(5)
+	def __about_window(self, *args):
+		about_window = AboutWindow()
+		about_window.show()
 	
-    def __settings_window(self, *args):
-        settings = SettingsWindow()
-        settings.connect('destroy', Gtk.main_quit)
-        settings.show_all()
-        Gtk.main()
+	def __create_menu(self):
+		menu = Gtk.Menu()
+		
+		item_settings = Gtk.MenuItem(_('Settings'))
+		item_settings.connect("activate", self.__settings_window)
+		menu.append(item_settings)
+		
+		item_about = Gtk.MenuItem(_('About'))
+		item_about.connect("activate", self.__about_window)
+		menu.append(item_about)
+		
+		item_quit = Gtk.MenuItem(_('Quit'))
+		item_quit.connect("activate", self.__quit)
+		menu.append(item_quit)
+		menu.show_all()
+		
+		return menu
 	
-    def __quit(self, *args):
-        Gtk.main_quit()
+	def __run_daemon(self, TEST_MODE: bool = False):
+		# initiate notification with a null notification
+		notification = get_notification("null")
+		try:
+			try:
+				# initiaing BatteryMonitor
+				monitor = BatteryMonitor(TEST_MODE)
+			except subprocess.CalledProcessError as e:
+				# show notification when acpi is not installed
+				print("No acpi.")
+				notification = get_notification("acpi")
+				self.__quit()
+				time.sleep(5)
+		except IndexError as e:
+			# show notification when battery is not present
+			print("Where is my battery?")
+			notification = get_notification("fail")
+			self.__quit()
+			time.sleep(5)
+		
+		# if battery is present execute the next lines
+		# initiaing Notification
+		print("OK, Battery present.")
+		# check if success notification is shown
+		if notification.success_shown in "yes":
+			print("Success notifcation already shown.")
+		else:
+			print("Showing Success notification.")
+			notif = get_notification("success")
+		
+		# this one shows wheter the battery is charging or discharging 
+		# when the app starts
+		notification.show_specific_notifications(monitor)
+		while True:
+			if monitor.is_updated():
+				notification.show_specific_notifications(monitor)
+			time.sleep(5)
+	
+	def __settings_window(self, *args):
+		settings = SettingsWindow()
+		settings.connect('destroy', Gtk.main_quit)
+		settings.show_all()
+		Gtk.main()
+	
+	def __quit(self, *args):
+		Gtk.main_quit()
