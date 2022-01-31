@@ -2,8 +2,8 @@ Source: battery-monitor
 Section: admin
 Priority: optional
 Maintainer: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.5
+Build-Depends: debhelper (>= 12)
+Standards-Version: 4.5.0
 
 Package: battery-monitor
 Architecture: all
@@ -16,7 +16,7 @@ Depends: acpi,
          libnotify4,
          libappindicator3-1,
          ${misc:Depends},
-Description: Battery Monitor
+Description: Monitor Laptop Battery
  A utility tool, notifies user about
  charging, discharging and not charging
  state of the battery on Linux.
