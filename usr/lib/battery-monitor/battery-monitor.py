@@ -11,7 +11,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 # imports from current project
-from AppIndicator import AppIndicator
+from AppIndicator import AppIndicator, bm_daemon
 
 setproctitle.setproctitle("battery-monitor")
 
@@ -26,7 +26,8 @@ def main() -> None:
 		TEST_MODE = False
 
 	# initiaing app indicator
-	indicator = AppIndicator(TEST_MODE)
+	AppIndicator()
+	bm_daemon(TEST_MODE)
 	Gtk.main()
 
 if __name__ == '__main__':
