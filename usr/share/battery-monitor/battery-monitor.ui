@@ -52,10 +52,18 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
           <object class="GtkNotebook">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
+            <property name="margin-start">5</property>
+            <property name="margin-end">5</property>
+            <property name="margin-top">5</property>
+            <property name="margin-bottom">5</property>
             <child>
               <object class="GtkBox" id="batterysettings">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="margin-start">5</property>
+                <property name="margin-end">5</property>
+                <property name="margin-top">5</property>
+                <property name="margin-bottom">5</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkFrame">
@@ -96,7 +104,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           <object class="GtkEntry" id="success_shown">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="tooltip-text" translatable="yes">Indicates whether success notification has been shown. Make it no/No/NO to show the success notification.</property>
+                            <property name="tooltip-text" translatable="yes">Indicates whether success notification has been shown. Set it to "yes" or "ye" or "y" or their corresponding uppercase combinations to stop showing success notification at startup. Any other value will show success notification at startup.</property>
                             <property name="hexpand">True</property>
                           </object>
                           <packing>
@@ -189,6 +197,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           <object class="GtkEntry" id="low_battery">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="tooltip-text" translatable="yes">Set in percentage.</property>
                             <property name="hexpand">True</property>
                             <property name="input-purpose">number</property>
                           </object>
@@ -215,6 +224,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           <object class="GtkEntry" id="first_custom_warning">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="tooltip-text" translatable="yes">Set in percentage, must be greater than Second Custom Warning</property>
                             <property name="hexpand">True</property>
                             <property name="input-purpose">number</property>
                           </object>
@@ -240,6 +250,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           <object class="GtkEntry" id="second_custom_warning">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="tooltip-text" translatable="yes">Set in percentage, must be greater than Third Custom Warning</property>
                             <property name="hexpand">True</property>
                             <property name="input-purpose">number</property>
                           </object>
@@ -265,6 +276,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           <object class="GtkEntry" id="third_custom_warning">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="tooltip-text" translatable="yes">Set in percentage, must be smaller than Other Warnings.</property>
                             <property name="hexpand">True</property>
                             <property name="input-purpose">number</property>
                           </object>
@@ -373,6 +385,10 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
               <object class="GtkBox" id="soundsettings">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="margin-start">5</property>
+                <property name="margin-end">5</property>
+                <property name="margin-top">5</property>
+                <property name="margin-bottom">5</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkFrame">
@@ -415,6 +431,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           <object class="GtkSwitch" id="mute_sound">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
+                            <property name="tooltip-text" translatable="yes">Enable/Disable notification sound.</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="hexpand">True</property>
@@ -438,10 +455,10 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkFileChooserButton">
+                          <object class="GtkFileChooserButton" id="sound_file">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="tooltip-text" translatable="yes">Select an Audio file.</property>
+                            <property name="tooltip-text" translatable="yes">Select an Audio file to be played while showing notification.</property>
                             <property name="title" translatable="yes">Select audio file</property>
                           </object>
                           <packing>
@@ -485,6 +502,10 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
               <object class="GtkBox" id="notificationsettings">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="margin-start">5</property>
+                <property name="margin-end">5</property>
+                <property name="margin-top">5</property>
+                <property name="margin-bottom">5</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkFrame">
@@ -524,7 +545,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           <object class="GtkEntry" id="notify_duration">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="tooltip-text" translatable="yes">Indicates whether success notification has been shown. Make it no/No/NO to show the success notification.	</property>
+                            <property name="tooltip-text" translatable="yes">Set in second</property>
                             <property name="hexpand">True</property>
                           </object>
                           <packing>
@@ -572,27 +593,11 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
           </packing>
         </child>
         <child>
-          <object class="GtkStatusbar">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="margin-start">10</property>
-            <property name="margin-end">10</property>
-            <property name="margin-top">6</property>
-            <property name="margin-bottom">6</property>
-            <property name="orientation">vertical</property>
-            <property name="spacing">2</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="pack-type">end</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkButtonBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">10</property>
             <property name="spacing">20</property>
             <property name="layout-style">center</property>
             <child>
@@ -610,8 +615,8 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="close_button">
-                <property name="label" translatable="yes">Close</property>
+              <object class="GtkButton" id="quit_button">
+                <property name="label" translatable="yes">Quit</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
@@ -622,6 +627,39 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="fill">True</property>
                 <property name="position">1</property>
               </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label-xalign">0</property>
+            <property name="shadow-type">none</property>
+            <child>
+              <object class="GtkStatusbar">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="margin-start">5</property>
+                <property name="margin-end">5</property>
+                <property name="margin-top">5</property>
+                <property name="margin-bottom">5</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">2</property>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">Status</property>
+              </object>
             </child>
           </object>
           <packing>
