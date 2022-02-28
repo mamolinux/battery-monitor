@@ -1,3 +1,14 @@
+battery-monitor (1.0.3) stable; urgency=medium
+
+  * Update readme
+  * Add ui file
+  * Update debian compatibility
+  * Add schema for battery-monitor
+  * Update ui with new features
+  * Update settings window to match new ui; closes #8
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Mon, 28 Feb 2022 10:56:01 +0530
+
 battery-monitor (1.0.2) stable; urgency=medium
 
   * Silence success notifiaction at user's choice; fixes #2 (#11)
