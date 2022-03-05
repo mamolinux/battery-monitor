@@ -13,7 +13,7 @@ from gi.repository import Gtk, Gio
 
 # imports from current project
 from config import CONFIG_FILE
-from config import ICONS
+from AboutWindow import AboutWindow
 from ErrorLib import ValidationError
 # from AppIndicator import bm_daemon
 
@@ -249,7 +249,14 @@ class SettingsWindow():
 		if bool(config['upper_threshold_warning']):
 			if int(config['upper_threshold_warning']) <= 0:
 				raise ValidationError(_('Upper threshold Warning must be greater than zero.'))
+	
+	def __about_window(self, *args):
+		about_window = AboutWindow()
+		about_window.show()
 
 	def on_quit(self, widget):
 		self.window.close()
+	
+	# def __quit(self, *args):
+	# 	Gtk.main_quit()
 		
