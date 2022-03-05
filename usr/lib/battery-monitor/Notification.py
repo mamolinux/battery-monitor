@@ -111,6 +111,10 @@ class get_notification():
 			except ValueError:
 				self.critical_battery = 10
 			try:
+				self.use_sound = int(self.config['settings']['use_sound'])
+			except ValueError:
+				self.use_sound = 1
+			try:
 				self.notification_stability = int(self.config['settings']['notification_stability'])
 			except ValueError:
 				self.notification_stability = 5
@@ -130,6 +134,7 @@ class get_notification():
 			self.third_custom_warning = -3
 			self.low_battery = 30
 			self.critical_battery = 10
+			self.use_sound = 1
 			self.notification_stability = 5
 			self.upper_threshold_warning = 90
 			self.success_shown = "No"
@@ -147,7 +152,8 @@ class get_notification():
 				if ("charging" or "discharging") in notiftype:
 					notification = self.notifier.new(head, body, icon)
 					notification.show()
-					os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
+					if self.use_sound:
+						os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
 				else:
 					self.monitor.is_updated()
 					info = self.monitor.get_processed_battery_info()
@@ -156,7 +162,8 @@ class get_notification():
 						continue
 					notification = self.notifier.new(head, body, icon)
 					notification.show()
-					os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
+					if self.use_sound:
+						os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
 					time.sleep(self.notification_stability)
 				
 		except GLib.GError as e:

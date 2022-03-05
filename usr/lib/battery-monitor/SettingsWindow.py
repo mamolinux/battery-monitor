@@ -77,7 +77,8 @@ class SettingsWindow():
 		self.critical_battery_entry = self.builder.get_object("critical_battery")
 		
 		## Sound configuration page
-		self.sound_switch = self.builder.get_object("mute_sound")
+		self.label_sound_switch = self.builder.get_object("label_sound_switch")
+		self.sound_switch = self.builder.get_object("sound_switch")
 		self.sound_file_entry = self.builder.get_object("sound_file")
 		
 		## Notification configuration page
@@ -149,7 +150,7 @@ class SettingsWindow():
 			self.third_custom_warning = self.config['settings']['third_custom_warning']
 			self.low_battery = self.config['settings']['low_battery']
 			self.critical_battery = self.config['settings']['critical_battery']
-			self.critical_battery_entry.set_text(self.critical_battery)
+			self.use_sound = int(self.config['settings']['use_sound'])
 			self.notification_stability = self.config['settings']['notification_stability']
 			self.notify_duration_entry.set_text(self.notification_stability)
 		except:
@@ -161,6 +162,7 @@ class SettingsWindow():
 			self.third_custom_warning = '40'
 			self.low_battery = '30'
 			self.critical_battery = '15'
+			self.use_sound = 1
 			self.notification_stability = '5'
 		
 		self.upper_threshold_warning_entry.set_text(self.upper_threshold_warning)
@@ -169,6 +171,7 @@ class SettingsWindow():
 		self.third_custom_warning_entry.set_text(self.third_custom_warning)
 		self.low_battery_entry.set_text(self.low_battery)
 		self.critical_battery_entry.set_text(self.critical_battery)
+		self.sound_switch.set_active(self.use_sound)
 		self.notify_duration_entry.set_text(self.notification_stability)
 	
 	def __save_config(self, widget):
@@ -182,6 +185,11 @@ class SettingsWindow():
 		else:
 			os.makedirs(self.config_dir)
 		
+		if self.sound_switch.get_active():
+			use_sound = 1
+		else:
+			use_sound = 0
+		
 		self.config['settings'] = {
 			'success_shown': self.success_shown_entry.get_text(),
 			'upper_threshold_warning': self.upper_threshold_warning_entry.get_text(),
@@ -190,7 +198,8 @@ class SettingsWindow():
 			'third_custom_warning': self.third_custom_warning_entry.get_text(),
 			'low_battery': self.low_battery_entry.get_text(),
 			'critical_battery': self.critical_battery_entry.get_text(),
-			'notification_stability': self.notify_duration_entry.get_text()
+			'use_sound': use_sound,
+			'notification_stability': self.notify_duration_entry.get_text(),
 		}
 		
 		try:
