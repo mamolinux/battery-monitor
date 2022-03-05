@@ -36,7 +36,7 @@ class AboutWindow():
             'Abdelhak BOUGOUFFA <https://abougouffa.github.io/>'
         ]
         copyrights = "Copyright \xa9 2016-2018 Maksudur Rahman Maateen\n \
-            Copyright \xa9 2021 Himadri Sekhar Basu"
+            Copyright \xa9 2021-2022 Himadri Sekhar Basu"
         documenters = [
             'Maksudur Rahman Maateen <https://maateen.me/>'
         ]
