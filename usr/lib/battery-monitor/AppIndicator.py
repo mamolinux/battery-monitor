@@ -22,7 +22,7 @@ from config import ICONS
 from AboutWindow import AboutWindow
 from BatteryMonitor import BatteryMonitor
 from Notification import get_notification
-from SettingsWindow import bm_settings, SettingsWindow
+from SettingsWindow import bm_settings
 
 
 # i18n
@@ -124,8 +124,5 @@ class bm_daemon:
 		while True:
 			if monitor.is_updated():
 				notification.show_specific_notifications(monitor)
-			if SettingsWindow().__save_config():
-				bm_daemon(TEST_MODE)
-				break
 			time.sleep(5)
 		
