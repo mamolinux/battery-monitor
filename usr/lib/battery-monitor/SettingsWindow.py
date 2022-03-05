@@ -13,7 +13,7 @@ from gi.repository import Gtk, Gio
 
 # imports from current project
 from config import CONFIG_FILE
-from config import ICONS
+from AboutWindow import AboutWindow
 from ErrorLib import ValidationError
 # from AppIndicator import bm_daemon
 
@@ -69,15 +69,16 @@ class SettingsWindow():
 		# input values
 		## Battery configuration page
 		self.success_shown_entry = self.builder.get_object("success_shown")
-		self.critical_battery_entry = self.builder.get_object("critical_battery")
-		self.low_battery_entry = self.builder.get_object("low_battery")
+		self.upper_threshold_warning_entry = self.builder.get_object("upper_threshold_warning")
 		self.first_custom_warning_entry = self.builder.get_object("first_custom_warning")
 		self.second_custom_warning_entry = self.builder.get_object("second_custom_warning")
 		self.third_custom_warning_entry = self.builder.get_object("third_custom_warning")
-		self.upper_threshold_warning_entry = self.builder.get_object("upper_threshold_warning")
+		self.low_battery_entry = self.builder.get_object("low_battery")
+		self.critical_battery_entry = self.builder.get_object("critical_battery")
 		
 		## Sound configuration page
-		self.mute_sound_entry = self.builder.get_object("mute_sound")
+		self.label_sound_switch = self.builder.get_object("label_sound_switch")
+		self.sound_switch = self.builder.get_object("sound_switch")
 		self.sound_file_entry = self.builder.get_object("sound_file")
 		
 		## Notification configuration page
@@ -91,6 +92,45 @@ class SettingsWindow():
 		self.save_button.connect('clicked', self.__save_config)
 		self.quit_button.connect('clicked', self.on_quit)
 		
+		# Menubar
+		accel_group = Gtk.AccelGroup()
+		self.window.add_accel_group(accel_group)
+		menu = self.builder.get_object("main_menu")
+		# Add "Shortcuts" option in drop-down menu
+		item = Gtk.ImageMenuItem()
+		item.set_image(Gtk.Image.new_from_icon_name("preferences-desktop-keyboard-shortcuts-symbolic", Gtk.IconSize.MENU))
+		item.set_label(_("Keyboard Shortcuts"))
+		item.connect("activate", self.open_keyboard_shortcuts)
+		key, mod = Gtk.accelerator_parse("<Control>K")
+		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+		menu.append(item)
+		# Add "About" option in drop-down menu
+		item = Gtk.ImageMenuItem()
+		item.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
+		item.set_label(_("About"))
+		item.connect("activate", self.__about_window)
+		key, mod = Gtk.accelerator_parse("<Control>F1")
+		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+		menu.append(item)
+		# Add "Close" option in drop-down menu
+		item = Gtk.ImageMenuItem(label=_("Close Window"))
+		image = Gtk.Image.new_from_icon_name("application-exit-symbolic", Gtk.IconSize.MENU)
+		item.set_image(image)
+		item.connect('activate', self.on_quit)
+		key, mod = Gtk.accelerator_parse("<Control>W")
+		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+		menu.append(item)
+		# # Add "Quit" option in drop-down menu
+		# item = Gtk.ImageMenuItem(label=_("Quit"))
+		# image = Gtk.Image.new_from_icon_name("application-exit-symbolic", Gtk.IconSize.MENU)
+		# item.set_image(image)
+		# item.connect('activate', self.__quit)
+		# key, mod = Gtk.accelerator_parse("<Control>Q")
+		# item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+		# menu.append(item)
+		# Show all drop-down menu options
+		menu.show_all()
+		
 		self.__load_config()
 		
 	
@@ -102,32 +142,36 @@ class SettingsWindow():
 		
 		try:
 			self.config.read(CONFIG_FILE)
-			self.critical_battery = self.config['settings']['critical_battery']
-			self.critical_battery_entry.set_text(self.critical_battery)
-			self.low_battery = self.config['settings']['low_battery']
-			self.low_battery_entry.set_text(self.low_battery)
-			self.first_custom_warning = self.config['settings']['first_custom_warning']
-			self.first_custom_warning_entry.set_text(self.first_custom_warning)
-			self.second_custom_warning = self.config['settings']['second_custom_warning']
-			self.second_custom_warning_entry.set_text(self.second_custom_warning)
-			self.third_custom_warning = self.config['settings']['third_custom_warning']
-			self.third_custom_warning_entry.set_text(self.third_custom_warning)
-			self.notification_stability = self.config['settings']['notification_stability']
-			self.notify_duration_entry.set_text(self.notification_stability)
-			self.upper_threshold_warning = self.config['settings']['upper_threshold_warning']
-			self.upper_threshold_warning_entry.set_text(self.upper_threshold_warning)
 			self.success_shown = self.config['settings']['success_shown']
-			self.success_shown_entry.set_text(self.success_shown)
+			self.upper_threshold_warning = self.config['settings']['upper_threshold_warning']
+			self.first_custom_warning = self.config['settings']['first_custom_warning']
+			self.second_custom_warning = self.config['settings']['second_custom_warning']
+			self.third_custom_warning = self.config['settings']['third_custom_warning']
+			self.low_battery = self.config['settings']['low_battery']
+			self.critical_battery = self.config['settings']['critical_battery']
+			self.use_sound = int(self.config['settings']['use_sound'])
+			self.notification_stability = self.config['settings']['notification_stability']
 		except:
 			print('Config file is missing or not readable. Using default configurations.')
-			self.critical_battery = '10'
-			self.low_battery = '30'
-			self.first_custom_warning = ''
-			self.second_custom_warning = ''
-			self.third_custom_warning = ''
-			self.notification_stability = '5'
-			self.upper_threshold_warning = '90'
 			self.success_shown = "No"
+			self.upper_threshold_warning = '90'
+			self.first_custom_warning = '70'
+			self.second_custom_warning = '55'
+			self.third_custom_warning = '40'
+			self.low_battery = '30'
+			self.critical_battery = '15'
+			self.use_sound = 1
+			self.notification_stability = '5'
+		
+		self.success_shown_entry.set_text(self.success_shown)
+		self.upper_threshold_warning_entry.set_text(self.upper_threshold_warning)
+		self.first_custom_warning_entry.set_text(self.first_custom_warning)
+		self.second_custom_warning_entry.set_text(self.second_custom_warning)
+		self.third_custom_warning_entry.set_text(self.third_custom_warning)
+		self.low_battery_entry.set_text(self.low_battery)
+		self.critical_battery_entry.set_text(self.critical_battery)
+		self.sound_switch.set_active(self.use_sound)
+		self.notify_duration_entry.set_text(self.notification_stability)
 	
 	def __save_config(self, widget):
 		"""Saves configurations to config file.
@@ -140,15 +184,21 @@ class SettingsWindow():
 		else:
 			os.makedirs(self.config_dir)
 		
+		if self.sound_switch.get_active():
+			use_sound = 1
+		else:
+			use_sound = 0
+		
 		self.config['settings'] = {
-			'critical_battery': self.critical_battery_entry.get_text(),
-			'low_battery': self.low_battery_entry.get_text(),
-			'third_custom_warning': self.third_custom_warning_entry.get_text(),
-			'second_custom_warning': self.second_custom_warning_entry.get_text(),
-			'first_custom_warning': self.first_custom_warning_entry.get_text(),
-			'notification_stability': self.notify_duration_entry.get_text(),
+			'success_shown': self.success_shown_entry.get_text(),
 			'upper_threshold_warning': self.upper_threshold_warning_entry.get_text(),
-			'success_shown': self.success_shown_entry.get_text()
+			'first_custom_warning': self.first_custom_warning_entry.get_text(),
+			'second_custom_warning': self.second_custom_warning_entry.get_text(),
+			'third_custom_warning': self.third_custom_warning_entry.get_text(),
+			'low_battery': self.low_battery_entry.get_text(),
+			'critical_battery': self.critical_battery_entry.get_text(),
+			'use_sound': use_sound,
+			'notification_stability': self.notify_duration_entry.get_text()
 		}
 		
 		try:
@@ -162,9 +212,7 @@ class SettingsWindow():
 				dialog.format_secondary_text(_('Your settings have been saved successfully.'))
 				response = dialog.run()
 				if response == Gtk.ResponseType.OK:
-					# self.save_button.set_sensitive(False)
-					self.window.close()
-					pass
+					self.save_button.set_sensitive(False)
 				dialog.destroy()
 		except ValidationError as message:
 			dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.ERROR)
@@ -179,6 +227,22 @@ class SettingsWindow():
 
 	def __validate_config(self, config):
 		"""validates config before saving to config file."""
+		
+		if bool(config['upper_threshold_warning']):
+			if int(config['upper_threshold_warning']) <= 0:
+				raise ValidationError(_('Upper threshold Warning must be greater than zero.'))
+
+		if bool(config['second_custom_warning']) and bool(config['first_custom_warning']):
+			if int(config['second_custom_warning']) >= int(config['first_custom_warning']):
+				raise ValidationError(_('The value of first custom warning must be greater than then value of second custom warning.'))
+
+		if bool(config['third_custom_warning']) and bool(config['second_custom_warning']):
+			if int(config['third_custom_warning']) >= int(config['second_custom_warning']):
+				raise ValidationError(_('The value of second custom warning must be greater than the value 0f third custom warning.'))
+
+		if bool(config['low_battery']) and bool(config['third_custom_warning']):
+			if int(config['low_battery']) >= int(config['third_custom_warning']):
+				raise ValidationError(_('The value of third custom warning must be greater than the value of low battery warning.'))
 
 		if bool(config['critical_battery']) and bool(config['low_battery']):
 			if int(config['critical_battery']) >= int(config['low_battery']):
@@ -189,28 +253,28 @@ class SettingsWindow():
 			else:
 				raise ValidationError(_('Critical battery warning can not be empty.'))
 
-		if bool(config['low_battery']) and bool(config['third_custom_warning']):
-			if int(config['low_battery']) >= int(config['third_custom_warning']):
-				raise ValidationError(_('The value of third custom warning must be greater than the value of low battery warning.'))
-
-		if bool(config['third_custom_warning']) and bool(config['second_custom_warning']):
-			if int(config['third_custom_warning']) >= int(config['second_custom_warning']):
-				raise ValidationError(_('The value of second custom warning must be greater than the value 0f third custom warning.'))
-
-		if bool(config['second_custom_warning']) and bool(config['first_custom_warning']):
-			if int(config['second_custom_warning']) >= int(config['first_custom_warning']):
-				raise ValidationError(_('The value of first custom warning must be greater than then value of second custom warning.'))
-
 		if bool(config['notification_stability']):
 			if int(config['notification_stability']) <= 0:
 				raise ValidationError(_('Notification stability time must be greater than zero.'))
 		else:
 			raise ValidationError(_('Notification stability time can not be empty.'))
-		
-		if bool(config['upper_threshold_warning']):
-			if int(config['upper_threshold_warning']) <= 0:
-				raise ValidationError(_('Upper threshold Warning must be greater than zero.'))
-
+	
+	def __about_window(self, *args):
+		about_window = AboutWindow()
+		about_window.show()
+	
+	def open_keyboard_shortcuts(self, widget):
+		gladefile = "/usr/share/battery-monitor/shortcuts.ui"
+		builder = Gtk.Builder()
+		builder.set_translation_domain(APP)
+		builder.add_from_file(gladefile)
+		window = builder.get_object("shortcuts-batterymonitor")
+		window.set_title(_("Battery Monitor"))
+		window.show()
+	
 	def on_quit(self, widget):
 		self.window.close()
+	
+	# def __quit(self, *args):
+	# 	Gtk.main_quit()
 		

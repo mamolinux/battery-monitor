@@ -3,8 +3,6 @@
 # standard library
 import gettext
 import locale
-from mimetypes import init
-import platform
 import subprocess
 from threading import Thread
 import time
@@ -22,7 +20,7 @@ from config import ICONS
 from AboutWindow import AboutWindow
 from BatteryMonitor import BatteryMonitor
 from Notification import get_notification
-from SettingsWindow import bm_settings, SettingsWindow
+from SettingsWindow import bm_settings
 
 
 # i18n
@@ -89,34 +87,32 @@ class bm_daemon:
 		self.daemon.start()
 	
 	def __run_daemon(self, TEST_MODE: bool = False):
-		# initiate notification with a null notification
-		notification = get_notification("null")
+		# initiate notification
+		notification = get_notification()
 		try:
-			try:
-				# initiaing BatteryMonitor
-				monitor = BatteryMonitor(TEST_MODE)
-			except subprocess.CalledProcessError as e:
-				# show notification when acpi is not installed
-				print("No acpi.")
-				notification = get_notification("acpi")
-				self.__quit()
-				time.sleep(5)
+			# initiaing BatteryMonitor
+			monitor = BatteryMonitor(TEST_MODE)
+		except subprocess.CalledProcessError as e:
+			# show notification when acpi is not installed
+			print("No acpi.")
+			notification = get_notification("acpi")
+			Gtk.main_quit()
+			time.sleep(5)
 		except IndexError as e:
 			# show notification when battery is not present
 			print("Where is my battery?")
 			notification = get_notification("fail")
-			self.__quit()
+			Gtk.main_quit()
 			time.sleep(5)
 		
 		# if battery is present execute the next lines
-		# initiaing Notification
 		print("OK, Battery present.")
 		# check if success notification is shown
 		if notification.success_shown in "yes":
 			print("Success notifcation already shown.")
 		else:
 			print("Showing Success notification.")
-			notification = get_notification("success")
+			notification.other_notification("success")
 		
 		# this one shows wheter the battery is charging or discharging 
 		# when the app starts
@@ -124,8 +120,5 @@ class bm_daemon:
 		while True:
 			if monitor.is_updated():
 				notification.show_specific_notifications(monitor)
-			if SettingsWindow().__save_config():
-				bm_daemon(TEST_MODE)
-				break
 			time.sleep(5)
 		
