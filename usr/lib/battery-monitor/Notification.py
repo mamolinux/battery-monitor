@@ -137,7 +137,6 @@ class get_notification():
 			for i in range(_count):
 				if ("charging" or "discharging") in notiftype:
 					notification = self.notifier.new(head, body, icon)
-					# print("here")
 					notification.show()
 					os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
 				else:
@@ -170,95 +169,105 @@ class get_notification():
 		
 		count = 5
 		
-		if state == 'discharging':
-			if (state != self.last_state and
-				remaining != "discharging at zero rate - will never fully discharge"):
-				self.last_state = state
-				self.last_notification = "discharging"
-				self.show_notification(notiftype="discharging",
-									   battery_percentage=percentage,
-									   remaining_time=remaining, _count=1)
-				
-			if (percentage != self.last_percentage and
-				remaining != "discharging at zero rate - will never fully discharge"):
+		if (remaining != "discharging at zero rate - will never fully discharge"):
+			if state == 'discharging':
+				# Show specific notifications when battery starts discharging
+				if (state != self.last_state):
+					# show discharging notification only once
+					self.last_state = state
+					self.last_notification = "discharging"
+					self.show_notification(notiftype="discharging",
+										battery_percentage=percentage,
+										remaining_time=remaining, _count=1)
+					
 				self.last_percentage = percentage
-				if percentage <= self.critical_battery:
+				if (percentage <= self.critical_battery and
+					self.last_notification != "critical_battery"):
+					# show critical_battery notification
 					self.last_notification = "critical_battery"
 					self.show_notification(notiftype="critical_battery",
-										   battery_percentage=percentage,
-										   remaining_time=remaining, _count=count)
+										battery_percentage=percentage,
+										remaining_time=remaining, _count=count)
 					
 					return "critical_battery"
 				
-				elif (percentage <= self.low_battery and
+				elif (percentage > self.critical_battery and
+					  percentage <= self.low_battery and
 					  self.last_notification != "low_battery"):
+					# show low_battery notification
 					self.last_notification = "low_battery"
 					self.show_notification(notiftype="low_battery",
-										   battery_percentage=percentage,
-										   remaining_time=remaining, _count=count)
+										battery_percentage=percentage,
+										remaining_time=remaining, _count=count)
 					
 					return "low_battery"
 				
-				elif (percentage <= self.third_custom_warning and
+				elif (percentage > self.low_battery and
+					  percentage <= self.third_custom_warning and
 					  self.last_notification != "third_custom_warning"):
+					# show third_custom_warning notification
 					self.last_notification = "third_custom_warning"
 					self.show_notification(notiftype="third_custom_warning",
-										   battery_percentage=percentage,
-										   remaining_time=remaining, _count=count)
+										battery_percentage=percentage,
+										remaining_time=remaining, _count=count)
 					
 					return "third_custom_warning"
 				
-				elif (percentage <= self.second_custom_warning and
+				elif (percentage > self.third_custom_warning and
+					  percentage <= self.second_custom_warning and
 					  self.last_notification != "second_custom_warning"):
+					# show second_custom_warning notification
 					self.last_notification = "second_custom_warning"
 					self.show_notification(notiftype="second_custom_warning",
-										   battery_percentage=percentage,
-										   remaining_time=remaining, _count=count)
+										battery_percentage=percentage,
+										remaining_time=remaining, _count=count)
 					
 					return "second_custom_warning"
 				
-				elif (percentage <= self.first_custom_warning and
+				elif (percentage > self.second_custom_warning and
+					  percentage <= self.first_custom_warning and
 					  self.last_notification != "first_custom_warning"):
+					# show first_custom_warning notification
 					self.last_notification = "first_custom_warning"
 					self.show_notification(notiftype="first_custom_warning",
-										   battery_percentage=percentage,
-										   remaining_time=remaining, _count=count)
+										battery_percentage=percentage,
+										remaining_time=remaining, _count=count)
 					
 					return "first_custom_warning"
-		
-		elif state == 'charging':
-			if (state != self.last_state and
-				remaining != "discharging at zero rate - will never fully discharge"):
-				self.last_state = state
-				self.last_notification = "charging"
-				self.show_notification(notiftype="charging",
-									   battery_percentage=percentage,
-									   remaining_time=remaining, _count=1)
 			
-			if (percentage != self.last_percentage and
-				remaining != "discharging at zero rate - will never fully discharge" and
-				self.last_notification!="upper_threshold_warning" and
-				percentage >= self.upper_threshold_warning):
-					self.last_percentage = percentage
-					self.last_notification!="upper_threshold_warning"
-					self.show_notification(notiftype="upper_threshold_warning",
-										   battery_percentage=percentage,
-										   remaining_time=remaining, _count=count)
-					
-					return "upper_threshold_warning"
-		
-		else:
-			"""
-				if last notification = charging, so is charging now than, the preceding block will not work.
-			"""
-			if state != self.last_notification and remaining != "discharging at zero rate - will never fully discharge":
-				self.last_notification = state
-				self.last_state = state
-				self.show_notification(notiftype=state,
-									   battery_percentage=percentage,
-									   remaining_time=remaining, _count=count)
+			elif state == 'charging':
+				if (state != self.last_state):
+					# show charging notification only once
+					self.last_state = state
+					self.last_notification = "charging"
+					self.show_notification(notiftype="charging",
+										battery_percentage=percentage,
+										remaining_time=remaining, _count=1)
 				
-				return state
+				if (percentage >= self.upper_threshold_warning and
+					not any(self.last_notification in x for x in
+					["full", "unknown", "upper_threshold_warning"])):
+						# show upper_threshold_warning notification
+						self.last_percentage = percentage
+						self.last_notification = "upper_threshold_warning"
+						self.show_notification(notiftype="upper_threshold_warning",
+											battery_percentage=percentage,
+											remaining_time=remaining, _count=count)
+						
+						return "upper_threshold_warning"
+			
+			else:
+				"""
+					if last notification = charging, so is charging now then, the preceding block will not work.
+				"""
+				if state != self.last_notification:
+					self.last_notification = state
+					self.last_state = state
+					self.show_notification(notiftype=state,
+										battery_percentage=percentage,
+										remaining_time=remaining, _count=count)
+					
+					return state
 	
 	def __del__(self):
 		self.notifier.close()
