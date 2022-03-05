@@ -91,6 +91,45 @@ class SettingsWindow():
 		self.save_button.connect('clicked', self.__save_config)
 		self.quit_button.connect('clicked', self.on_quit)
 		
+		# Menubar
+		accel_group = Gtk.AccelGroup()
+		self.window.add_accel_group(accel_group)
+		menu = self.builder.get_object("main_menu")
+		# Add "Shortcuts" option in drop-down menu
+		item = Gtk.ImageMenuItem()
+		item.set_image(Gtk.Image.new_from_icon_name("preferences-desktop-keyboard-shortcuts-symbolic", Gtk.IconSize.MENU))
+		item.set_label(_("Keyboard Shortcuts"))
+		item.connect("activate", self.open_keyboard_shortcuts)
+		key, mod = Gtk.accelerator_parse("<Control>K")
+		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+		menu.append(item)
+		# Add "About" option in drop-down menu
+		item = Gtk.ImageMenuItem()
+		item.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
+		item.set_label(_("About"))
+		item.connect("activate", self.__about_window)
+		key, mod = Gtk.accelerator_parse("<Control>F1")
+		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+		menu.append(item)
+		# Add "Close" option in drop-down menu
+		item = Gtk.ImageMenuItem(label=_("Close Window"))
+		image = Gtk.Image.new_from_icon_name("application-exit-symbolic", Gtk.IconSize.MENU)
+		item.set_image(image)
+		item.connect('activate', self.on_quit)
+		key, mod = Gtk.accelerator_parse("<Control>W")
+		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+		menu.append(item)
+		# # Add "Quit" option in drop-down menu
+		# item = Gtk.ImageMenuItem(label=_("Quit"))
+		# image = Gtk.Image.new_from_icon_name("application-exit-symbolic", Gtk.IconSize.MENU)
+		# item.set_image(image)
+		# item.connect('activate', self.__quit)
+		# key, mod = Gtk.accelerator_parse("<Control>Q")
+		# item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+		# menu.append(item)
+		# Show all drop-down menu options
+		menu.show_all()
+		
 		self.__load_config()
 		
 	
