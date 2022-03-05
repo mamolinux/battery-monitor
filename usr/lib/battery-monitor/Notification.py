@@ -87,9 +87,9 @@ class get_notification():
 			except ValueError:
 				self.critical_battery = 10
 			try:
-				self.low_battery = int(self.config['settings']['low_battery'])
+				self.upper_threshold_warning = int(self.config['settings']['upper_threshold_warning'])
 			except ValueError:
-				self.low_battery = 30
+				self.upper_threshold_warning = 90
 			try:
 				self.first_custom_warning = int(self.config['settings']['first_custom_warning'])
 			except ValueError:
@@ -102,6 +102,14 @@ class get_notification():
 				self.third_custom_warning = int(self.config['settings']['third_custom_warning'])
 			except ValueError:
 				self.third_custom_warning = -3
+			try:
+				self.low_battery = int(self.config['settings']['low_battery'])
+			except ValueError:
+				self.low_battery = 30
+			try:
+				self.critical_battery = int(self.config['settings']['critical_battery'])
+			except ValueError:
+				self.critical_battery = 10
 			try:
 				self.notification_stability = int(self.config['settings']['notification_stability'])
 			except ValueError:
@@ -116,11 +124,12 @@ class get_notification():
 				self.success_shown = "No"
 		except:
 			print('Config file is missing or not readable. Using default configurations.')
-			self.critical_battery = 10
-			self.low_battery = 30
+			self.upper_threshold_warning = 90
 			self.first_custom_warning = -1
 			self.second_custom_warning = -2
 			self.third_custom_warning = -3
+			self.low_battery = 30
+			self.critical_battery = 10
 			self.notification_stability = 5
 			self.upper_threshold_warning = 90
 			self.success_shown = "No"
