@@ -22,4 +22,4 @@
 # Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 
-/usr/lib/battery-monitor/battery-monitor.py &
+python3 /usr/lib/battery-monitor/battery-monitor.py
