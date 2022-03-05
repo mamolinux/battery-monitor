@@ -253,6 +253,15 @@ class SettingsWindow():
 	def __about_window(self, *args):
 		about_window = AboutWindow()
 		about_window.show()
+	
+	def open_keyboard_shortcuts(self, widget):
+		gladefile = "/usr/share/battery-monitor/shortcuts.ui"
+		builder = Gtk.Builder()
+		builder.set_translation_domain(APP)
+		builder.add_from_file(gladefile)
+		window = builder.get_object("shortcuts-batterymonitor")
+		window.set_title(_("Battery Monitor"))
+		window.show()
 
 	def on_quit(self, widget):
 		self.window.close()
