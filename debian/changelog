@@ -1,3 +1,25 @@
+battery-monitor (1.0.4) stable; urgency=medium
+
+  * Add code quality and CI workflows
+  * stop running in the background
+  * Update copyright year to 2022
+  * Add main menu in Settings Window
+  * Add About Window in main menu
+  * Add keyboard shortcuts to main menu
+  * make save button insensitive post-click
+  * Fix no Notification bug (#12)
+  * Re-order battery percent variables list
+    - write battery percent variables in decreasing order
+      starting with upper warning and ending at critical battery
+  * Update ui file to include new features
+    - Add notification count entry
+    - Add reset to default button
+    - Add enable/disable sound switch
+    - Modify a few labels and tooltips
+  * Add option to enable/disable sound notification; closes #4 (#15)
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sun, 06 Mar 2022 10:52:08 +0530
+
 battery-monitor (1.0.3) stable; urgency=medium
 
   * Update readme
