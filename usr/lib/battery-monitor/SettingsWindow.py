@@ -83,6 +83,7 @@ class SettingsWindow():
 		
 		## Notification configuration page
 		self.notify_duration_entry = self.builder.get_object("notify_duration")
+		self.notify_count_entry = self.builder.get_object("notify_count")
 		
 		# Buttons
 		self.save_button = self.builder.get_object("save_button")
@@ -151,6 +152,7 @@ class SettingsWindow():
 			self.critical_battery = self.config['settings']['critical_battery']
 			self.use_sound = int(self.config['settings']['use_sound'])
 			self.notification_stability = self.config['settings']['notification_stability']
+			self.notification_count = self.config['settings']['notification_count']
 		except:
 			print('Config file is missing or not readable. Using default configurations.')
 			self.success_shown = "No"
@@ -162,6 +164,7 @@ class SettingsWindow():
 			self.critical_battery = '15'
 			self.use_sound = 1
 			self.notification_stability = '5'
+			self.notification_count = '5'
 		
 		self.success_shown_entry.set_text(self.success_shown)
 		self.upper_threshold_warning_entry.set_text(self.upper_threshold_warning)
@@ -172,6 +175,7 @@ class SettingsWindow():
 		self.critical_battery_entry.set_text(self.critical_battery)
 		self.sound_switch.set_active(self.use_sound)
 		self.notify_duration_entry.set_text(self.notification_stability)
+		self.notify_count_entry.set_text(self.notification_count)
 	
 	def __save_config(self, widget):
 		"""Saves configurations to config file.
@@ -198,7 +202,8 @@ class SettingsWindow():
 			'low_battery': self.low_battery_entry.get_text(),
 			'critical_battery': self.critical_battery_entry.get_text(),
 			'use_sound': use_sound,
-			'notification_stability': self.notify_duration_entry.get_text()
+			'notification_stability': self.notify_duration_entry.get_text(),
+			'notification_count': self.notify_count_entry.get_text()
 		}
 		
 		try:
