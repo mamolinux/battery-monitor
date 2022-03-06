@@ -68,7 +68,8 @@ class SettingsWindow():
 		# Create variables to quickly access dynamic widgets
 		# input values
 		## Battery configuration page
-		self.success_shown_entry = self.builder.get_object("success_shown")
+		self.label_success_switch = self.builder.get_object("label_success_switch")
+		self.success_switch = self.builder.get_object("success_switch")
 		self.upper_threshold_warning_entry = self.builder.get_object("upper_threshold_warning")
 		self.first_custom_warning_entry = self.builder.get_object("first_custom_warning")
 		self.second_custom_warning_entry = self.builder.get_object("second_custom_warning")
@@ -142,7 +143,7 @@ class SettingsWindow():
 		
 		try:
 			self.config.read(CONFIG_FILE)
-			self.success_shown = self.config['settings']['success_shown']
+			self.show_success = int(self.config['settings']['show_success'])
 			self.upper_threshold_warning = self.config['settings']['upper_threshold_warning']
 			self.first_custom_warning = self.config['settings']['first_custom_warning']
 			self.second_custom_warning = self.config['settings']['second_custom_warning']
@@ -152,8 +153,8 @@ class SettingsWindow():
 			self.use_sound = int(self.config['settings']['use_sound'])
 			self.notification_stability = self.config['settings']['notification_stability']
 		except:
-			print('Config file is missing or not readable. Using default configurations.')
-			self.success_shown = "No"
+			module_logger.error('Config file is missing or not readable. Using default configurations.')
+			self.show_success = 0
 			self.upper_threshold_warning = '90'
 			self.first_custom_warning = '70'
 			self.second_custom_warning = '55'
@@ -163,7 +164,7 @@ class SettingsWindow():
 			self.use_sound = 1
 			self.notification_stability = '5'
 		
-		self.success_shown_entry.set_text(self.success_shown)
+		self.success_switch.set_active(self.show_success)
 		self.upper_threshold_warning_entry.set_text(self.upper_threshold_warning)
 		self.first_custom_warning_entry.set_text(self.first_custom_warning)
 		self.second_custom_warning_entry.set_text(self.second_custom_warning)
@@ -184,13 +185,18 @@ class SettingsWindow():
 		else:
 			os.makedirs(self.config_dir)
 		
+		if self.success_switch.get_active():
+			show_success = 1
+		else:
+			show_success = 0
+		
 		if self.sound_switch.get_active():
 			use_sound = 1
 		else:
 			use_sound = 0
 		
 		self.config['settings'] = {
-			'success_shown': self.success_shown_entry.get_text(),
+			'show_success': show_success,
 			'upper_threshold_warning': self.upper_threshold_warning_entry.get_text(),
 			'first_custom_warning': self.first_custom_warning_entry.get_text(),
 			'second_custom_warning': self.second_custom_warning_entry.get_text(),
