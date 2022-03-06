@@ -1,0 +1,60 @@
+# This is a basic workflow to publish debian packages for new releases
+
+name: Build and publish .deb for latest release
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push events but only for new tags
+  push:
+    tags:
+      - "*.*.*"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build-and-release"
+  build-and-release:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [ 'python' ]
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      
+      # Runs a single command using the runners shell
+      - name: install-deps
+        run: |
+          sudo apt-get update -qq
+          sudo apt install -y build-essential debhelper devscripts acpi \
+          python3 python3-gi libnotify4 libappindicator3-1 gir1.2-appindicator3-0.1
+      
+      - name: build-deb
+        run: |
+          dpkg-buildpackage -b -nc -tc
+          ls ../*.deb
+          ls ../*.changes
+      
+      - name: get latest tag
+        id: gettag
+        run: echo "::set-output name=latesttag::$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})"
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.gettag.outputs.latesttag }}
+          # name: "version: "${{ steps.gettag.outputs.latesttag }}
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+          files: |
+            ../*.deb
+            ../*.changes
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          
