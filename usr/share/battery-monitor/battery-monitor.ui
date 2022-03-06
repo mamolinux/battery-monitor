@@ -91,7 +91,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="halign">end</property>
-                            <property name="label" translatable="yes">Success Notification Shown:</property>
+                            <property name="label" translatable="yes">Disable Success Notification:</property>
                             <property name="justify">right</property>
                             <property name="selectable">True</property>
                           </object>
@@ -414,11 +414,11 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                         <property name="column-spacing">10</property>
                         <property name="row-homogeneous">True</property>
                         <child>
-                          <object class="GtkLabel" id="lab_mute">
+                          <object class="GtkLabel" id="label_sound_switch">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="halign">end</property>
-                            <property name="label" translatable="yes">Mute Notification Sound:</property>
+                            <property name="label" translatable="yes">Disable Notification Sound:</property>
                             <property name="justify">right</property>
                             <property name="selectable">True</property>
                           </object>
@@ -428,13 +428,13 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSwitch" id="mute_sound">
+                          <object class="GtkSwitch" id="sound_switch">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="tooltip-text" translatable="yes">Enable/Disable notification sound.</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
-                            <property name="hexpand">True</property>
+                            <property name="active">True</property>
                           </object>
                           <packing>
                             <property name="left-attach">1</property>
@@ -446,7 +446,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="halign">end</property>
-                            <property name="label" translatable="yes">Notification Sound:</property>
+                            <property name="label" translatable="yes">Select Custom Sound File:</property>
                             <property name="selectable">True</property>
                           </object>
                           <packing>
@@ -459,6 +459,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="tooltip-text" translatable="yes">Select an Audio file to be played while showing notification.</property>
+                            <property name="hexpand">True</property>
                             <property name="title" translatable="yes">Select audio file</property>
                           </object>
                           <packing>
@@ -518,7 +519,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                     <property name="label-xalign">0.019999999552965164</property>
                     <property name="shadow-type">in</property>
                     <child>
-                      <!-- n-columns=2 n-rows=1 -->
+                      <!-- n-columns=2 n-rows=2 -->
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
@@ -526,10 +527,11 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                         <property name="margin-end">10</property>
                         <property name="margin-top">10</property>
                         <property name="margin-bottom">10</property>
+                        <property name="row-spacing">10</property>
                         <property name="column-spacing">10</property>
                         <property name="row-homogeneous">True</property>
                         <child>
-                          <object class="GtkLabel" id="lab_success2">
+                          <object class="GtkLabel" id="lab_notify_duration">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="halign">end</property>
@@ -551,6 +553,31 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           <packing>
                             <property name="left-attach">1</property>
                             <property name="top-attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="lab_notify_count">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">end</property>
+                            <property name="label" translatable="yes">Notification Count:</property>
+                            <property name="selectable">True</property>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="notify_count">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="tooltip-text" translatable="yes">Set in second</property>
+                            <property name="hexpand">True</property>
+                          </object>
+                          <packing>
+                            <property name="left-attach">1</property>
+                            <property name="top-attach">1</property>
                           </packing>
                         </child>
                       </object>
@@ -606,7 +633,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="tooltip-text" translatable="yes">Saves currents values as defaults.</property>
+                <property name="tooltip-text" translatable="yes">Saves current values as default settings.</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -615,17 +642,31 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="quit_button">
-                <property name="label" translatable="yes">Quit</property>
+              <object class="GtkButton" id="reset_button">
+                <property name="label" translatable="yes">Reset to defaults</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="tooltip-text" translatable="yes">Close this Window(Press Ctrl+Q)</property>
+                <property name="tooltip-text" translatable="yes">Resets current values to default settings.</property>
               </object>
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
                 <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="quit_button">
+                <property name="label" translatable="yes">Quit</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">Close this Window(Press Ctrl+W)</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
