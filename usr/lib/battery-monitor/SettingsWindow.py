@@ -69,12 +69,12 @@ class SettingsWindow():
 		# input values
 		## Battery configuration page
 		self.success_shown_entry = self.builder.get_object("success_shown")
-		self.critical_battery_entry = self.builder.get_object("critical_battery")
-		self.low_battery_entry = self.builder.get_object("low_battery")
+		self.upper_threshold_warning_entry = self.builder.get_object("upper_threshold_warning")
 		self.first_custom_warning_entry = self.builder.get_object("first_custom_warning")
 		self.second_custom_warning_entry = self.builder.get_object("second_custom_warning")
 		self.third_custom_warning_entry = self.builder.get_object("third_custom_warning")
-		self.upper_threshold_warning_entry = self.builder.get_object("upper_threshold_warning")
+		self.low_battery_entry = self.builder.get_object("low_battery")
+		self.critical_battery_entry = self.builder.get_object("critical_battery")
 		
 		## Sound configuration page
 		self.mute_sound_entry = self.builder.get_object("mute_sound")
@@ -141,32 +141,33 @@ class SettingsWindow():
 		
 		try:
 			self.config.read(CONFIG_FILE)
-			self.critical_battery = self.config['settings']['critical_battery']
-			self.critical_battery_entry.set_text(self.critical_battery)
-			self.low_battery = self.config['settings']['low_battery']
-			self.low_battery_entry.set_text(self.low_battery)
-			self.first_custom_warning = self.config['settings']['first_custom_warning']
-			self.first_custom_warning_entry.set_text(self.first_custom_warning)
-			self.second_custom_warning = self.config['settings']['second_custom_warning']
-			self.second_custom_warning_entry.set_text(self.second_custom_warning)
-			self.third_custom_warning = self.config['settings']['third_custom_warning']
-			self.third_custom_warning_entry.set_text(self.third_custom_warning)
-			self.notification_stability = self.config['settings']['notification_stability']
-			self.notify_duration_entry.set_text(self.notification_stability)
-			self.upper_threshold_warning = self.config['settings']['upper_threshold_warning']
-			self.upper_threshold_warning_entry.set_text(self.upper_threshold_warning)
 			self.success_shown = self.config['settings']['success_shown']
-			self.success_shown_entry.set_text(self.success_shown)
+			self.upper_threshold_warning = self.config['settings']['upper_threshold_warning']
+			self.first_custom_warning = self.config['settings']['first_custom_warning']
+			self.second_custom_warning = self.config['settings']['second_custom_warning']
+			self.third_custom_warning = self.config['settings']['third_custom_warning']
+			self.low_battery = self.config['settings']['low_battery']
+			self.critical_battery = self.config['settings']['critical_battery']
+			self.notification_stability = self.config['settings']['notification_stability']
 		except:
 			print('Config file is missing or not readable. Using default configurations.')
-			self.critical_battery = '10'
-			self.low_battery = '30'
-			self.first_custom_warning = ''
-			self.second_custom_warning = ''
-			self.third_custom_warning = ''
-			self.notification_stability = '5'
-			self.upper_threshold_warning = '90'
 			self.success_shown = "No"
+			self.upper_threshold_warning = '90'
+			self.first_custom_warning = '70'
+			self.second_custom_warning = '55'
+			self.third_custom_warning = '40'
+			self.low_battery = '30'
+			self.critical_battery = '15'
+			self.notification_stability = '5'
+		
+		self.success_shown_entry.set_text(self.success_shown)
+		self.upper_threshold_warning_entry.set_text(self.upper_threshold_warning)
+		self.first_custom_warning_entry.set_text(self.first_custom_warning)
+		self.second_custom_warning_entry.set_text(self.second_custom_warning)
+		self.third_custom_warning_entry.set_text(self.third_custom_warning)
+		self.low_battery_entry.set_text(self.low_battery)
+		self.critical_battery_entry.set_text(self.critical_battery)
+		self.notify_duration_entry.set_text(self.notification_stability)
 	
 	def __save_config(self, widget):
 		"""Saves configurations to config file.
@@ -180,14 +181,14 @@ class SettingsWindow():
 			os.makedirs(self.config_dir)
 		
 		self.config['settings'] = {
-			'critical_battery': self.critical_battery_entry.get_text(),
-			'low_battery': self.low_battery_entry.get_text(),
-			'third_custom_warning': self.third_custom_warning_entry.get_text(),
-			'second_custom_warning': self.second_custom_warning_entry.get_text(),
-			'first_custom_warning': self.first_custom_warning_entry.get_text(),
-			'notification_stability': self.notify_duration_entry.get_text(),
+			'success_shown': self.success_shown_entry.get_text(),
 			'upper_threshold_warning': self.upper_threshold_warning_entry.get_text(),
-			'success_shown': self.success_shown_entry.get_text()
+			'first_custom_warning': self.first_custom_warning_entry.get_text(),
+			'second_custom_warning': self.second_custom_warning_entry.get_text(),
+			'third_custom_warning': self.third_custom_warning_entry.get_text(),
+			'low_battery': self.low_battery_entry.get_text(),
+			'critical_battery': self.critical_battery_entry.get_text(),
+			'notification_stability': self.notify_duration_entry.get_text()
 		}
 		
 		try:
@@ -216,6 +217,22 @@ class SettingsWindow():
 
 	def __validate_config(self, config):
 		"""validates config before saving to config file."""
+		
+		if bool(config['upper_threshold_warning']):
+			if int(config['upper_threshold_warning']) <= 0:
+				raise ValidationError(_('Upper threshold Warning must be greater than zero.'))
+
+		if bool(config['second_custom_warning']) and bool(config['first_custom_warning']):
+			if int(config['second_custom_warning']) >= int(config['first_custom_warning']):
+				raise ValidationError(_('The value of first custom warning must be greater than then value of second custom warning.'))
+
+		if bool(config['third_custom_warning']) and bool(config['second_custom_warning']):
+			if int(config['third_custom_warning']) >= int(config['second_custom_warning']):
+				raise ValidationError(_('The value of second custom warning must be greater than the value 0f third custom warning.'))
+
+		if bool(config['low_battery']) and bool(config['third_custom_warning']):
+			if int(config['low_battery']) >= int(config['third_custom_warning']):
+				raise ValidationError(_('The value of third custom warning must be greater than the value of low battery warning.'))
 
 		if bool(config['critical_battery']) and bool(config['low_battery']):
 			if int(config['critical_battery']) >= int(config['low_battery']):
@@ -226,27 +243,11 @@ class SettingsWindow():
 			else:
 				raise ValidationError(_('Critical battery warning can not be empty.'))
 
-		if bool(config['low_battery']) and bool(config['third_custom_warning']):
-			if int(config['low_battery']) >= int(config['third_custom_warning']):
-				raise ValidationError(_('The value of third custom warning must be greater than the value of low battery warning.'))
-
-		if bool(config['third_custom_warning']) and bool(config['second_custom_warning']):
-			if int(config['third_custom_warning']) >= int(config['second_custom_warning']):
-				raise ValidationError(_('The value of second custom warning must be greater than the value 0f third custom warning.'))
-
-		if bool(config['second_custom_warning']) and bool(config['first_custom_warning']):
-			if int(config['second_custom_warning']) >= int(config['first_custom_warning']):
-				raise ValidationError(_('The value of first custom warning must be greater than then value of second custom warning.'))
-
 		if bool(config['notification_stability']):
 			if int(config['notification_stability']) <= 0:
 				raise ValidationError(_('Notification stability time must be greater than zero.'))
 		else:
 			raise ValidationError(_('Notification stability time can not be empty.'))
-		
-		if bool(config['upper_threshold_warning']):
-			if int(config['upper_threshold_warning']) <= 0:
-				raise ValidationError(_('Upper threshold Warning must be greater than zero.'))
 	
 	def __about_window(self, *args):
 		about_window = AboutWindow()

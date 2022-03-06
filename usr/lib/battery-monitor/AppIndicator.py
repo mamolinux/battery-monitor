@@ -3,8 +3,6 @@
 # standard library
 import gettext
 import locale
-from mimetypes import init
-import platform
 import subprocess
 from threading import Thread
 import time
