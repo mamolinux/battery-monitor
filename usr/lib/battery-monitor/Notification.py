@@ -133,30 +133,25 @@ class get_notification():
 	def show_notification(self, notiftype: str, battery_percentage: int,
 						  remaining_time: str = None, _count: int = None) -> None:
 		
-		message = MESSAGES[notiftype]
-		head = message[0]
-		body = message[1].format(battery_percentage=battery_percentage,
-								 remaining_time=remaining_time)
-		icon = ICONS[notiftype]
 		try:
 			for i in range(_count):
-				if ("charging" or "discharging") in notiftype:
-					notification = self.notifier.new(head, body, icon)
-					notification.show()
-					if self.use_sound:
-						os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
-				else:
-					self.monitor.is_updated()
-					info = self.monitor.get_processed_battery_info()
-					state = info["state"]
-					if state != self.last_state:
-						continue
-					notification = self.notifier.new(head, body, icon)
-					notification.show()
-					if self.use_sound:
-						os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
-					time.sleep(self.notification_stability)
-				
+				self.monitor.is_updated()
+				info = self.monitor.get_processed_battery_info()
+				state = info["state"]
+				battery_percentage = int(info["percentage"].replace("%", ""))
+				remaining_time = info.get("remaining")
+				message = MESSAGES[notiftype]
+				head = message[0]
+				body = message[1].format(battery_percentage=battery_percentage,
+										remaining_time=remaining_time)
+				icon = ICONS[notiftype]
+				if state != self.last_state:
+					continue
+				notification = self.notifier.new(head, body, icon)
+				notification.show()
+				if self.use_sound:
+					os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
+				time.sleep(self.notification_stability)
 		except GLib.GError as e:
 			# fixing GLib.GError: g-dbus-error-quark blindly
 			# To Do: investigate the main reason and make a fix
@@ -171,7 +166,6 @@ class get_notification():
 		state = info["state"]
 		percentage = int(info["percentage"].replace("%", ""))
 		remaining = info.get("remaining")
-		
 		count = 5
 		
 		if (remaining != "discharging at zero rate - will never fully discharge"):
