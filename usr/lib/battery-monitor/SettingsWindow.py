@@ -271,7 +271,7 @@ class SettingsWindow():
 		window = builder.get_object("shortcuts-batterymonitor")
 		window.set_title(_("Battery Monitor"))
 		window.show()
-
+	
 	def on_quit(self, widget):
 		self.window.close()
 	

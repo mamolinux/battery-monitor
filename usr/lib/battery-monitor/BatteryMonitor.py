@@ -24,13 +24,13 @@ class BatteryMonitor:
     if platform.python_version() >= '3.6':
         raw_battery_info: str
         processed_battery_info: Dict[str, str]
-
+    
     def __init__(self, TEST_MODE):
         self.TEST_MODE = TEST_MODE
         self.processed_battery_info = {}
         self.raw_battery_info = self.get_raw_battery_info()
-        self.get_processed_battery_info()
-
+        self.processed_battery_info = self.get_processed_battery_info()
+    
     def get_raw_battery_info(self):
         if self.TEST_MODE:
             state = random.choice(TEST_CASES['state'])
@@ -48,7 +48,6 @@ class BatteryMonitor:
     
     def is_updated(self):
         current_raw_info = self.get_raw_battery_info()
-
         if self.raw_battery_info != current_raw_info:
             self.raw_battery_info = current_raw_info
             return True

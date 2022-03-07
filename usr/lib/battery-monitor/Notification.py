@@ -41,8 +41,7 @@ class get_notification():
 		last_notification: str
 		last_percentage: int
 	
-	def __init__(self, notiftype: str, TEST_MODE: bool = False) -> None:
-		
+	def __init__(self, TEST_MODE: bool = False) -> None:
 		try:
 			self.monitor = BatteryMonitor(TEST_MODE)
 		except:
@@ -51,33 +50,34 @@ class get_notification():
 		self.load_config()
 		
 		Notify.init(_("Battery Monitor"))
-		message = MESSAGES[notiftype]
-		head = message[0]
-		body = message[1]
-		icon = ICONS[notiftype]
 		self.last_state = ''
 		self.last_percentage = 0
 		self.last_notification = ''
 		self.notifier = Notify.Notification()
-		self.notification = self.notifier.new(head, body, icon)
-		self.notification.set_urgency(Notify.Urgency.CRITICAL)
-		
+	
+	def other_notification(self, notiftype):
+		"""
+		Shows other notifications like battery present/absent, acpi not installed etc.
+		"""
+		message = MESSAGES[notiftype]
+		head = message[0]
+		body = message[1]
+		icon = ICONS[notiftype]
+		notification = self.notifier.new(head, body, icon)
+		notification.set_urgency(Notify.Urgency.CRITICAL)
 		if (notiftype == "null"):
 			# if notification type is null do not show any notification
 			# just initialize
 			print("This is a null notification to initialize notifications.")
 		else:
-			if (notiftype != "success"):
-				try:
-					self.notification.show()
-					time.sleep(self.notification_stability)
-				except GLib.GError as e:
-					# fixing GLib.GError: g-dbus-error-quark blindly
-					pass
-			else:
-				self.notification.show()
+			try:
+				notification.show()
 				time.sleep(self.notification_stability)
-			self.notification.close()
+				print("Closing notification.")
+				notification.close()
+			except GLib.GError as e:
+				# fixing GLib.GError: g-dbus-error-quark blindly
+				pass
 	
 	def load_config(self):
 		try:
@@ -161,8 +161,6 @@ class get_notification():
 			# fixing GLib.GError: g-dbus-error-quark blindly
 			# To Do: investigate the main reason and make a fix
 			pass
-		# time.sleep(self.notification_stability)
-		# self.notifier.close()
 	
 	def show_specific_notifications(self, monitor: BatteryMonitor):
 		"""Shows specific notifications depending on the changes of battery state.
