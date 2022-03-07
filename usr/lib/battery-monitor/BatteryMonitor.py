@@ -27,7 +27,6 @@ class BatteryMonitor:
     
     def __init__(self, TEST_MODE):
         self.TEST_MODE = TEST_MODE
-        self.processed_battery_info = {}
         self.raw_battery_info = self.get_raw_battery_info()
         self.processed_battery_info = self.get_processed_battery_info()
     
@@ -55,13 +54,14 @@ class BatteryMonitor:
         return False
     
     def get_processed_battery_info(self):
+        processed_battery_info = {}
         in_list = (self.raw_battery_info.decode("utf-8", "strict").lower().strip('\n')
-                   .split(": ", 1)[1].split(", "))
+                    .split(": ", 1)[1].split(", "))
         try:
-            self.processed_battery_info["state"] = in_list[0]
-            self.processed_battery_info["percentage"] = in_list[1]
-            self.processed_battery_info["remaining"] = in_list[2]
+            processed_battery_info["state"] = in_list[0]
+            processed_battery_info["percentage"] = in_list[1]
+            processed_battery_info["remaining"] = in_list[2]
         except IndexError:
             pass
         
-        return self.processed_battery_info
+        return processed_battery_info
