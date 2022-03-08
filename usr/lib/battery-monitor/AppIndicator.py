@@ -3,6 +3,7 @@
 # standard library
 import gettext
 import locale
+import logging
 import subprocess
 from threading import Thread
 import time
@@ -31,12 +32,16 @@ gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
 
+# log
+module_logger = logging.getLogger('Battery Monitor.AppIndicator')
+
 class AppIndicator:
 	"""Class for system tray icon.
 	
 	This class will show Battery Monitor icon in system tray.
 	"""
 	def __init__(self):
+		module_logger.debug("Initiaing Appindicator.")
 		self.indicator = AppIndicator3.Indicator.new(APPINDICATOR_ID, ICONS['app'], AppIndicator3.IndicatorCategory.SYSTEM_SERVICES)
 		self.indicator.set_title(_('Battery Monitor'))
 		self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
@@ -79,10 +84,9 @@ class AppIndicator:
 class bm_daemon:
 	
 	def __init__(self, TEST_MODE: bool = False):
+		module_logger.debug("Starting Daemon.")
 		# run the daemon
 		self.daemon = Thread(target=self.__run_daemon, args=(TEST_MODE,))
-		print(self.daemon.getName())
-		# if 
 		self.daemon.setDaemon(True)
 		self.daemon.start()
 	
@@ -94,24 +98,24 @@ class bm_daemon:
 			monitor = BatteryMonitor(TEST_MODE)
 		except subprocess.CalledProcessError as e:
 			# show notification when acpi is not installed
-			print("No acpi.")
+			module_logger.error("Dependency Error! acpi is not installed.")
 			notification = get_notification("acpi")
 			Gtk.main_quit()
 			time.sleep(5)
 		except IndexError as e:
 			# show notification when battery is not present
-			print("Where is my battery?")
+			module_logger.error("Alas! Battery is not yet present. Where is my battery?")
 			notification = get_notification("fail")
 			Gtk.main_quit()
 			time.sleep(5)
 		
 		# if battery is present execute the next lines
-		print("OK, Battery present.")
+		module_logger.info("OK, Battery present.")
 		# check if success notification is shown
 		if notification.success_shown in "yes":
-			print("Success notifcation already shown.")
+			module_logger.info("Showing 'Success' notifcation disabled.")
 		else:
-			print("Showing Success notification.")
+			module_logger.info("Showing Success notification.")
 			notification.other_notification("success")
 		
 		# this one shows wheter the battery is charging or discharging 
