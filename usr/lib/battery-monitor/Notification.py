@@ -4,6 +4,7 @@
 import configparser
 import gettext
 import locale
+import logging
 import os
 import platform
 import time
@@ -29,6 +30,9 @@ gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
 
+# log
+module_logger = logging.getLogger('Battery Monitor.Notification')
+
 
 class get_notification():
 	"""Triggers notification on battery state changes.
@@ -42,6 +46,7 @@ class get_notification():
 		last_percentage: int
 	
 	def __init__(self, TEST_MODE: bool = False) -> None:
+		module_logger.info("Initiating Notification.")
 		try:
 			self.monitor = BatteryMonitor(TEST_MODE)
 		except:
@@ -66,14 +71,15 @@ class get_notification():
 		notification = self.notifier.new(head, body, icon)
 		notification.set_urgency(Notify.Urgency.CRITICAL)
 		if (notiftype == "null"):
+			#ToDo: this is not necessary anymore. maybe remove later
 			# if notification type is null do not show any notification
 			# just initialize
-			print("This is a null notification to initialize notifications.")
+			module_logger.debug("This is a null notification to initialize notifications.")
 		else:
 			try:
 				notification.show()
 				time.sleep(self.notification_stability)
-				print("Closing notification.")
+				module_logger.debug("Closing notification with head '%s'", head)
 				notification.close()
 			except GLib.GError as e:
 				# fixing GLib.GError: g-dbus-error-quark blindly
@@ -119,7 +125,7 @@ class get_notification():
 			except ValueError:
 				self.notification_stability = 5
 		except:
-			print('Config file is missing or not readable. Using default configurations.')
+			module_logger.error('Config file is missing or not readable. Using default configurations.')
 			self.success_shown = "No"
 			self.upper_threshold_warning = 90
 			self.first_custom_warning = -1
@@ -147,9 +153,11 @@ class get_notification():
 				icon = ICONS[notiftype]
 				if state != self.last_state:
 					continue
+				module_logger.info("Showing notification %d on %s with %s", (i+1), head, body)
 				notification = self.notifier.new(head, body, icon)
 				notification.show()
 				if self.use_sound:
+					module_logger.debug("Playing sound with notification.")
 					os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
 				time.sleep(self.notification_stability)
 		except GLib.GError as e:

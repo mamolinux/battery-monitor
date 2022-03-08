@@ -4,6 +4,7 @@
 import configparser
 import gettext
 import locale
+import logging
 import os
 
 # third-party library
@@ -24,6 +25,9 @@ locale.bindtextdomain(APP, LOCALE_DIR)
 gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
+
+# log
+module_logger = logging.getLogger('Battery Monitor.SettingsWindow')
 
 
 class bm_settings(Gtk.Application):
@@ -152,7 +156,7 @@ class SettingsWindow():
 			self.use_sound = int(self.config['settings']['use_sound'])
 			self.notification_stability = self.config['settings']['notification_stability']
 		except:
-			print('Config file is missing or not readable. Using default configurations.')
+			module_logger.error('Config file is missing or not readable. Using default configurations.')
 			self.success_shown = "No"
 			self.upper_threshold_warning = '90'
 			self.first_custom_warning = '70'
