@@ -124,6 +124,10 @@ class get_notification():
 				self.notification_stability = int(self.config['settings']['notification_stability'])
 			except ValueError:
 				self.notification_stability = 5
+			try:
+				self.notification_count = int(self.config['settings']['notification_count'])
+			except ValueError:
+				self.notification_count = 3
 		except:
 			module_logger.error('Config file is missing or not readable. Using default configurations.')
 			self.show_success = True
@@ -135,6 +139,7 @@ class get_notification():
 			self.critical_battery = 10
 			self.use_sound = True
 			self.notification_stability = 5
+			self.notification_count = 3
 	
 	def show_notification(self, notiftype: str, battery_percentage: int,
 						  remaining_time: str = None, _count: int = None) -> None:
@@ -174,7 +179,7 @@ class get_notification():
 		state = info["state"]
 		percentage = int(info["percentage"].replace("%", ""))
 		remaining = info.get("remaining")
-		count = 5
+		count = self.notification_count
 		
 		if (remaining != "discharging at zero rate - will never fully discharge"):
 			if state == 'discharging':

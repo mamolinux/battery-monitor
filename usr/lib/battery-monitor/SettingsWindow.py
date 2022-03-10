@@ -16,7 +16,6 @@ from gi.repository import Gtk, Gio
 from config import CONFIG_FILE
 from AboutWindow import AboutWindow
 from ErrorLib import ValidationError
-# from AppIndicator import bm_daemon
 
 # i18n
 APP = 'battery-monitor'
@@ -88,6 +87,7 @@ class SettingsWindow():
 		
 		## Notification configuration page
 		self.notify_duration_entry = self.builder.get_object("notify_duration")
+		self.notify_count_entry = self.builder.get_object("notify_count")
 		
 		# Buttons
 		self.save_button = self.builder.get_object("save_button")
@@ -156,6 +156,7 @@ class SettingsWindow():
 			self.critical_battery = self.config['settings']['critical_battery']
 			self.use_sound = self.config['settings'].getboolean('use_sound')
 			self.notification_stability = self.config['settings']['notification_stability']
+			self.notification_count = self.config['settings']['notification_count']
 		except:
 			module_logger.error('Config file is missing or not readable. Using default configurations.')
 			self.show_success = True
@@ -167,6 +168,7 @@ class SettingsWindow():
 			self.critical_battery = '15'
 			self.use_sound = True
 			self.notification_stability = '5'
+			self.notification_count = '3'
 		
 		self.success_switch.set_active(self.show_success)
 		self.upper_threshold_warning_entry.set_text(self.upper_threshold_warning)
@@ -177,6 +179,7 @@ class SettingsWindow():
 		self.critical_battery_entry.set_text(self.critical_battery)
 		self.sound_switch.set_active(self.use_sound)
 		self.notify_duration_entry.set_text(self.notification_stability)
+		self.notify_count_entry.set_text(self.notification_count)
 		
 		# Load and set new labels of switches based on saved configuration
 		if self.show_success:
@@ -209,7 +212,8 @@ class SettingsWindow():
 			'low_battery': self.low_battery_entry.get_text(),
 			'critical_battery': self.critical_battery_entry.get_text(),
 			'use_sound': self.sound_switch.get_active(),
-			'notification_stability': self.notify_duration_entry.get_text()
+			'notification_stability': self.notify_duration_entry.get_text(),
+			'notification_count': self.notify_count_entry.get_text()
 		}
 		
 		try:
@@ -236,26 +240,26 @@ class SettingsWindow():
 			
 		self.settings_updated = True
 		self.__load_config()
-
+	
 	def __validate_config(self, config):
 		"""validates config before saving to config file."""
 		
 		if bool(config['upper_threshold_warning']):
 			if int(config['upper_threshold_warning']) <= 0:
 				raise ValidationError(_('Upper threshold Warning must be greater than zero.'))
-
+		
 		if bool(config['second_custom_warning']) and bool(config['first_custom_warning']):
 			if int(config['second_custom_warning']) >= int(config['first_custom_warning']):
 				raise ValidationError(_('The value of first custom warning must be greater than then value of second custom warning.'))
-
+		
 		if bool(config['third_custom_warning']) and bool(config['second_custom_warning']):
 			if int(config['third_custom_warning']) >= int(config['second_custom_warning']):
 				raise ValidationError(_('The value of second custom warning must be greater than the value 0f third custom warning.'))
-
+		
 		if bool(config['low_battery']) and bool(config['third_custom_warning']):
 			if int(config['low_battery']) >= int(config['third_custom_warning']):
 				raise ValidationError(_('The value of third custom warning must be greater than the value of low battery warning.'))
-
+		
 		if bool(config['critical_battery']) and bool(config['low_battery']):
 			if int(config['critical_battery']) >= int(config['low_battery']):
 				raise ValidationError(_('The value of low battery warning must be greater than the value of critical battery warning.'))
@@ -264,12 +268,18 @@ class SettingsWindow():
 				raise ValidationError(_('Low battery warning can not be empty.'))
 			else:
 				raise ValidationError(_('Critical battery warning can not be empty.'))
-
+		
 		if bool(config['notification_stability']):
 			if int(config['notification_stability']) <= 0:
 				raise ValidationError(_('Notification stability time must be greater than zero.'))
 		else:
 			raise ValidationError(_('Notification stability time can not be empty.'))
+
+		if bool(config['notification_count']):
+			if int(config['notification_count']) <= 0:
+				raise ValidationError(_('Notification count must be greater than zero.'))
+		else:
+			raise ValidationError(_('Notification count can not be empty.'))
 	
 	def __about_window(self, *args):
 		about_window = AboutWindow()
