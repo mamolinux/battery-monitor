@@ -89,9 +89,9 @@ class get_notification():
 		try:
 			self.config.read(CONFIG_FILE)
 			try:
-				self.success_shown = str(self.config['settings']['success_shown']).lower()
+				self.show_success = self.config['settings'].getboolean('show_success')
 			except ValueError:
-				self.success_shown = "No"
+				self.show_success = True
 			try:
 				self.upper_threshold_warning = int(self.config['settings']['upper_threshold_warning'])
 			except ValueError:
@@ -117,23 +117,23 @@ class get_notification():
 			except ValueError:
 				self.critical_battery = 10
 			try:
-				self.use_sound = int(self.config['settings']['use_sound'])
+				self.use_sound = self.config['settings'].getboolean('use_sound')
 			except ValueError:
-				self.use_sound = 1
+				self.use_sound = True
 			try:
 				self.notification_stability = int(self.config['settings']['notification_stability'])
 			except ValueError:
 				self.notification_stability = 5
 		except:
 			module_logger.error('Config file is missing or not readable. Using default configurations.')
-			self.success_shown = "No"
+			self.show_success = True
 			self.upper_threshold_warning = 90
 			self.first_custom_warning = -1
 			self.second_custom_warning = -2
 			self.third_custom_warning = -3
 			self.low_battery = 30
 			self.critical_battery = 10
-			self.use_sound = 1
+			self.use_sound = True
 			self.notification_stability = 5
 	
 	def show_notification(self, notiftype: str, battery_percentage: int,

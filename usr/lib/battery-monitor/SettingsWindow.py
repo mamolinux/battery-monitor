@@ -72,7 +72,8 @@ class SettingsWindow():
 		# Create variables to quickly access dynamic widgets
 		# input values
 		## Battery configuration page
-		self.success_shown_entry = self.builder.get_object("success_shown")
+		self.label_success_switch = self.builder.get_object("label_success_switch")
+		self.success_switch = self.builder.get_object("success_switch")
 		self.upper_threshold_warning_entry = self.builder.get_object("upper_threshold_warning")
 		self.first_custom_warning_entry = self.builder.get_object("first_custom_warning")
 		self.second_custom_warning_entry = self.builder.get_object("second_custom_warning")
@@ -146,28 +147,28 @@ class SettingsWindow():
 		
 		try:
 			self.config.read(CONFIG_FILE)
-			self.success_shown = self.config['settings']['success_shown']
+			self.show_success = self.config['settings'].getboolean('show_success')
 			self.upper_threshold_warning = self.config['settings']['upper_threshold_warning']
 			self.first_custom_warning = self.config['settings']['first_custom_warning']
 			self.second_custom_warning = self.config['settings']['second_custom_warning']
 			self.third_custom_warning = self.config['settings']['third_custom_warning']
 			self.low_battery = self.config['settings']['low_battery']
 			self.critical_battery = self.config['settings']['critical_battery']
-			self.use_sound = int(self.config['settings']['use_sound'])
+			self.use_sound = self.config['settings'].getboolean('use_sound')
 			self.notification_stability = self.config['settings']['notification_stability']
 		except:
 			module_logger.error('Config file is missing or not readable. Using default configurations.')
-			self.success_shown = "No"
+			self.show_success = True
 			self.upper_threshold_warning = '90'
 			self.first_custom_warning = '70'
 			self.second_custom_warning = '55'
 			self.third_custom_warning = '40'
 			self.low_battery = '30'
 			self.critical_battery = '15'
-			self.use_sound = 1
+			self.use_sound = True
 			self.notification_stability = '5'
 		
-		self.success_shown_entry.set_text(self.success_shown)
+		self.success_switch.set_active(self.show_success)
 		self.upper_threshold_warning_entry.set_text(self.upper_threshold_warning)
 		self.first_custom_warning_entry.set_text(self.first_custom_warning)
 		self.second_custom_warning_entry.set_text(self.second_custom_warning)
@@ -176,6 +177,17 @@ class SettingsWindow():
 		self.critical_battery_entry.set_text(self.critical_battery)
 		self.sound_switch.set_active(self.use_sound)
 		self.notify_duration_entry.set_text(self.notification_stability)
+		
+		# Load and set new labels of switches based on saved configuration
+		if self.show_success:
+			self.label_success_switch.set_label("Disable Success Notification:")
+		else:
+			self.label_success_switch.set_label("Enable Success Notification:")
+			
+		if self.use_sound:
+			self.label_sound_switch.set_label("Disable Notification Sound:")
+		else:
+			self.label_sound_switch.set_label("Enable Notification Sound:")
 	
 	def __save_config(self, widget):
 		"""Saves configurations to config file.
@@ -188,20 +200,15 @@ class SettingsWindow():
 		else:
 			os.makedirs(self.config_dir)
 		
-		if self.sound_switch.get_active():
-			use_sound = 1
-		else:
-			use_sound = 0
-		
 		self.config['settings'] = {
-			'success_shown': self.success_shown_entry.get_text(),
+			'show_success': self.success_switch.get_active(),
 			'upper_threshold_warning': self.upper_threshold_warning_entry.get_text(),
 			'first_custom_warning': self.first_custom_warning_entry.get_text(),
 			'second_custom_warning': self.second_custom_warning_entry.get_text(),
 			'third_custom_warning': self.third_custom_warning_entry.get_text(),
 			'low_battery': self.low_battery_entry.get_text(),
 			'critical_battery': self.critical_battery_entry.get_text(),
-			'use_sound': use_sound,
+			'use_sound': self.sound_switch.get_active(),
 			'notification_stability': self.notify_duration_entry.get_text()
 		}
 		
@@ -228,6 +235,7 @@ class SettingsWindow():
 			dialog.destroy()
 			
 		self.settings_updated = True
+		self.__load_config()
 
 	def __validate_config(self, config):
 		"""validates config before saving to config file."""

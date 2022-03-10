@@ -111,12 +111,12 @@ class bm_daemon:
 		
 		# if battery is present execute the next lines
 		module_logger.info("OK, Battery present.")
-		# check if success notification is shown
-		if notification.success_shown in "yes":
-			module_logger.info("Showing 'Success' notifcation disabled.")
-		else:
-			module_logger.info("Showing Success notification.")
+		# check if 'success' notification will be shown
+		if notification.show_success:
+			module_logger.info("Showing 'Success' notification.")
 			notification.other_notification("success")
+		else:
+			module_logger.info("Showing 'Success' notifcation disabled.")
 		
 		# this one shows wheter the battery is charging or discharging 
 		# when the app starts
