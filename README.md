@@ -1,10 +1,16 @@
-# [Battery Monitor]( https://hsbasu.github.io/battery-monitor)
+# [Battery Monitor](https://hsbasu.github.io/battery-monitor)
 
 <p align="center">
 	<img src="https://raw.githubusercontent.com/hsbasu/battery-monitor/master/usr/share/icons/hicolor/scalable/apps/battery-monitor.svg?sanitize=true" height="128" alt="Logo">
 </p>
 
 <p align="center">
+	<a href="#">
+		<img src="https://img.shields.io/github/workflow/status/hsbasu/battery-monitor/CI/master?label=CI%20Build" alt="CI build">
+	</a>
+	<a href="#">
+		<img src="https://img.shields.io/github/workflow/status/hsbasu/battery-monitor/CodeQL/master?label=CodeQL%20Build" alt="CodeQL build">
+	</a>
 	<a href="https://github.com/hsbasu/battery-monitor/blob/master/LICENSE">
 		<img src="https://img.shields.io/github/license/hsbasu/battery-monitor?label=License" alt="License">
 	</a>
@@ -23,8 +29,8 @@
 	<a href="#download-latest-version">
 		<img src="https://img.shields.io/github/downloads/hsbasu/battery-monitor/total?label=Downloads" alt="Downloads">
 	</a>
-	<a href="https://github.com/hsbasu/battery-monitor/releases/download/1.0.2/battery-monitor_1.0.2_all.deb">
-		<img src="https://img.shields.io/github/downloads/hsbasu/battery-monitor/1.0.2/battery-monitor_1.0.2_all.deb?label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset">
+	<a href="https://github.com/hsbasu/battery-monitor/releases/download/1.0.4/battery-monitor_1.0.4_all.deb">
+		<img src="https://img.shields.io/github/downloads/hsbasu/battery-monitor/1.0.4/battery-monitor_1.0.4_all.deb?label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset">
 	</a>
 </p>
 
@@ -36,7 +42,7 @@ Battery Monitor is a utility tool developed on Python3 and PyGtk3. It will notif
 <p align="center">
 	<a href="https://github.com/hsbasu/battery-monitor/zipball/master">Download Source (.zip)</a></br>
 	<a href="https://github.com/hsbasu/battery-monitor/tarball/master">Download Source (.tar.gz)</a></br>
-	<a href="https://github.com/hsbasu/battery-monitor/releases/download/1.0.2/battery-monitor_1.0.2_all.deb">Download Binary (.deb)</a>
+	<a href="https://github.com/hsbasu/battery-monitor/releases/download/1.0.4/battery-monitor_1.0.4_all.deb">Download Binary (.deb)</a>
 </p>
 
 ## Features and Screenshots

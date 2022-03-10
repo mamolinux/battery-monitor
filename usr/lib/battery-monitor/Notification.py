@@ -4,6 +4,7 @@
 import configparser
 import gettext
 import locale
+import logging
 import os
 import platform
 import time
@@ -29,6 +30,9 @@ gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
 
+# log
+module_logger = logging.getLogger('Battery Monitor.Notification')
+
 
 class get_notification():
 	"""Triggers notification on battery state changes.
@@ -41,8 +45,8 @@ class get_notification():
 		last_notification: str
 		last_percentage: int
 	
-	def __init__(self, notiftype: str, TEST_MODE: bool = False) -> None:
-		
+	def __init__(self, TEST_MODE: bool = False) -> None:
+		module_logger.info("Initiating Notification.")
 		try:
 			self.monitor = BatteryMonitor(TEST_MODE)
 		except:
@@ -51,33 +55,35 @@ class get_notification():
 		self.load_config()
 		
 		Notify.init(_("Battery Monitor"))
-		message = MESSAGES[notiftype]
-		head = message[0]
-		body = message[1]
-		icon = ICONS[notiftype]
 		self.last_state = ''
 		self.last_percentage = 0
 		self.last_notification = ''
 		self.notifier = Notify.Notification()
-		self.notification = self.notifier.new(head, body, icon)
-		self.notification.set_urgency(Notify.Urgency.CRITICAL)
-		
+	
+	def other_notification(self, notiftype):
+		"""
+		Shows other notifications like battery present/absent, acpi not installed etc.
+		"""
+		message = MESSAGES[notiftype]
+		head = message[0]
+		body = message[1]
+		icon = ICONS[notiftype]
+		notification = self.notifier.new(head, body, icon)
+		notification.set_urgency(Notify.Urgency.CRITICAL)
 		if (notiftype == "null"):
+			#ToDo: this is not necessary anymore. maybe remove later
 			# if notification type is null do not show any notification
 			# just initialize
-			print("This is a null notification to initialize notifications.")
+			module_logger.debug("This is a null notification to initialize notifications.")
 		else:
-			if (notiftype != "success"):
-				try:
-					self.notification.show()
-					time.sleep(self.notification_stability)
-				except GLib.GError as e:
-					# fixing GLib.GError: g-dbus-error-quark blindly
-					pass
-			else:
-				self.notification.show()
+			try:
+				notification.show()
 				time.sleep(self.notification_stability)
-			self.notification.close()
+				module_logger.debug("Closing notification with head '%s'", head)
+				notification.close()
+			except GLib.GError as e:
+				# fixing GLib.GError: g-dbus-error-quark blindly
+				pass
 	
 	def load_config(self):
 		try:
@@ -133,36 +139,31 @@ class get_notification():
 	def show_notification(self, notiftype: str, battery_percentage: int,
 						  remaining_time: str = None, _count: int = None) -> None:
 		
-		message = MESSAGES[notiftype]
-		head = message[0]
-		body = message[1].format(battery_percentage=battery_percentage,
-								 remaining_time=remaining_time)
-		icon = ICONS[notiftype]
 		try:
 			for i in range(_count):
-				if ("charging" or "discharging") in notiftype:
-					notification = self.notifier.new(head, body, icon)
-					notification.show()
-					if self.use_sound:
-						os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
-				else:
-					self.monitor.is_updated()
-					info = self.monitor.get_processed_battery_info()
-					state = info["state"]
-					if state != self.last_state:
-						continue
-					notification = self.notifier.new(head, body, icon)
-					notification.show()
-					if self.use_sound:
-						os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
-					time.sleep(self.notification_stability)
-				
+				self.monitor.is_updated()
+				info = self.monitor.get_processed_battery_info()
+				state = info["state"]
+				battery_percentage = int(info["percentage"].replace("%", ""))
+				remaining_time = info.get("remaining")
+				message = MESSAGES[notiftype]
+				head = message[0]
+				body = message[1].format(battery_percentage=battery_percentage,
+										remaining_time=remaining_time)
+				icon = ICONS[notiftype]
+				if state != self.last_state:
+					continue
+				module_logger.info("Showing notification %d on %s with %s", (i+1), head, body)
+				notification = self.notifier.new(head, body, icon)
+				notification.show()
+				if self.use_sound:
+					module_logger.debug("Playing sound with notification.")
+					os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
+				time.sleep(self.notification_stability)
 		except GLib.GError as e:
 			# fixing GLib.GError: g-dbus-error-quark blindly
 			# To Do: investigate the main reason and make a fix
 			pass
-		# time.sleep(self.notification_stability)
-		# self.notifier.close()
 	
 	def show_specific_notifications(self, monitor: BatteryMonitor):
 		"""Shows specific notifications depending on the changes of battery state.
@@ -173,7 +174,6 @@ class get_notification():
 		state = info["state"]
 		percentage = int(info["percentage"].replace("%", ""))
 		remaining = info.get("remaining")
-		
 		count = 5
 		
 		if (remaining != "discharging at zero rate - will never fully discharge"):

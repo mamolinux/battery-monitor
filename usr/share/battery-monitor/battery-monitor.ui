@@ -87,7 +87,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                         <property name="column-spacing">10</property>
                         <property name="row-homogeneous">True</property>
                         <child>
-                          <object class="GtkLabel" id="label_sucess_switch">
+                          <object class="GtkLabel" id="label_success_switch">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="halign">end</property>
@@ -101,10 +101,12 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSwitch" id="sucess_switch">
+                          <object class="GtkSwitch" id="success_switch">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="tooltip-text" translatable="yes">Enable/disable to show/hide success notification at startup.</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
                             <property name="active">True</property>
                           </object>
                           <packing>
@@ -433,6 +435,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                             <property name="can-focus">True</property>
                             <property name="tooltip-text" translatable="yes">Enable/Disable notification sound.</property>
                             <property name="halign">start</property>
+                            <property name="valign">center</property>
                             <property name="active">True</property>
                           </object>
                           <packing>
