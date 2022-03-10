@@ -73,7 +73,7 @@ class AboutWindow():
             h.close()
             self.about_dialog.set_license(gpl)
         except Exception as e:
-            print (e)
+            print(e)
         
         self.about_dialog.connect('response', self.__close)
 

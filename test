@@ -1,5 +1,4 @@
 #!/bin/bash
 
-sudo rm -rf usr/bin/battery-monitor usr/lib/battery-monitor 
 sudo cp -R usr/* /usr/
 # battery-monitor
