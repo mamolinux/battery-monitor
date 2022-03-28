@@ -121,7 +121,12 @@ class bm_daemon:
 		# this one shows wheter the battery is charging or discharging 
 		# when the app starts
 		notification.show_specific_notifications(monitor)
+		
+		# start an infinite loop to monitor continuously
 		while True:
+			# load new settings if updated
+			notification.load_config()
+			
 			if monitor.is_updated():
 				notification.show_specific_notifications(monitor)
 			time.sleep(5)
