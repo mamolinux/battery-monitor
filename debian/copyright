@@ -4,7 +4,8 @@ Upstream-Contact: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 Source: https://www.github.com/hsbasu/battery-monitor
 
 Files: *
-Copyright: 2021 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+Copyright: 2016-2020 Maksudur Rahman Maateen <maateen@outlook.com>
+		   2021-2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 License: GPL-3+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
