@@ -1,3 +1,18 @@
+battery-monitor (1.0.6) stable; urgency=medium
+
+  * Update readme with version 1.0.5 
+  * Use new settings while monitoring; fixes #9 (#22)
+    - now new settings will be used within 5 seconds of saving
+  * Add and update copyright to 2022 and code cleanup
+    - AboutWindow.py: remove unused imports
+    - AppIndicator.py: remove unused lines
+  * Update CONTRIBUTING and debian compatibility
+    - CONTRIBUTING.md: use git repo from @hsbasu
+    - debian/compat: Update compatibility to 12
+  * Take arguments from command-line 
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Tue, 05 Apr 2022 09:40:49 +0530
+
 battery-monitor (1.0.5) stable; urgency=medium
 
   * add new workflow to publish deb package from latest release (#18)
