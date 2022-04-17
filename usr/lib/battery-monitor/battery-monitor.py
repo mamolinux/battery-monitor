@@ -26,7 +26,9 @@
 import logging
 import setproctitle
 import signal
+import string
 import sys
+from random import choice
 
 # third-party library
 import gi
@@ -51,7 +53,8 @@ cHandler.setLevel(logging.DEBUG)
 
 # create file handler which logs only info messages
 # Set the log filename
-logfile = '/tmp/battery-monitor.log'
+random_code =  ''.join(choice(string.digits) for _ in range(4))
+logfile = '/tmp/battery-monitor_' + random_code + '.log'
 fHandler = logging.FileHandler(logfile)
 # Set level for FileHandler
 fHandler.setLevel(logging.INFO)
