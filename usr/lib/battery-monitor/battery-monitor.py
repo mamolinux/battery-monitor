@@ -23,6 +23,8 @@
 #
 
 # standard library
+import getpass
+import glob
 import logging
 import setproctitle
 import signal
@@ -41,6 +43,16 @@ from AppIndicator import AppIndicator, bm_daemon
 setproctitle.setproctitle("battery-monitor")
 
 ## Setup logging
+def create_logfile():
+	username = getpass.getuser()
+	random_code =  ''.join(choice(string.digits) for _ in range(4))
+	if len(glob.glob('/tmp/battery-monitor_'+username+'*')) ==0:
+		logfile = '/tmp/battery-monitor_' + username + '_' + random_code + '.log'
+	else:
+		logfile = glob.glob('/tmp/battery-monitor_'+username+'*')[0]
+	
+	return logfile
+
 # Create logger
 logger = logging.getLogger('Battery Monitor')
 # Set logging level
@@ -53,8 +65,7 @@ cHandler.setLevel(logging.DEBUG)
 
 # create file handler which logs only info messages
 # Set the log filename
-random_code =  ''.join(choice(string.digits) for _ in range(4))
-logfile = '/tmp/battery-monitor_' + random_code + '.log'
+logfile = create_logfile()
 fHandler = logging.FileHandler(logfile)
 # Set level for FileHandler
 fHandler.setLevel(logging.INFO)
