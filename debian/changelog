@@ -1,3 +1,14 @@
+battery-monitor (1.0.7) stable; urgency=medium
+
+  * Update readme with version 1.0.6 (#23)
+  * Append random numbers after logfilename (#24)
+    - For multiuser systems when a log file exists in
+      /tmp, the app cannot recreate the logfile after
+      logging into other user
+  * create only one log file per user (#25)
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Mon, 02 May 2022 23:14:39 +0530
+
 battery-monitor (1.0.6) stable; urgency=medium
 
   * Update readme with version 1.0.5
