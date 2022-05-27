@@ -462,7 +462,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                             <property name="can-focus">False</property>
                             <property name="tooltip-text" translatable="yes">Select an Audio file to be played while showing notification.</property>
                             <property name="hexpand">True</property>
-                            <property name="title" translatable="yes">Select audio file</property>
+                            <property name="title" translatable="yes">Select an audio file</property>
                           </object>
                           <packing>
                             <property name="left-attach">1</property>

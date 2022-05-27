@@ -69,6 +69,7 @@ class get_notification():
 		last_percentage: int
 	
 	def __init__(self, TEST_MODE: bool = False) -> None:
+		self.sound_file = ''
 		module_logger.info("Initiating Notification.")
 		try:
 			self.monitor = BatteryMonitor(TEST_MODE)
@@ -139,10 +140,16 @@ class get_notification():
 				self.critical_battery = int(self.config['settings']['critical_battery'])
 			except ValueError:
 				self.critical_battery = 10
+			
 			try:
 				self.use_sound = self.config['settings'].getboolean('use_sound')
 			except ValueError:
 				self.use_sound = True
+			try:
+				self.sound_file = self.config['settings']['sound_file']
+			except:
+				self.sound_file = '/usr/share/sounds/freedesktop/stereo/dialog-warning.oga'
+			
 			try:
 				self.notification_stability = int(self.config['settings']['notification_stability'])
 			except ValueError:
@@ -185,8 +192,8 @@ class get_notification():
 				notification = self.notifier.new(head, body, icon)
 				notification.show()
 				if self.use_sound:
-					module_logger.debug("Playing sound with notification.")
-					os.system("paplay /usr/share/sounds/Yaru/stereo/complete.oga")
+					module_logger.debug("Playing %s with notification." % self.sound_file)
+					os.system('paplay %s' % self.sound_file)
 				time.sleep(self.notification_stability)
 		except GLib.GError as e:
 			# fixing GLib.GError: g-dbus-error-quark blindly

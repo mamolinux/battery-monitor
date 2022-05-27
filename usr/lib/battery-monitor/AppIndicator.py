@@ -112,7 +112,7 @@ class bm_daemon:
 	
 	def __run_daemon(self, TEST_MODE: bool = False):
 		# initiate notification
-		notification = get_notification()
+		notification = get_notification(TEST_MODE)
 		try:
 			# initiaing BatteryMonitor
 			monitor = BatteryMonitor(TEST_MODE)
@@ -138,7 +138,7 @@ class bm_daemon:
 		else:
 			module_logger.info("Showing 'Success' notifcation disabled.")
 		
-		# this one shows wheter the battery is charging or discharging 
+		# this one shows whether the battery is charging or discharging 
 		# when the app starts
 		notification.show_specific_notifications(monitor)
 		
@@ -150,4 +150,3 @@ class bm_daemon:
 			if monitor.is_updated():
 				notification.show_specific_notifications(monitor)
 			time.sleep(5)
-		
