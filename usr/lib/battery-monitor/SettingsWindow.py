@@ -106,7 +106,7 @@ class SettingsWindow():
 		## Sound configuration page
 		self.label_sound_switch = self.builder.get_object("label_sound_switch")
 		self.sound_switch = self.builder.get_object("sound_switch")
-		self.sound_file_entry = self.builder.get_object("sound_file")
+		self.sound_filechooser_button = self.builder.get_object("sound_file")
 		
 		## Notification configuration page
 		self.notify_duration_entry = self.builder.get_object("notify_duration")
@@ -117,6 +117,8 @@ class SettingsWindow():
 		self.quit_button = self.builder.get_object("quit_button")
 		
 		# Widget signals
+		self.add_filters(self.sound_filechooser_button)
+		# self.sound_filechooser_button.connect('selection-changed', self.select_audio_file)
 		self.save_button.connect('clicked', self.__save_config)
 		self.quit_button.connect('clicked', self.on_quit)
 		
@@ -178,6 +180,7 @@ class SettingsWindow():
 			self.low_battery = self.config['settings']['low_battery']
 			self.critical_battery = self.config['settings']['critical_battery']
 			self.use_sound = self.config['settings'].getboolean('use_sound')
+			self.sound_file = self.config['settings']['sound_file']
 			self.notification_stability = self.config['settings']['notification_stability']
 			self.notification_count = self.config['settings']['notification_count']
 		except:
@@ -190,6 +193,7 @@ class SettingsWindow():
 			self.low_battery = '30'
 			self.critical_battery = '15'
 			self.use_sound = True
+			self.sound_file = '/usr/share/sounds/freedesktop/stereo/dialog-warning.oga'
 			self.notification_stability = '5'
 			self.notification_count = '3'
 		
@@ -201,6 +205,7 @@ class SettingsWindow():
 		self.low_battery_entry.set_text(self.low_battery)
 		self.critical_battery_entry.set_text(self.critical_battery)
 		self.sound_switch.set_active(self.use_sound)
+		self.sound_filechooser_button.set_filename(self.sound_file)
 		self.notify_duration_entry.set_text(self.notification_stability)
 		self.notify_count_entry.set_text(self.notification_count)
 		
@@ -209,7 +214,7 @@ class SettingsWindow():
 			self.label_success_switch.set_label("Disable Success Notification:")
 		else:
 			self.label_success_switch.set_label("Enable Success Notification:")
-			
+		
 		if self.use_sound:
 			self.label_sound_switch.set_label("Disable Notification Sound:")
 		else:
@@ -235,6 +240,7 @@ class SettingsWindow():
 			'low_battery': self.low_battery_entry.get_text(),
 			'critical_battery': self.critical_battery_entry.get_text(),
 			'use_sound': self.sound_switch.get_active(),
+			'sound_file': self.sound_filechooser_button.get_filename(),
 			'notification_stability': self.notify_duration_entry.get_text(),
 			'notification_count': self.notify_count_entry.get_text()
 		}
@@ -320,3 +326,16 @@ class SettingsWindow():
 	def on_quit(self, widget):
 		self.window.close()
 	
+	def add_filters(self, dialog):
+		'''
+		Filter audio files to be used for notification sound
+		'''
+		filter_audio = Gtk.FileFilter()
+		filter_audio.set_name("Audio files")
+		filter_audio.add_mime_type("audio/*")
+		dialog.add_filter(filter_audio)
+
+		filter_any = Gtk.FileFilter()
+		filter_any.set_name("Any files")
+		filter_any.add_pattern("*")
+		dialog.add_filter(filter_any)
