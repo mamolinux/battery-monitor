@@ -114,12 +114,13 @@ class SettingsWindow():
 		
 		# Buttons
 		self.save_button = self.builder.get_object("save_button")
+		self.reset_button = self.builder.get_object("reset_button")
 		self.quit_button = self.builder.get_object("quit_button")
 		
 		# Widget signals
 		self.add_filters(self.sound_filechooser_button)
-		# self.sound_filechooser_button.connect('selection-changed', self.select_audio_file)
 		self.save_button.connect('clicked', self.__save_config)
+		self.reset_button.connect("clicked", self.on_reset_button)
 		self.quit_button.connect('clicked', self.on_quit)
 		
 		# Menubar
@@ -172,17 +173,17 @@ class SettingsWindow():
 		
 		try:
 			self.config.read(CONFIG_FILE)
-			self.show_success = self.config['settings'].getboolean('show_success')
-			self.upper_threshold_warning = self.config['settings']['upper_threshold_warning']
-			self.first_custom_warning = self.config['settings']['first_custom_warning']
-			self.second_custom_warning = self.config['settings']['second_custom_warning']
-			self.third_custom_warning = self.config['settings']['third_custom_warning']
-			self.low_battery = self.config['settings']['low_battery']
-			self.critical_battery = self.config['settings']['critical_battery']
-			self.use_sound = self.config['settings'].getboolean('use_sound')
-			self.sound_file = self.config['settings']['sound_file']
-			self.notification_stability = self.config['settings']['notification_stability']
-			self.notification_count = self.config['settings']['notification_count']
+			self.show_success = self.config['user'].getboolean('show_success')
+			self.upper_threshold_warning = self.config['user']['upper_threshold_warning']
+			self.first_custom_warning = self.config['user']['first_custom_warning']
+			self.second_custom_warning = self.config['user']['second_custom_warning']
+			self.third_custom_warning = self.config['user']['third_custom_warning']
+			self.low_battery = self.config['user']['low_battery']
+			self.critical_battery = self.config['user']['critical_battery']
+			self.use_sound = self.config['user'].getboolean('use_sound')
+			self.sound_file = self.config['user']['sound_file']
+			self.notification_stability = self.config['user']['notification_stability']
+			self.notification_count = self.config['user']['notification_count']
 		except:
 			module_logger.error('Config file is missing or not readable. Using default configurations.')
 			self.show_success = True
@@ -231,7 +232,7 @@ class SettingsWindow():
 		else:
 			os.makedirs(self.config_dir)
 		
-		self.config['settings'] = {
+		self.config['user'] = {
 			'show_success': self.success_switch.get_active(),
 			'upper_threshold_warning': self.upper_threshold_warning_entry.get_text(),
 			'first_custom_warning': self.first_custom_warning_entry.get_text(),
@@ -246,7 +247,7 @@ class SettingsWindow():
 		}
 		
 		try:
-			self.__validate_config(self.config['settings'])
+			self.__validate_config(self.config['user'])
 			with open(CONFIG_FILE, 'w') as f:
 				self.config.write(f)
 				dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.INFO)
@@ -266,7 +267,7 @@ class SettingsWindow():
 			dialog.format_secondary_text(str(message))
 			dialog.run()
 			dialog.destroy()
-			
+		
 		self.settings_updated = True
 		self.__load_config()
 	
@@ -303,12 +304,90 @@ class SettingsWindow():
 				raise ValidationError(_('Notification stability time must be greater than zero.'))
 		else:
 			raise ValidationError(_('Notification stability time can not be empty.'))
-
+		
 		if bool(config['notification_count']):
 			if int(config['notification_count']) <= 0:
 				raise ValidationError(_('Notification count must be greater than zero.'))
 		else:
 			raise ValidationError(_('Notification count can not be empty.'))
+	
+	def on_reset_button(self, widget):
+		'''
+		Reset to defaut settings.
+		'''
+		dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
+		dialog.set_transient_for(self.window)
+		dialog.add_buttons(Gtk.STOCK_OK, Gtk.ResponseType.OK, Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
+		dialog.set_property("text", _('Restore default settings?'))
+		dialog.format_secondary_text(_('Click ok to restore and save default settings successfully.'))
+		response = dialog.run()
+		if response == Gtk.ResponseType.OK:
+			try:
+				# Try reading the config file for defaut settings.
+				self.config.read(CONFIG_FILE)
+				
+				self.show_success = self.config['default'].getboolean('show_success')
+				self.upper_threshold_warning = int(self.config['default']['upper_threshold_warning'])
+				self.first_custom_warning = int(self.config['default']['first_custom_warning'])
+				self.second_custom_warning = int(self.config['default']['second_custom_warning'])
+				self.third_custom_warning = int(self.config['default']['third_custom_warning'])
+				self.low_battery = int(self.config['default']['low_battery'])
+				self.critical_battery = int(self.config['default']['critical_battery'])
+				
+				self.use_sound = self.config['default'].getboolean('use_sound')
+				self.sound_file = self.config['default']['sound_file']
+				
+				self.notification_stability = int(self.config['default']['notification_stability'])
+				self.notification_count = int(self.config['default']['notification_count'])
+			except:
+				# In case defaut settings is corrupted in config file
+				# set them again
+				module_logger.error('Default configuration in config file is corrupted. Again setting the default values.')
+				self.show_success = True
+				self.upper_threshold_warning = 90
+				self.first_custom_warning = 70
+				self.second_custom_warning = 55
+				self.third_custom_warning = 40
+				self.low_battery = 30
+				self.critical_battery = 15
+				self.use_sound = True
+				self.sound_file = '/usr/share/sounds/freedesktop/stereo/dialog-warning.oga'
+				self.notification_stability = 5
+				self.notification_count = 3
+			
+			# Reload the GUI with default settings.
+			self.success_switch.set_active(self.show_success)
+			self.upper_threshold_warning_entry.set_text(str(self.upper_threshold_warning))
+			self.first_custom_warning_entry.set_text(str(self.first_custom_warning))
+			self.second_custom_warning_entry.set_text(str(self.second_custom_warning))
+			self.third_custom_warning_entry.set_text(str(self.third_custom_warning))
+			self.low_battery_entry.set_text(str(self.low_battery))
+			self.critical_battery_entry.set_text(str(self.critical_battery))
+			self.sound_switch.set_active(self.use_sound)
+			self.sound_filechooser_button.set_filename(self.sound_file)
+			self.notify_duration_entry.set_text(str(self.notification_stability))
+			self.notify_count_entry.set_text(str(self.notification_count))
+			
+			# Save the default settings as 'user' settings
+			self.config['user'] = {
+				'show_success': self.success_switch.get_active(),
+				'upper_threshold_warning': self.upper_threshold_warning_entry.get_text(),
+				'first_custom_warning': self.first_custom_warning_entry.get_text(),
+				'second_custom_warning': self.second_custom_warning_entry.get_text(),
+				'third_custom_warning': self.third_custom_warning_entry.get_text(),
+				'low_battery': self.low_battery_entry.get_text(),
+				'critical_battery': self.critical_battery_entry.get_text(),
+				'use_sound': self.sound_switch.get_active(),
+				'sound_file': self.sound_filechooser_button.get_filename(),
+				'notification_stability': self.notify_duration_entry.get_text(),
+				'notification_count': self.notify_count_entry.get_text()
+			}
+			with open(CONFIG_FILE, 'w') as f:
+				self.config.write(f)
+			# module_logger.info()
+		else:
+			pass
+		dialog.destroy()
 	
 	def __about_window(self, *args):
 		about_window = AboutWindow()

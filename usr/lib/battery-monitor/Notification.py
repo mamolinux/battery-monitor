@@ -69,7 +69,7 @@ class get_notification():
 		last_percentage: int
 	
 	def __init__(self, TEST_MODE: bool = False) -> None:
-		self.sound_file = ''
+		# self.sound_file = ''
 		module_logger.info("Initiating Notification.")
 		try:
 			self.monitor = BatteryMonitor(TEST_MODE)
@@ -106,70 +106,103 @@ class get_notification():
 				module_logger.debug("Closing notification with head '%s'", head)
 				notification.close()
 			except GLib.GError as e:
-				# fixing GLib.GError: g-dbus-error-quark blindly
+				# TODO fixing GLib.GError: g-dbus-error-quark blindly
 				pass
 	
 	def load_config(self):
 		try:
 			self.config.read(CONFIG_FILE)
 			try:
-				self.show_success = self.config['settings'].getboolean('show_success')
-			except ValueError:
-				self.show_success = True
+				self.show_success = self.config['user'].getboolean('show_success')
+			except KeyError or ValueError:
+				self.show_success = self.config['default'].getboolean('show_success')
 			try:
-				self.upper_threshold_warning = int(self.config['settings']['upper_threshold_warning'])
-			except ValueError:
-				self.upper_threshold_warning = 90
+				self.upper_threshold_warning = int(self.config['user']['upper_threshold_warning'])
+			except KeyError or ValueError:
+				self.upper_threshold_warning = int(self.config['default']['upper_threshold_warning'])
 			try:
-				self.first_custom_warning = int(self.config['settings']['first_custom_warning'])
-			except ValueError:
-				self.first_custom_warning = -1
+				self.first_custom_warning = int(self.config['user']['first_custom_warning'])
+			except KeyError or ValueError:
+				self.first_custom_warning = int(self.config['default']['first_custom_warning'])
 			try:
-				self.second_custom_warning = int(self.config['settings']['second_custom_warning'])
-			except ValueError:
-				self.second_custom_warning = -2
+				self.second_custom_warning = int(self.config['user']['second_custom_warning'])
+			except KeyError or ValueError:
+				self.second_custom_warning = int(self.config['default']['second_custom_warning'])
 			try:
-				self.third_custom_warning = int(self.config['settings']['third_custom_warning'])
-			except ValueError:
-				self.third_custom_warning = -3
+				self.third_custom_warning = int(self.config['user']['third_custom_warning'])
+			except KeyError or ValueError:
+				self.third_custom_warning = int(self.config['default']['third_custom_warning'])
 			try:
-				self.low_battery = int(self.config['settings']['low_battery'])
-			except ValueError:
-				self.low_battery = 30
+				self.low_battery = int(self.config['user']['low_battery'])
+			except KeyError or ValueError:
+				self.low_battery = int(self.config['default']['low_battery'])
 			try:
-				self.critical_battery = int(self.config['settings']['critical_battery'])
-			except ValueError:
-				self.critical_battery = 10
+				self.critical_battery = int(self.config['user']['critical_battery'])
+			except KeyError or ValueError:
+				self.critical_battery = int(self.config['default']['critical_battery'])
 			
 			try:
-				self.use_sound = self.config['settings'].getboolean('use_sound')
-			except ValueError:
-				self.use_sound = True
+				self.use_sound = self.config['user'].getboolean('use_sound')
+			except KeyError or ValueError:
+				self.use_sound = self.config['default'].getboolean('use_sound')
 			try:
-				self.sound_file = self.config['settings']['sound_file']
-			except:
-				self.sound_file = '/usr/share/sounds/freedesktop/stereo/dialog-warning.oga'
+				self.sound_file = self.config['user']['sound_file']
+			except KeyError or ValueError:
+				self.sound_file = self.config['default']['sound_file']
 			
 			try:
-				self.notification_stability = int(self.config['settings']['notification_stability'])
-			except ValueError:
-				self.notification_stability = 5
+				self.notification_stability = int(self.config['user']['notification_stability'])
+			except KeyError or ValueError:
+				self.notification_stability = int(self.config['default']['notification_stability'])
 			try:
-				self.notification_count = int(self.config['settings']['notification_count'])
-			except ValueError:
-				self.notification_count = 3
+				self.notification_count = int(self.config['user']['notification_count'])
+			except KeyError or ValueError:
+				self.notification_count = int(self.config['default']['notification_count'])
+			module_logger.info('All settings were successfully read from config file - %s', CONFIG_FILE)
 		except:
 			module_logger.error('Config file is missing or not readable. Using default configurations.')
 			self.show_success = True
 			self.upper_threshold_warning = 90
-			self.first_custom_warning = -1
-			self.second_custom_warning = -2
-			self.third_custom_warning = -3
+			self.first_custom_warning = 70
+			self.second_custom_warning = 55
+			self.third_custom_warning = 40
 			self.low_battery = 30
-			self.critical_battery = 10
+			self.critical_battery = 15
 			self.use_sound = True
+			self.sound_file = '/usr/share/sounds/freedesktop/stereo/dialog-warning.oga'
 			self.notification_stability = 5
 			self.notification_count = 3
+			
+			self.save_config()
+	
+	def save_config(self):
+		'''
+		save configuration on first run as default settings
+		'''
+		config_dir = os.path.dirname(CONFIG_FILE)
+		if os.path.exists(config_dir):
+			pass
+		else:
+			os.makedirs(config_dir)
+		
+		self.config['default'] = {
+			'show_success': self.show_success,
+			'upper_threshold_warning': self.upper_threshold_warning,
+			'first_custom_warning': self.first_custom_warning,
+			'second_custom_warning': self.second_custom_warning,
+			'third_custom_warning': self.third_custom_warning,
+			'low_battery': self.low_battery,
+			'critical_battery': self.critical_battery,
+			'use_sound': self.use_sound,
+			'sound_file': self.sound_file,
+			'notification_stability': self.notification_stability,
+			'notification_count': self.notification_count
+		}
+		
+		with open(CONFIG_FILE, 'w') as f:
+			self.config.write(f)
+			
+		module_logger.info("Saved new configuartion file to %s", CONFIG_FILE)
 	
 	def show_notification(self, notiftype: str, battery_percentage: int,
 						  remaining_time: str = None, _count: int = None) -> None:
