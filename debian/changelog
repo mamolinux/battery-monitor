@@ -1,3 +1,37 @@
+battery-monitor (1.0.9) stable; urgency=medium
+
+  * Update readme from version 1.0.7 to 1.0.8-1 (#28)
+  * pythonize battery-monitor; closes #29 (#30)
+    - use pure python packaging methods
+    - update .gitignore
+    - update desktop files
+    - Parse arguments from cmdline
+    - Turn off debug mode by default, use '-v[erbose]'
+      to enable it
+    - Add options to parse arguments for help, indicator
+      and version
+    - read version from d/changelog
+    - update test module
+  * re-debianize to match python packaging (#31)
+    - d/compat: deleted
+    - d/control: update build and runtime depends
+    - d/control: update standards
+    - d/rules: use pybuild
+    - d/copyright: update
+    - d/install: remove 'etc'
+    - d/postinst: update
+    - d/postrm: add file
+    - d/salsa-ci: add
+    - d/battery-monitor-doc.docs: add
+    - d/battery-monitor.1: add
+  *  update workflows (#32)
+    - remove old source files
+    - Update auto build (CI) workflow
+    - Update publish deb packaging workflow
+    - d/rules: update autoclean
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Mon, 20 Jun 2022 22:40:13 +0530
+
 battery-monitor (1.0.8) stable; urgency=medium
 
   * Update readme with version 1.0.7 (#26)
