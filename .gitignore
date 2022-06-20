@@ -1,12 +1,16 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+*.egg-info
+*__pycache__/*
 *.py[cod]
 *$py.class
 
-# Rope project settings
-.ropeproject
-/battery-monitor/debian/battery-monitor/
-/battery-monitor/debian/battery-monitor.substvars
-/battery-monitor/debian/debhelper-build-stamp
-/battery-monitor/debian/files
-battery-monitor_*
+# python build files
+*VERSION
+build/*
+dist/*
+
+# debian build files
+.pybuild/*
+usr/*
+debian/battery-monitor/*
+debian/*debhelper*

@@ -2,8 +2,8 @@ Source: battery-monitor
 Section: admin
 Priority: optional
 Maintainer: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-Build-Depends: debhelper (>= 12)
-Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 12)
+Standards-Version: 4.6.0
 
 Package: battery-monitor
 Architecture: all

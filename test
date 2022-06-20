@@ -1,4 +1,4 @@
 #!/bin/bash
-
-sudo cp -R usr/* /usr/
-# battery-monitor
+reset
+pip3 install .
+battery-monitor -V

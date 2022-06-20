@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Battery Monitor Indicator
+Comment=Start indicator for Battery Monitor.
+Exec=battery-monitor --indicator
+Icon=battery-monitor
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+StartupNotify=true
+Name[en]=Battery Monitor Indicator
