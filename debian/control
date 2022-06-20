@@ -1,22 +1,41 @@
 Source: battery-monitor
-Section: admin
+Section: utils
 Priority: optional
 Maintainer: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-Build-Depends: debhelper-compat (= 12)
+Build-Depends: debhelper-compat (= 12),
+               dh-python,
+               python3,
+               python3-setuptools,
+               python3-sphinx,
 Standards-Version: 4.6.0
+Homepage: https://hsbasu.github.io/battery-monitor
+#Vcs-Browser: https://salsa.debian.org/debian/battery-monitor
+#Vcs-Git: https://salsa.debian.org/debian/battery-monitor.git
+#Testsuite: autopkgtest-pkg-python
+Rules-Requires-Root: no
 
 Package: battery-monitor
 Architecture: all
 Depends: acpi,
+         gobject-introspection,
+         gir1.2-gtk-3.0,
          gir1.2-appindicator3-0.1,
-         python3,
-         python3-gi,
          python3-configobj,
+         python3-gi,
          python3-setproctitle,
+         python3-tldextract,
          libnotify4,
-         libappindicator3-1,
+         ${python3:Depends},
          ${misc:Depends},
 Description: Monitor Laptop Battery
  A utility tool, notifies user about
  charging, discharging and not charging
  state of the battery on Linux.
+ .
+ This package installs the gui library for Python 3.
+
+# Package: battery-monitor-doc
+# Architecture: all
+# Description: documentation for battery-monitor
+#  Documentations for GUI environment for
+#  Battery Monitor.

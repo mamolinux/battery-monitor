@@ -1,4 +1,4 @@
-battery-monitor (1.0.8-1) stable; urgency=medium
+battery-monitor (1.0.8) stable; urgency=medium
 
   * Update readme with version 1.0.7 (#26)
   * Add option to use user-defined sound files (#27)
@@ -9,7 +9,7 @@ battery-monitor (1.0.8-1) stable; urgency=medium
 
  -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Tue, 31 May 2022 20:59:14 +0530
 
-battery-monitor (1.0.7-1) stable; urgency=medium
+battery-monitor (1.0.7) stable; urgency=medium
 
   * Update readme with version 1.0.6 (#23)
   * Append random numbers after logfilename (#24)
@@ -183,7 +183,7 @@ battery-monitor (0.6-beta-2-artful) artful; urgency=medium
 
  -- Maksudur Rahman Maateen <maateen@outlook.com>  Sun, 27 May 2018 02:39:14 +0600
 
-battery-monitor (0.6-beta-1-xenial) xenial; urgency=medium
+battery-monitor (0.6-beta-xenial) xenial; urgency=medium
 
   * Restructured and reformatted the whole project.
   * Added system tray icon (Issue #46 - https://github.com/maateen/battery-monitor/issues/46)
@@ -193,7 +193,7 @@ battery-monitor (0.6-beta-1-xenial) xenial; urgency=medium
 
  -- Maksudur Rahman Maateen <maateen@outlook.com>  Sun, 27 May 2018 02:35:55 +0600
 
-battery-monitor (0.6-beta-1-trusty) trusty; urgency=medium
+battery-monitor (0.6-beta-trusty) trusty; urgency=medium
 
   * Restructured and reformatted the whole project.
   * Added system tray icon (Issue #46 - https://github.com/maateen/battery-monitor/issues/46)

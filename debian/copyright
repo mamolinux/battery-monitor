@@ -6,7 +6,13 @@ Source: https://www.github.com/hsbasu/battery-monitor
 Files: *
 Copyright: 2016-2020 Maksudur Rahman Maateen <maateen@outlook.com>
 		   2021-2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-License: GPL-3+
+License: GPL-3.0+
+
+Files: debian/*
+Copyright: 2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+License: GPL-3.0+
+
+License: GPL-3.0+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 3 of the License, or
