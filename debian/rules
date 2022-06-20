@@ -12,7 +12,7 @@ export PYBUILD_INSTALL_ARGS_python3=--install-scripts=usr/bin
 
 override_dh_auto_clean:
 	dh_auto_clean
-	# rm -rf usr
+	rm -rf usr
 
 # If you need to rebuild the Sphinx documentation
 # Add sphinxdoc to the dh --with line
