@@ -1,0 +1,58 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" (C) Copyright 2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>,
+.\"
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH BATTERY-MONITOR 1 "June 20 2022"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+battery-monitor \- A utility tool to monitor laptop battery
+.SH SYNOPSIS
+.B battery-monitor
+.RI [ options ]
+.br
+.SH DESCRIPTION
+.PP
+.\" TeX users may be more comfortable with the \fB<whatever>\fP and
+.\" \fI<whatever>\fP escape sequences to invode bold face and italics,
+.\" respectively.
+\fBbattery-monitor\fP is a utility tool, notifies user about charging, discharging and not charging state of the laptop battery on Linux.
+.SH OPTIONS
+battery-monitor launches automatically at start-up as an indicator.
+.br
+To open the settings window, you may launch battery-monitor with no options.
+.TP
+.B \-h, \-\-help
+Show summary of options.
+.TP
+.B \-i, \-\-indicator
+Start Battery Monitor Indicator.
+.TP
+.B \-t, \-\-test
+Test Battery Monitor for debug purposes when battery is absent.
+.TP
+.B \-v, \-\-verbose
+Print debug messages to stdout i.e. terminal.
+.TP
+.B \-V, \-\-version
+Show version of program.
+.SH AUTHORS
+battery-monitor was developed by Maksudur Rahman Maateen <maateen@outlook.com> with various contributors
+.br
+This manual page was originally written by Himadri Sekhar Basu <hsb10@iitbbs.ac.in>.
+.SH COPYRIGHT
+Copyright (C) 2020-2022 Himadri Sekhar Basu
+.br
+There is NO warranty. You may redistribute this software under the terms of the GNU General Public License. For more information about these matters, see the files named copyright.
