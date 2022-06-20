@@ -33,7 +33,10 @@ jobs:
         run: sudo apt-get update -qq
         
       - name: install-deps
-        run: sudo apt install acpi python3 python3-gi python3-configobj python3-setproctitle libnotify4 libappindicator3-1 gir1.2-appindicator3-0.1
-        
+        run: |
+          sudo apt install acpi gobject-introspection gir1.2-appindicator3-0.1 gir1.2-gtk-3.0 \
+          libnotify4 libappindicator3-1 python3 python3-configobj python3-gi python3-setproctitle \
+          python3-tldextract
+      
       - name: make
-        run: sudo ./test -qq
+        run: ./test/test -qq

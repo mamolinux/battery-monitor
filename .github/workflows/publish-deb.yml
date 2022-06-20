@@ -31,8 +31,10 @@ jobs:
       - name: install-deps
         run: |
           sudo apt-get update -qq
-          sudo apt install -y build-essential debhelper devscripts acpi \
-          python3 python3-gi libnotify4 libappindicator3-1 gir1.2-appindicator3-0.1
+          sudo apt install -y build-essential debhelper devscripts dh-python \
+          acpi gobject-introspection gir1.2-appindicator3-0.1 gir1.2-gtk-3.0 \
+          libnotify4 libappindicator3-1 python3 python3-configobj python3-gi \
+          python3-setproctitle python3-tldextract
       
       - name: build-deb
         run: |
@@ -48,7 +50,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.gettag.outputs.latesttag }}
-          # name: "version: "${{ steps.gettag.outputs.latesttag }}
           generate_release_notes: true
           draft: false
           prerelease: false
