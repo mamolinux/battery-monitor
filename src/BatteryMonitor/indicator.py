@@ -72,7 +72,7 @@ class BMIndicator():
 		menu = Gtk.Menu()
 		
 		item_settings = Gtk.ImageMenuItem(_('Settings'))
-		item_about.set_image(Gtk.Image.new_from_icon_name("emblem-system-symbolic", Gtk.IconSize.MENU))
+		item_settings.set_image(Gtk.Image.new_from_icon_name("emblem-system-symbolic", Gtk.IconSize.MENU))
 		item_settings.connect("activate", self.__settings_window)
 		menu.append(item_settings)
 		
