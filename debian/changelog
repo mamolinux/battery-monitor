@@ -1,3 +1,15 @@
+battery-monitor (1.1.0) stable; urgency=medium
+
+  * fix publish .deb files (#33)
+  * Update readme from version 1.0.8 to 1.0.9 (#34)
+  * fix no indicator issue and CI failures (#35)
+  * Fix threading and remove unused libraries (#36)
+    - Use _async to synchronize monitoring thread
+    - Fix no icon in indicator for quit option
+    - remove lines for unused libraries
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sun, 26 Jun 2022 19:41:40 +0530
+
 battery-monitor (1.0.9) stable; urgency=medium
 
   * Update readme from version 1.0.7 to 1.0.8-1 (#28)
