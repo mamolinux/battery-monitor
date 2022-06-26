@@ -33,12 +33,12 @@ import gi
 gi.require_version('AppIndicator3', '0.1')
 from gi.repository import AppIndicator3
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gio
+from gi.repository import Gtk
 
 # imports from current project
 from BatteryMonitor.about_window import AboutWindow
 from BatteryMonitor.bm_daemon import BMdaemon
-from BatteryMonitor.config import APP, _async, idle, LOCALE_DIR
+from BatteryMonitor.config import APP, LOCALE_DIR
 from BatteryMonitor.gui import run_BMwindow
 
 
@@ -62,6 +62,7 @@ class BMIndicator():
 		self.indicator.set_title(_('Battery Monitor'))
 		self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
 		
+		# run the daemon
 		self.daemon = BMdaemon(TEST_MODE)
 		
 		# create menu
@@ -82,9 +83,11 @@ class BMIndicator():
 		item_about.connect("activate", BMIndicator.open_about, Gtk.Window())
 		menu.append(item_about)
 		
-		item_quit = Gtk.MenuItem(_('Quit'))
+		item_quit = Gtk.ImageMenuItem(_('Quit'))
+		item_quit.set_image(Gtk.Image.new_from_icon_name("stock_close", Gtk.IconSize.MENU))
 		item_quit.connect("activate", self.__quit)
 		menu.append(item_quit)
+		
 		menu.show_all()
 		
 		return menu
