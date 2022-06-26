@@ -23,7 +23,6 @@ import argparse
 import gettext
 import locale
 import logging
-from operator import truediv
 import sys
 
 from BatteryMonitor.config import APP, LOCALE_DIR, LOGFILE, __version__

@@ -28,8 +28,6 @@ import logging
 import subprocess
 import time
 
-from threading import Thread
-
 # third-party library
 import gi
 gi.require_version('Gtk', '3.0')
@@ -55,9 +53,8 @@ class BMdaemon():
 	def __init__(self, TEST_MODE: bool = False):
 		module_logger.debug("Initiaing Battery Monitor daemon.")
 		# run the daemon
-		self.daemon = Thread(target=self.start_daemon, args=(TEST_MODE,))
-		self.daemon.daemon = True
-		self.daemon.start()
+		start_BMdaemon = _async(self.start_daemon)
+		start_BMdaemon(TEST_MODE)
 	
 	def start_daemon(self, TEST_MODE: bool = False):
 		# initiate notification
