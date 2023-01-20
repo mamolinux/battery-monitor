@@ -6,10 +6,10 @@
 
 <p align="center">
 	<a href="#">
-		<img src="https://img.shields.io/github/workflow/status/hsbasu/battery-monitor/CI/master?label=CI%20Build" alt="CI build">
+		<img src="https://img.shields.io/github/actions/workflow/status/hsbasu/battery-monitor/ci.yml?branch=master&label=CI%20Build" alt="CI build">
 	</a>
 	<a href="#">
-		<img src="https://img.shields.io/github/workflow/status/hsbasu/battery-monitor/CodeQL/master?label=CodeQL%20Build" alt="CodeQL build">
+		<img src="https://img.shields.io/github/actions/workflow/status/hsbasu/battery-monitor/codeql-analysis.yml?branch=master&label=CodeQL%20Build" alt="CodeQL build">
 	</a>
 	<a href="https://github.com/hsbasu/battery-monitor/blob/master/LICENSE">
 		<img src="https://img.shields.io/github/license/hsbasu/battery-monitor?label=License" alt="License">
