@@ -15,62 +15,20 @@
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" rel="stylesheet" type="text/css"> -->
     
     <!-- Scripts -->
+	  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" charset="utf-8"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/javascript.min.js" charset="utf-8"></script> -->
+    <script src="https://hsbasu.github.io/styles/jscripts/header.js"></script>
+    <script src="https://hsbasu.github.io/styles/jscripts/footer.js"></script>
+    <script src="https://hsbasu.github.io/styles/jscripts/navbar.js"></script>
   </head>
 	
   <body>
-    <!-- Scripts -->
-    <script type="text/javascript" src="https://hsbasu.github.io/styles/jscripts/navbar.js"></script>
-    
-    <!-- Begin Header -->
-    <header class="bar">
-      <div class="w3-left">
-        <button type="button" id="theme" onclick="themeToggle()">Dark theme: Off</button>
-      </div>
-      <div class="w3-right">
-        <h4 id="datetime"></h4>
-      </div></br></br>
-      <div class="center">
-        <a href="https://hsbasu.github.io">
-          <picture>
-            <source srcset="https://hsbasu.github.io/styles/icons/mamolinux-small-logo.png" media="(max-width: 600px)">
-            <source srcset="https://hsbasu.github.io/styles/icons/mamolinux-logo.png">
-            <img src="https://hsbasu.github.io/styles/icons/mamolinux-logo.png" alt="mamolinux-logo">
-          </picture>
-        </a>
-      </div>
-    </header>
-    <!-- End Header -->
-    
+    <div id="header"></div>
     <!-- Begin Navigation -->
     <nav class="stickey bar">
-      <div class="topnav" id="myTopnav">
-        <h1 class="w3-center">
-          <!-- Responsive navbar -->
-          <a class="icon" href="javascript:void(0);" onclick="topnavbar()">
-            <i class="fa fa-bars"></i> Menu
-          </a>
-          <!-- Regular navbar -->
-          <a class="bar-item" href="https://hsbasu.github.io/index.html">Home</a>
-          <a class="bar-item" href="https://hsbasu.github.io/research.html">Research</a>
-          <a class="bar-item" href="https://hsbasu.github.io/publications.html">Publications</a>
-          <div class="bar-item">
-            <a class="dropdown-item" href="https://hsbasu.github.io/hobby.html">Fun Projects</a>
-            <div class="dropdown">
-              <a class="dropbtn">
-                <i class="fa fa-caret-down"></i>
-              </a>
-              <div class="dropdown-content">
-                <a href="https://hsbasu.github.io/linux/packages.html">Linux Packages</a>
-                <a href="https://hsbasu.github.io/linux/tutorials.html">Tutorials</a>
-              </div>
-            </div>
-          </div>
-          <a class="bar-item" href="https://hsbasu.github.io/aboutme.html">About Me</a>
-        </h1>
-      </div>
+      <div class="topnav" id="myTopnav"></div>
     </nav>
     <!-- End Navigation -->
     
@@ -78,15 +36,15 @@
     <section>
       <div id="articles" class="article-content">
         <template type="markdown">
-        # [Battery Monitor]( https://hsbasu.github.io/battery-monitor)
+        # [Battery Monitor](https://hsbasu.github.io/battery-monitor)
         <p class="badges">
-          <img src="https://raw.githubusercontent.com/hsbasu/battery-monitor/master/usr/share/icons/hicolor/scalable/apps/battery-monitor.svg?sanitize=true" height="128" alt="Logo"></br>
+          <img src="https://raw.githubusercontent.com/hsbasu/battery-monitor/master/data/icons/battery-monitor.svg?sanitize=true" height="128" alt="Logo"></br>
           
           <a class="badges" href="https://github.com/hsbasu/battery-monitor/actions/workflows/ci.yml">
-            <img src="https://img.shields.io/github/workflow/status/hsbasu/battery-monitor/CI/master?label=CI%20Build" alt="CI build">
+            <img src="https://img.shields.io/github/actions/workflow/status/hsbasu/battery-monitor/ci.yml?branch=master&label=CI%20Build" alt="CI build">
           </a>
           <a class="badges" href="https://github.com/hsbasu/battery-monitor/actions/workflows/codeql-analysis.yml">
-            <img src="https://img.shields.io/github/workflow/status/hsbasu/battery-monitor/CodeQL/master?label=CodeQL%20Build" alt="CodeQL build">
+            <img src="https://img.shields.io/github/actions/workflow/status/hsbasu/battery-monitor/codeql-analysis.yml?branch=master&label=CodeQL%20Build" alt="CodeQL build">
           </a>
           <a class="badges" href="https://github.com/hsbasu/battery-monitor/blob/master/LICENSE">
             <img src="https://img.shields.io/github/license/hsbasu/battery-monitor?label=License" alt="License">
@@ -332,36 +290,7 @@
     
     <!-- Begin Footer -->
     <footer class="w3-center bar">
-      <div class="w3-left">
-        <p class="crights">
-					&copy;2021 Himadri Sekhar Basu
-				</p>
-			</div>
-			<div class="w3-right">
-				<p class="services">
-          <a class="services" href="https://twitter.com/hsbasu" target="_blank">
-            <img class="services" src="https://hsbasu.github.io/styles/icons/social/twitter.png" alt="Twitter">
-          </a>
-          <a class="services" href="skype:live:hsbasu">
-            <img class="services" src="https://hsbasu.github.io/styles/icons/social/skype.png" alt="Skype">
-          </a>
-          <a class="services" href="https://www.linkedin.com/in/hsbasu" target="_blank">
-            <img class="services" src="https://hsbasu.github.io/styles/icons/social/linkedin.png" alt="LinkedIN">
-          </a>
-          <a class="services" href="https://github.com/hsbasu" target="_blank">
-            <img class="services" src="https://hsbasu.github.io/styles/icons/social/github.png" alt="Github">
-          </a>
-          <a class="services" href="https://www.facebook.com/bhimadri" target="_blank">
-            <img class="services" src="https://hsbasu.github.io/styles/icons/social/facebook.png" alt="Facebook">
-          </a>
-          <a class="services" href="mailto:hsb10@iitbbs.ac.in">
-            <img class="services" src="https://hsbasu.github.io/styles/icons/social/email.png" alt="Email">
-          </a>
-          <a class="services" href="https://hsbasu.github.io" target="_blank">
-            <img class="services" src="https://hsbasu.github.io/styles/icons/social/site.png" alt="Site">
-          </a>
-				</p>
-      </div>
+      <div id="footer"></div>
       <div class="w3-center">
         <p class="services">
           <a class="badges" href="https://visitorbadge.io/status?path=hsbasu.github.io/battery-monitor">
