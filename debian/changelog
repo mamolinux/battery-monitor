@@ -1,3 +1,11 @@
+battery-monitor (1.1.1) stable; urgency=medium
+
+  * Add workflow to update mamolinux/stable branch
+  * Update readme from version 1.0.9 to 1.1.0 (#37)
+  * update badges url (#38)
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Wed, 25 Jan 2023 20:36:29 +0530
+
 battery-monitor (1.1.0) stable; urgency=medium
 
   * fix publish .deb files (#33)
