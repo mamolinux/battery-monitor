@@ -1,36 +1,36 @@
 # [Battery Monitor](https://hsbasu.github.io/battery-monitor)
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/hsbasu/battery-monitor/master/data/icons/battery-monitor.svg?sanitize=true" height="128" alt="Logo">
+	<img src="https://raw.githubusercontent.com/mamolinux/battery-monitor/master/data/icons/battery-monitor.svg?sanitize=true" height="128" alt="Logo">
 </p>
 
 <p align="center">
 	<a href="#">
-		<img src="https://img.shields.io/github/actions/workflow/status/hsbasu/battery-monitor/ci.yml?branch=master&label=CI%20Build" alt="CI build">
+		<img src="https://img.shields.io/github/actions/workflow/status/mamolinux/battery-monitor/ci.yml?branch=master&label=CI%20Build" alt="CI build">
 	</a>
 	<a href="#">
-		<img src="https://img.shields.io/github/actions/workflow/status/hsbasu/battery-monitor/codeql-analysis.yml?branch=master&label=CodeQL%20Build" alt="CodeQL build">
+		<img src="https://img.shields.io/github/actions/workflow/status/mamolinux/battery-monitor/codeql-analysis.yml?branch=master&label=CodeQL%20Build" alt="CodeQL build">
 	</a>
-	<a href="https://github.com/hsbasu/battery-monitor/blob/master/LICENSE">
-		<img src="https://img.shields.io/github/license/hsbasu/battery-monitor?label=License" alt="License">
+	<a href="https://github.com/mamolinux/battery-monitor/blob/master/LICENSE">
+		<img src="https://img.shields.io/github/license/mamolinux/battery-monitor?label=License" alt="License">
 	</a>
 	<a href="#">
-		<img src="https://img.shields.io/github/repo-size/hsbasu/battery-monitor?label=Repo%20size" alt="GitHub repo size">
+		<img src="https://img.shields.io/github/repo-size/mamolinux/battery-monitor?label=Repo%20size" alt="GitHub repo size">
 	</a>
-	<a href="https://github.com/hsbasu/battery-monitor/releases/latest">
-		<img src="https://img.shields.io/github/v/release/hsbasu/battery-monitor?label=Latest%20Stable%20Release" alt="GitHub release (latest by date)">
+	<a href="https://github.com/mamolinux/battery-monitor/releases/latest">
+		<img src="https://img.shields.io/github/v/release/mamolinux/battery-monitor?label=Latest%20Stable%20Release" alt="GitHub release (latest by date)">
 	</a>
-	<a href="https://github.com/hsbasu/battery-monitor/issues" target="_blank">
-		<img src="https://img.shields.io/github/issues/hsbasu/battery-monitor?label=Issues" alt="Open Issues">
+	<a href="https://github.com/mamolinux/battery-monitor/issues" target="_blank">
+		<img src="https://img.shields.io/github/issues/mamolinux/battery-monitor?label=Issues" alt="Open Issues">
 	</a>
-	<a href="https://github.com/hsbasu/battery-monitor/pulls" target="_blank">
-		<img src="https://img.shields.io/github/issues-pr/hsbasu/battery-monitor?label=PR" alt="Open PRs">
+	<a href="https://github.com/mamolinux/battery-monitor/pulls" target="_blank">
+		<img src="https://img.shields.io/github/issues-pr/mamolinux/battery-monitor?label=PR" alt="Open PRs">
 	</a>
 	<a href="#download-latest-version">
-		<img src="https://img.shields.io/github/downloads/hsbasu/battery-monitor/total?label=Downloads" alt="Downloads">
+		<img src="https://img.shields.io/github/downloads/mamolinux/battery-monitor/total?label=Downloads" alt="Downloads">
 	</a>
-	<a href="https://github.com/hsbasu/battery-monitor/releases/download/1.1.1/battery-monitor_1.1.1_all.deb">
-		<img src="https://img.shields.io/github/downloads/hsbasu/battery-monitor/1.1.1/battery-monitor_1.1.1_all.deb?label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset">
+	<a href="https://github.com/mamolinux/battery-monitor/releases/download/1.1.1/battery-monitor_1.1.1_all.deb">
+		<img src="https://img.shields.io/github/downloads/mamolinux/battery-monitor/1.1.1/battery-monitor_1.1.1_all.deb?label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset">
 	</a>
 </p>
 
@@ -40,9 +40,9 @@ Battery Monitor is a utility tool developed on Python3 and PyGtk3. It will notif
 
 ## Download Latest Version
 <p align="center">
-	<a href="https://github.com/hsbasu/battery-monitor/zipball/master">Download Source (.zip)</a></br>
-	<a href="https://github.com/hsbasu/battery-monitor/tarball/master">Download Source (.tar.gz)</a></br>
-	<a href="https://github.com/hsbasu/battery-monitor/releases/download/1.1.1/battery-monitor_1.1.1_all.deb">Download Binary (.deb)</a>
+	<a href="https://github.com/mamolinux/battery-monitor/zipball/master">Download Source (.zip)</a></br>
+	<a href="https://github.com/mamolinux/battery-monitor/tarball/master">Download Source (.tar.gz)</a></br>
+	<a href="https://github.com/mamolinux/battery-monitor/releases/download/1.1.1/battery-monitor_1.1.1_all.deb">Download Binary (.deb)</a>
 </p>
 
 ## Features and Screenshots
@@ -61,31 +61,31 @@ Additionally, it can show notifications:
 #### Initial State
 
 <p align="center">
-	<img src="https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/initial-state.png" alt="Initial State">
+	<img src="https://github.com/mamolinux/battery-monitor/raw/gh-pages/screenshots/initial-state.png" alt="Initial State">
 </p>
 
 #### Charging State
 
 <p align="center">
-	<img src="https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/charging.png" alt="Charging State">
+	<img src="https://github.com/mamolinux/battery-monitor/raw/gh-pages/screenshots/charging.png" alt="Charging State">
 </p>
 
 #### Discharging State
 
 <p align="center">
-	<img src="https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/discharging.png" alt="Discharging State">
+	<img src="https://github.com/mamolinux/battery-monitor/raw/gh-pages/screenshots/discharging.png" alt="Discharging State">
 </p>
 
 #### Not Charging State
 
 <p align="center">
-	<img src="https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/not-charging.png" alt="Not Charging State">
+	<img src="https://github.com/mamolinux/battery-monitor/raw/gh-pages/screenshots/not-charging.png" alt="Not Charging State">
 </p>
 
 #### Critically Low Battery State
 
 <p align="center">
-	<img src="https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/critically-low.png" alt="Critically Low Battery State">
+	<img src="https://github.com/mamolinux/battery-monitor/raw/gh-pages/screenshots/critically-low.png" alt="Critically Low Battery State">
 </p>
 
 ### Settings Window
@@ -93,7 +93,7 @@ In Settings menu, you can configure and adjust settings for Battery Monitor. Her
 
 **N.B.** If you change any configuration, it will be in action only after next reboot.
 <p align="center">
-	<img src="https://github.com/hsbasu/battery-monitor/raw/gh-pages/screenshots/settings-window.png" alt="Battery Monitor GUI">
+	<img src="https://github.com/mamolinux/battery-monitor/raw/gh-pages/screenshots/settings-window.png" alt="Battery Monitor GUI">
 </p>
 
 ## Contents
@@ -141,7 +141,7 @@ Remove `apt install` in the command given in [Debian/Ubuntu based distros](#debi
 ### Debian/Ubuntu based systems
 There are two methods, this app can be installed/used on a Debian/Ubuntu based system. First, download and unzip the source package using:
 ```
-wget https://github.com/hsbasu/battery-monitor/archive/refs/heads/master.zip
+wget https://github.com/mamolinux/battery-monitor/archive/refs/heads/master.zip
 unzip master.zip
 cd battery-monitor-master
 ```
@@ -188,7 +188,7 @@ After it is installed, run `battery-monitor` from terminal or use the `battery-m
 If you want to test **Battery Monitor**,
 1. Get the source package and unzip it using:
 	```
-	wget https://github.com/hsbasu/battery-monitor/archive/refs/heads/master.zip
+	wget https://github.com/mamolinux/battery-monitor/archive/refs/heads/master.zip
 	unzip master.zip
 	cd battery-monitor-master/usr/lib/battery-monitor
 	```
@@ -202,7 +202,7 @@ If you want to test **Battery Monitor**,
 	battery-monitor --test
 	```
 
-**I have no knowledge on how to use `meson` or `npm` for testing. If you can offer any help regarding this, please start a discussion [here](https://github.com/hsbasu/battery-monitor/discussions) or create a [PR](https://github.com/hsbasu/battery-monitor/compare). It will be more than welcome.**
+**I have no knowledge on how to use `meson` or `npm` for testing. If you can offer any help regarding this, please start a discussion [here](https://github.com/mamolinux/battery-monitor/discussions) or create a [PR](https://github.com/mamolinux/battery-monitor/compare). It will be more than welcome.**
 
 ## User Manual
 
@@ -213,8 +213,8 @@ You can also start battery monitor from the menu entries. Please, search for Bat
 
 ## Issue Tracking and Contributing
 If you are interested to contribute and enrich the code, you are most welcome. You can do it by:
-1. If you find a bug, to open a new issue with details: [Click Here](https://github.com/hsbasu/battery-monitor/issues)
-2. If you know how to fix a bug or want to add new feature/documentation to the existing package, please create a [Pull Request](https://github.com/hsbasu/battery-monitor/compare).
+1. If you find a bug, to open a new issue with details: [Click Here](https://github.com/mamolinux/battery-monitor/issues)
+2. If you know how to fix a bug or want to add new feature/documentation to the existing package, please create a [Pull Request](https://github.com/mamolinux/battery-monitor/compare).
 
 **NB:** Using the issue template or PR template is **not** mandatory.
 
@@ -224,7 +224,7 @@ If you are interested to contribute and enrich the code, you are most welcome. Y
 Current maintainer.
 
 ### [Maksudur Rahman Maateen](https://github.com/maateen)
-He is the original creator of now archived [Battery Monitor](https://github.com/maateen/battery-monitor). We are highly grateful to him for offering this useful app and providing the base for the current [Battery Monitor](https://github.com/hsbasu/battery-monitor). Please take a minute to thank him.
+He is the original creator of now archived [Battery Monitor](https://github.com/maateen/battery-monitor). We are highly grateful to him for offering this useful app and providing the base for the current [Battery Monitor](https://github.com/mamolinux/battery-monitor). Please take a minute to thank him.
 
 ### [Safwan Rahman](https://github.com/safwanrahman)
 
