@@ -8,6 +8,7 @@ on:
   push:
     tags:
       - "*.*.*"
+  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,11 +20,15 @@ jobs:
       matrix:
         language: [ 'python' ]
     
+    permissions:
+      contents: write
+      packages: write
+    
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       
@@ -32,9 +37,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt install -y build-essential debhelper devscripts dh-python \
-          acpi gobject-introspection gir1.2-appindicator3-0.1 gir1.2-gtk-3.0 \
-          libnotify4 libappindicator3-1 python3 python3-configobj python3-gi \
-          python3-setproctitle python3-sphinx python3-tldextract
+          python3 python3-setuptools python3-sphinx
       
       - name: build-deb
         run: |
@@ -44,7 +47,7 @@ jobs:
       
       - name: get latest tag
         id: gettag
-        run: echo "::set-output name=latesttag::$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})"
+        run: echo "latesttag=$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
       
       - name: Create Release
         uses: softprops/action-gh-release@v1
