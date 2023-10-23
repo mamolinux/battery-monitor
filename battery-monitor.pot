@@ -1,0 +1,393 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-23 10:47+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/battery-monitor-autostart.desktop.in:3
+msgid "Battery Monitor Indicator"
+msgstr ""
+
+#: data/battery-monitor-autostart.desktop.in:4
+msgid "Start indicator for Battery Monitor."
+msgstr ""
+
+#: data/battery-monitor.desktop.in:3 src/BatteryMonitor/about_window.py:74
+#: src/BatteryMonitor/config.py:117 src/BatteryMonitor/config.py:127
+#: src/BatteryMonitor/config.py:132 src/BatteryMonitor/gui.py:89
+#: src/BatteryMonitor/gui.py:402 src/BatteryMonitor/indicator.py:62
+#: src/BatteryMonitor/Notification.py:77
+#: src/BatteryMonitor/ui/battery-monitor.ui:720
+msgid "Battery Monitor"
+msgstr ""
+
+#: data/battery-monitor.desktop.in:4
+msgid ""
+"A utility tool, notifies user about charging, discharging and not charging "
+"state of the battery on Linux."
+msgstr ""
+
+#: src/BatteryMonitor/about_window.py:71 src/BatteryMonitor/gui.py:138
+#: src/BatteryMonitor/indicator.py:81 src/BatteryMonitor/ui/shortcuts.ui:66
+msgid "About"
+msgstr ""
+
+#: src/BatteryMonitor/about_window.py:79
+msgid ""
+"Battery Monitor is a utility tool developed on Python3 and PyGtk3. It will "
+"notify the user about charging, discharging, not charging and critically low "
+"battery state of the battery on Linux (surely if the battery is present)."
+msgstr ""
+
+#: src/BatteryMonitor/about_window.py:85
+msgid "Maintainer"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:118
+msgid "Cheers! Your battery is being monitored now."
+msgstr ""
+
+#: src/BatteryMonitor/config.py:128
+msgid "Alas! Battery is not yet present!"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:133
+msgid "Dependency Error! acpi is not installed."
+msgstr ""
+
+#: src/BatteryMonitor/config.py:137 src/BatteryMonitor/config.py:189
+#: src/BatteryMonitor/ui/battery-monitor.ui:190
+msgid "Charging"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:138 src/BatteryMonitor/config.py:143
+#: src/BatteryMonitor/config.py:158 src/BatteryMonitor/config.py:168
+#: src/BatteryMonitor/config.py:173 src/BatteryMonitor/config.py:178
+#: src/BatteryMonitor/config.py:182
+#, python-brace-format
+msgid "Now {battery_percentage} %, {remaining_time}"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:142 src/BatteryMonitor/config.py:190
+#: src/BatteryMonitor/ui/battery-monitor.ui:364
+msgid "Discharging"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:147
+msgid "Fully Charged - Unplug your Charger"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:148 src/BatteryMonitor/config.py:153
+#, python-brace-format
+msgid "{battery_percentage} % Remaining"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:152
+msgid "Fully Charged"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:157
+msgid "Low Battery"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:162
+msgid "Critically Low Battery"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:163
+#, python-brace-format
+msgid "Only {battery_percentage} %, {remaining_time}"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:167
+msgid "First Custom Warning"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:172
+msgid "Second Custom Warning"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:177
+msgid "Third Custom Warning"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:181
+msgid "Upper Threshold Warning - Unplug your Charger"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:188
+msgid "Full"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:193
+msgid "00:10:12 remaining"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:194
+msgid "01:47:31 remaining"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:195
+msgid "02:33:47 remaining"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:196
+msgid "03:24:25 remaining"
+msgstr ""
+
+#: src/BatteryMonitor/config.py:197
+msgid "discharging at zero rate - will never fully discharge"
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:130
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:144
+msgid "Close Window"
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:256
+msgid "Successfully Saved!"
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:257
+msgid "Your settings have been saved successfully."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:266
+msgid "Validation Error!"
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:279
+msgid "Upper threshold Warning must be greater than zero."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:283
+msgid ""
+"The value of first custom warning must be greater than then value of second "
+"custom warning."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:287
+msgid ""
+"The value of second custom warning must be greater than the value 0f third "
+"custom warning."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:291
+msgid ""
+"The value of third custom warning must be greater than the value of low "
+"battery warning."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:295
+msgid ""
+"The value of low battery warning must be greater than the value of critical "
+"battery warning."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:298
+msgid "Low battery warning can not be empty."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:300
+msgid "Critical battery warning can not be empty."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:304
+msgid "Notification stability time must be greater than zero."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:306
+msgid "Notification stability time can not be empty."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:310
+msgid "Notification count must be greater than zero."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:312
+msgid "Notification count can not be empty."
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:321
+msgid "Restore default settings?"
+msgstr ""
+
+#: src/BatteryMonitor/gui.py:322
+msgid "Click ok to restore and save default settings successfully."
+msgstr ""
+
+#: src/BatteryMonitor/indicator.py:75 src/BatteryMonitor/ui/shortcuts.ui:41
+msgid "Settings"
+msgstr ""
+
+#: src/BatteryMonitor/indicator.py:86
+#: src/BatteryMonitor/ui/battery-monitor.ui:662
+#: src/BatteryMonitor/ui/shortcuts.ui:80
+msgid "Quit"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:94
+msgid "Disable Success Notification:"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:107
+msgid "Enable/disable to show/hide success notification at startup."
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:125
+msgid "Battery"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:162
+msgid "Upper Threshold Warning at:"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:174
+msgid ""
+"Indicates whether success notification has been shown. Make it no/No/NO to "
+"show the success notification.\t"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:228
+msgid "First Custom Warning at:"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:241
+msgid "Set in percentage, must be greater than Second Custom Warning"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:255
+msgid "Second Custom Warning at:"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:267
+msgid "Set in percentage, must be greater than Third Custom Warning"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:281
+msgid "Third Custom Warning at:"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:293
+msgid "Set in percentage, must be smaller than Other Warnings."
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:307
+msgid "Low Battery Warning at:"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:320
+#: src/BatteryMonitor/ui/battery-monitor.ui:347
+msgid "Set in percentage."
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:334
+msgid "Critical Battery Warning at:"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:380
+msgid "Battery Configuration"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:423
+msgid "Disable Notification Sound:"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:436
+msgid "Enable/Disable notification sound."
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:451
+msgid "Select Custom Sound File:"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:463
+msgid "Select an Audio file to be played while showing notification."
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:465
+msgid "Select an audio file"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:478
+msgid "Sound"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:497
+msgid "Sound Configuration"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:540
+msgid "Notification Duration:"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:552
+#: src/BatteryMonitor/ui/battery-monitor.ui:577
+msgid "Set in second"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:565
+msgid "Notification Count:"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:591
+#: src/BatteryMonitor/ui/battery-monitor.ui:610
+msgid "Notification"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:634
+#: src/BatteryMonitor/ui/shortcuts.ui:53
+msgid "Save"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:638
+msgid "Saves current values as default settings."
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:648
+msgid "Reset to defaults"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:652
+msgid "Resets current values to default settings."
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:666
+msgid "Close this Window(Press Ctrl+W)"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:704
+msgid "Status"
+msgstr ""
+
+#: src/BatteryMonitor/ui/battery-monitor.ui:721
+msgid "Utility tool to notify the user about different battery states."
+msgstr ""
+
+#: src/BatteryMonitor/ui/shortcuts.ui:46
+msgid "Reset"
+msgstr ""
+
+#: src/BatteryMonitor/ui/shortcuts.ui:61
+msgid "Other Shortcuts"
+msgstr ""
+
+#: src/BatteryMonitor/ui/shortcuts.ui:73
+msgid "Shortcuts"
+msgstr ""

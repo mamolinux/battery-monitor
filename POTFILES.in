@@ -1,0 +1,16 @@
+data/org.mamolinux.battery-monitor.gschema.xml.in
+data/battery-monitor-autostart.desktop.in
+data/battery-monitor.desktop.in
+src/BatteryMonitor/about_window.py
+src/BatteryMonitor/bm_daemon.py
+src/BatteryMonitor/BMonitor.py
+src/BatteryMonitor/config.py
+src/BatteryMonitor/ErrorLib.py
+src/BatteryMonitor/gui.py
+src/BatteryMonitor/indicator.py
+src/BatteryMonitor/__init__.py
+src/BatteryMonitor/main.py
+src/BatteryMonitor/Notification.py
+src/BatteryMonitor/ui/battery-monitor.ui
+src/BatteryMonitor/ui/logger.ui
+src/BatteryMonitor/ui/shortcuts.ui

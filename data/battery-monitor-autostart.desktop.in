@@ -8,4 +8,3 @@ Type=Application
 Encoding=UTF-8
 Categories=Application;Utility;
 StartupNotify=true
-Name[en]=Battery Monitor Indicator
