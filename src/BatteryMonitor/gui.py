@@ -75,7 +75,7 @@ class BM_Window():
 	
 	def __init__(self, application):
 		
-		self.settings = Gio.Settings(schema_id="org.x.battery-monitor")
+		self.settings = Gio.Settings(schema_id="org.mamolinux.battery-monitor")
 		self.icon_theme = Gtk.IconTheme.get_default()
 		self.config_dir = os.path.dirname(CONFIG_FILE)
 		self.config = configparser.ConfigParser()
@@ -221,7 +221,10 @@ class BM_Window():
 	def __save_config(self, widget):
 		"""Saves configurations to config file.
 
-		Saves user-defined configurations to config file. If the config file does not exist, it creates a new config file (~/.config/battery-monitor/battery-monitor.cfg) in user's home directory.
+		Saves user-defined configurations to config file. If
+		the config file does not exist, it creates a new config
+		file (~/.config/battery-monitor/battery-monitor.cfg) in
+		user's home directory.
 		"""
 		
 		if os.path.exists(self.config_dir):
@@ -418,5 +421,5 @@ class BM_Window():
 
 
 def run_BMwindow():
-	application = battery_monitor("org.x.battery-monitor", Gio.ApplicationFlags.FLAGS_NONE)
+	application = battery_monitor("org.mamolinux.battery-monitor", Gio.ApplicationFlags.FLAGS_NONE)
 	application.run()
