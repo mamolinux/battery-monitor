@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 # See debhelper(7) (uncomment to enable)
 # output every command that modifies files on the build system.
-export DH_VERBOSE = 1
+# export DH_VERBOSE = 1
 
 export PYBUILD_NAME=battery-monitor
 export PYBUILD_INSTALL_ARGS_python3=--install-scripts=usr/bin
@@ -30,7 +30,7 @@ override_dh_auto_build:
 override_dh_install:
 	dh_install
 	install -D -m 0644 debian/battery-monitor.1 debian/battery-monitor/usr/share/man/man1/battery-monitor.1
-	install -D -m 0644 data/org.x.battery-monitor.gschema.xml.in debian/battery-monitor/usr/share/glib-2.0/schemas/org.x.battery-monitor.gschema.xml
+	install -D -m 0644 data/org.mamolinux.battery-monitor.gschema.xml.in debian/battery-monitor/usr/share/glib-2.0/schemas/org.mamolinux.battery-monitor.gschema.xml
 	install -D -m 0644 data/battery-monitor-autostart.desktop.in debian/battery-monitor/etc/xdg/autostart/battery-monitor-autostart.desktop
 
 override_dh_auto_install:
