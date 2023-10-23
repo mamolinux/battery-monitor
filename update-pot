@@ -1,0 +1,2 @@
+#!/bin/bash
+xgettext --keyword=_ --keyword=N_ --output=battery-monitor.pot -f POTFILES.in
