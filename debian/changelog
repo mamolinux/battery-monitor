@@ -1,3 +1,17 @@
+battery-monitor (1.1.2) stable; urgency=medium
+
+  * Update readme from version 1.1.0 to 1.1.1 (#39)
+  * fix permissions of github actions
+  * Update readme with links from mamolinux (#40)
+  * Update publishing and funding workflows (#41)
+    - Update workflow for publishing deb packages
+    - Update funding
+  * Use new gschema name (#42)
+  * Initialize translation (#43)
+  * Fix debian packaging (#44)
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Mon, 23 Oct 2023 11:05:32 +0530
+
 battery-monitor (1.1.1) stable; urgency=medium
 
   * Add workflow to update mamolinux/stable branch
