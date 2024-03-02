@@ -19,19 +19,19 @@ jobs:
     strategy:
       matrix:
         language: [ 'python' ]
-
+    
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
         with:
           submodules: recursive
-
+      
       # Runs a single command using the runners shell
       - name: update-system
         run: sudo apt-get update -qq
-        
+      
       - name: install-deps
         run: |
           sudo apt install acpi gobject-introspection gir1.2-appindicator3-0.1 gir1.2-gtk-3.0 \
