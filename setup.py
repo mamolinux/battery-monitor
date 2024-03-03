@@ -3,21 +3,17 @@ import os
 import subprocess
 
 from setuptools import setup
-from subprocess import check_output
-
-for line in check_output('dpkg-parsechangelog --format rfc822'.split(),
-                         universal_newlines=True).splitlines():
-    header, colon, value = line.lower().partition(':')
-    if header == 'version':
-        version = value.strip()
-        break
-else:
-    raise RuntimeError('No version found in debian/changelog')
 
 with open("src/BatteryMonitor/VERSION", "w") as f:
-    if '~' in version:
-        version = version.split('~')[0]
-    f.write("%s" % version)
+	try:
+		version = (subprocess.check_output(["dpkg-parsechangelog",
+									   "--show-field", "Version"])).decode().strip("\n")
+	except:
+		raise RuntimeError('No version found in debian/changelog')
+	
+	if '~' in version:
+		version = version.split('~')[0]
+	f.write("%s" % version)
 
 gschema_dir_suffix = 'share/glib-2.0/schemas'
 
