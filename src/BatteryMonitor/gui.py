@@ -136,7 +136,7 @@ class BM_Window():
 		item = Gtk.ImageMenuItem()
 		item.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
 		item.set_label(_("About"))
-		item.connect("activate", self.__about_window)
+		item.connect("activate", self.__about_window, self.window)
 		key, mod = Gtk.accelerator_parse("<Control>F1")
 		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
 		menu.append(item)
@@ -389,8 +389,8 @@ class BM_Window():
 			pass
 		dialog.destroy()
 	
-	def __about_window(self, *args):
-		about_window = AboutWindow()
+	def __about_window(self, signal, widget):
+		about_window = AboutWindow(widget)
 		about_window.show()
 	
 	def open_keyboard_shortcuts(self, widget):

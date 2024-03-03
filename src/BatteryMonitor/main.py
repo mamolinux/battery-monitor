@@ -19,13 +19,13 @@
 #
 # Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
-import argparse
 import gettext
 import locale
 import logging
 import sys
 
 from BatteryMonitor.config import APP, LOCALE_DIR, LOGFILE, __version__
+from BatteryMonitor.cmd_lines import command_line_args
 from BatteryMonitor.indicator import BMIndicator
 from BatteryMonitor.gui import run_BMwindow
 
@@ -35,22 +35,6 @@ locale.bindtextdomain(APP, LOCALE_DIR)
 gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
-
-description = 'A Python3-based GUI application to change different colour variants of GTK, Icon, Cursor and other themes.'
-
-# Parse arguments
-parser = argparse.ArgumentParser(prog=APP, description=description, conflict_handler='resolve')
-
-parser.add_argument('-i', '--indicator', action='store_true', dest='start_indicator', default=False, help=("Start Battery Monitor Indicator"))
-parser.add_argument('-t', '--test', action='store_true', dest='test_mode', default=False, help=("Test Battery Monitor by running indicator"))
-parser.add_argument('-v', '--verbose', action='store_true', dest='show_debug', default=False, help=("Print debug messages to stdout i.e. terminal"))
-parser.add_argument('-V', '--version', action='store_true', dest='show_version', default=False, help=("Show version and exit"))
-
-args = parser.parse_args()
-
-if args.show_version:
-    print("%s: version %s" % (APP, __version__))
-    sys.exit(0)
 
 # Create logger
 logger = logging.getLogger('BatteryMonitor')
@@ -70,6 +54,16 @@ fHandler.setFormatter(log_format)
 # add the handler to the logger
 logger.addHandler(fHandler)
 
+# module logger
+module_logger = logging.getLogger('BatteryMonitor.main')
+
+parser = command_line_args()
+args = parser.parse_args()
+
+if args.show_version:
+    print("%s: version %s" % (APP, __version__))
+    sys.exit(0)
+
 if args.show_debug:
 	# be verbose only when "-v[erbose]" is supplied
 	# Create StreamHandler which logs even debug messages
@@ -88,10 +82,7 @@ if args.test_mode:
 else:
 	TEST_MODE = False
 
-# module logger
-module_logger = logging.getLogger('BatteryMonitor.main')
-
-def start_BM ():
+def start_BM():
 	if args.start_indicator:
 		args.start_window = False
 		# initiaing app indicator
