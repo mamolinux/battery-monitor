@@ -80,7 +80,7 @@ class BMIndicator():
 		# Add "About" option in drop-down menu
 		item_about = Gtk.ImageMenuItem(_('About'))
 		item_about.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
-		item_about.connect("activate", BMIndicator.open_about, Gtk.Window())
+		item_about.connect("activate", self.open_about, Gtk.Window())
 		menu.append(item_about)
 		
 		item_quit = Gtk.ImageMenuItem(_('Quit'))
@@ -95,7 +95,7 @@ class BMIndicator():
 	def __settings_window(self, *args):
 		run_BMwindow()
 	
-	def open_about(self, widget):
+	def open_about(self, signal, widget):
 		about_window = AboutWindow(widget)
 		about_window.show()
 	
