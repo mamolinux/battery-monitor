@@ -7,6 +7,7 @@ Build-Depends: debhelper-compat (= 13),
                python3,
                python3-setuptools,
                python3-sphinx,
+               python3-sphinx-argparse
 Standards-Version: 4.6.0
 Homepage: https://hsbasu.github.io/battery-monitor
 #Vcs-Browser: https://salsa.debian.org/debian/battery-monitor
@@ -22,6 +23,7 @@ Depends: acpi,
          gir1.2-notify-0.7,
          ${python3:Depends},
          ${misc:Depends},
+         ${sphinxdoc:Depends}
 Description: Monitor Laptop Battery
  A utility tool, notifies user about
  charging, discharging and not charging
