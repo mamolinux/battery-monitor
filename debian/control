@@ -4,6 +4,8 @@ Priority: optional
 Maintainer: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 Build-Depends: debhelper-compat (= 13),
                dh-python,
+               gettext,
+               libglib2.0-bin,
                python3,
                python3-setuptools,
                python3-sphinx,
