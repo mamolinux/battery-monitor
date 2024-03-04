@@ -1,3 +1,42 @@
+battery-monitor (1.1.3) stable; urgency=medium
+
+  * Update runner versions in workflows (#45)
+  * Update readme with version 1.1.2 (#46)
+    - Remove generate_desktop_files
+  * Update translation (#47)
+    - Move translation sources to po
+    - Add functions to generate .mo files
+  * Add launchpad PPA to readme (#48)
+    - Separate build and runtime dependency
+    - Add translation instructions
+    - Update manual installation instructions
+    - Update instructions for devs
+  * Update python packaging scripts (#49)
+    - Update setuptools version
+    - Add python dependencies
+    - Update dynamic versioning in
+      setup.py
+  * Update debian packaging (#50)
+    - Remove manual
+    - Remove python packages, these are
+      calculated using pybuild
+    - Update d/rules
+  * Fix about window on indicator and refactor codes (#51)
+    - Fix about window on settings page
+      and indicator
+    - Fix tab spacing
+    - Move command line args to separate file
+      to prepare for auto-generating manuals
+  * Build and add docs to deb packaging (#52)
+    - Build unix manual from argparse options
+    - Build html docs from argparse options
+  * Add dependencies for translation and docs (#53)
+    - Add gettext for translation
+    - Add python3-sphinx-argparse for docs
+    - Add libglib2.0-bin for schemas
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Mon, 04 Mar 2024 10:58:12 +0530
+
 battery-monitor (1.1.2) stable; urgency=medium
 
   * Update readme from version 1.1.0 to 1.1.1 (#39)
