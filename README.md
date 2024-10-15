@@ -29,8 +29,8 @@
 	<a href="#download-latest-version">
 		<img src="https://img.shields.io/github/downloads/mamolinux/battery-monitor/total?label=Downloads" alt="Downloads">
 	</a>
-	<a href="https://github.com/mamolinux/battery-monitor/releases/download/1.1.2/battery-monitor_1.1.2_all.deb">
-		<img src="https://img.shields.io/github/downloads/mamolinux/battery-monitor/1.1.2/battery-monitor_1.1.2_all.deb?label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset">
+	<a href="https://github.com/mamolinux/battery-monitor/releases/download/1.1.3/battery-monitor_1.1.3_all.deb">
+		<img src="https://img.shields.io/github/downloads/mamolinux/battery-monitor/1.1.3/battery-monitor_1.1.3_all.deb?label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset">
 	</a>
 </p>
 
@@ -75,7 +75,7 @@ Get the debian package archive from GitHub. For installation, check [here](#inst
 <p align="center">
 	<a href="https://github.com/mamolinux/battery-monitor/zipball/master">Download Source (.zip)</a></br>
 	<a href="https://github.com/mamolinux/battery-monitor/tarball/master">Download Source (.tar.gz)</a></br>
-	<a href="https://github.com/mamolinux/battery-monitor/releases/download/1.1.2/battery-monitor_1.1.2_all.deb">Download Binary (.deb)</a>
+	<a href="https://github.com/mamolinux/battery-monitor/releases/download/1.1.3/battery-monitor_1.1.3_all.deb">Download Binary (.deb)</a>
 </p>
 
 ## Features and Screenshots
