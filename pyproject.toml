@@ -1,3 +1,48 @@
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+build-backend = 'mesonpy'
+requires = [
+	"meson >= 1.3.0",
+	"meson-python >= 0.14.0",
+]
+
+[project]
+name = "battery-monitor"
+authors = [
+	{name = "Himadri Sekhar Basu", email = "hsb10@iitbbs.ac.in"},
+]
+description = "Battery Monitor"
+readme = {file = "README.md", content-type = "text/markdown"}
+license = {file = "LICENSE"}
+requires-python = ">=3.8"
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: X11 Applications :: GTK",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved",
+  " :: GNU General Public License v3 or later (GPLv3+)",
+  "Operating System :: POSIX",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Accessories",
+]
+dependencies = [
+	"configobj",
+	"PyGObject",
+	"setproctitle",
+  "tldextract",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://hsbasu.github.io/battery-monitor"
+Repository = "https://www.github.com/mamolinux/battery-monitor.git"
+Issues = "https://www.github.com/mamolinux/battery-monitor/issues"
+
+[project.scripts]
+battery-monitor = "BatteryMonitor.main:start_BM"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*VERSION", "*.ui"]
