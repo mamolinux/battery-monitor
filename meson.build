@@ -5,17 +5,14 @@ project('battery-monitor',
   ]
 )
 
-
+application_id = meson.project_name()
 i18n = import('i18n')
 gnome = import('gnome')
 pymod = import('python')
 python = pymod.find_installation('python3')
-gettext_package = meson.project_name()
 
-# dependency('gobject')
-# dependency('bs4')
-# dependency('configobj')
-
+prefix = get_option('prefix')
+bindir = get_option('bindir')
 datadir = get_option('datadir')
 
 subdir('data')

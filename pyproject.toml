@@ -38,11 +38,14 @@ Homepage = "https://hsbasu.github.io/battery-monitor"
 Repository = "https://www.github.com/mamolinux/battery-monitor.git"
 Issues = "https://www.github.com/mamolinux/battery-monitor/issues"
 
-[project.scripts]
-battery-monitor = "BatteryMonitor.main:start_BM"
+# [project.scripts]
+# battery-monitor = "BatteryMonitor.main:start_BM"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
 "*" = ["*VERSION", "*.ui"]
+
+# [tool.meson-python.args]
+# setup = ['--default-library=static']

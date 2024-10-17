@@ -1,0 +1,11 @@
+#!@PYTHON@
+# -*- coding: utf-8 -*-
+import re
+import sys
+
+sys.path.insert(1, '@pkgdatadir@')
+
+from BatteryMonitor.main import start_BM
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(start_BM())

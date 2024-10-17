@@ -1,5 +1,7 @@
 include debian/changelog
 global-exclude *.py[cod]
 graft data*
+graft po*
+include src/battery-monitor.in
 graft src/BatteryMonitor/icons*
 graft src/BatteryMonitor/ui*
