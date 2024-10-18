@@ -1,2 +1,6 @@
-add_project_arguments('-DGETTEXT_PACKAGE="battery-monitor"', language:'python')
-i18n.gettext(gettext_package, preset: 'glib')
+locale_dir = get_option('localedir')
+i18n.gettext(
+	application_id,
+	preset: 'glib',
+	install_dir: locale_dir,
+)

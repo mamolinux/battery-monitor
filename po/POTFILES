@@ -11,6 +11,6 @@ src/BatteryMonitor/indicator.py
 src/BatteryMonitor/__init__.py
 src/BatteryMonitor/main.py
 src/BatteryMonitor/Notification.py
-[type: gettext/glade]src/BatteryMonitor/ui/battery-monitor.ui
-[type: gettext/glade]src/BatteryMonitor/ui/logger.ui
-[type: gettext/glade]src/BatteryMonitor/ui/shortcuts.ui
+src/BatteryMonitor/ui/battery-monitor.ui
+src/BatteryMonitor/ui/logger.ui
+src/BatteryMonitor/ui/shortcuts.ui
