@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schemalist>
-  <schema id="org.mamolinux.battery-monitor" path="/org/mamolinux/battery-monitor/">
-  </schema>
-</schemalist>
