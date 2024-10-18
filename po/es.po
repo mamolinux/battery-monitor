@@ -1,38 +1,38 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the battery-monitor package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Spanish translation for mamolinux
+# Copyright (c) 2024 Rosetta Contributors and Canonical Ltd 2024
+# This file is distributed under the same license as the mamolinux package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: battery-monitor\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-17 19:52+0530\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: mamolinux\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2023-10-23 10:47+0530\n"
+"PO-Revision-Date: 2024-08-01 01:27+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitoschido@gmail.com>\n"
+"Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-10-18 11:24+0000\n"
+"X-Generator: Launchpad (build 01390110bd8387dc90dd69527e8fd8aaf2734aac)\n"
 
 #: data/battery-monitor-autostart.desktop.in:3
 msgid "Battery Monitor Indicator"
-msgstr ""
+msgstr "Indicador de monitor de batería"
 
 #: data/battery-monitor-autostart.desktop.in:4
 msgid "Start indicator for Battery Monitor."
 msgstr ""
 
-#: data/battery-monitor.desktop.in:3 src/BatteryMonitor/about_window.py:75
+#: data/battery-monitor.desktop.in:3 src/BatteryMonitor/about_window.py:74
 #: src/BatteryMonitor/config.py:117 src/BatteryMonitor/config.py:127
 #: src/BatteryMonitor/config.py:132 src/BatteryMonitor/gui.py:89
 #: src/BatteryMonitor/gui.py:402 src/BatteryMonitor/indicator.py:62
 #: src/BatteryMonitor/Notification.py:77
 #: src/BatteryMonitor/ui/battery-monitor.ui:720
 msgid "Battery Monitor"
-msgstr ""
+msgstr "Monitor de batería"
 
 #: data/battery-monitor.desktop.in:4
 msgid ""
@@ -40,23 +40,21 @@ msgid ""
 "state of the battery on Linux."
 msgstr ""
 
-#. Add "About" option in drop-down menu
-#: src/BatteryMonitor/about_window.py:72 src/BatteryMonitor/gui.py:138
+#: src/BatteryMonitor/about_window.py:71 src/BatteryMonitor/gui.py:138
 #: src/BatteryMonitor/indicator.py:81 src/BatteryMonitor/ui/shortcuts.ui:66
 msgid "About"
-msgstr ""
+msgstr "Acerca de"
 
-#: src/BatteryMonitor/about_window.py:80
+#: src/BatteryMonitor/about_window.py:79
 msgid ""
 "Battery Monitor is a utility tool developed on Python3 and PyGtk3. It will "
 "notify the user about charging, discharging, not charging and critically low "
 "battery state of the battery on Linux (surely if the battery is present)."
 msgstr ""
 
-#. self.about_dialog.add_credit_section('AUR maintained by', ['Yochanan Marqos <https://github.com/yochananmarqos>'])
-#: src/BatteryMonitor/about_window.py:86
+#: src/BatteryMonitor/about_window.py:85
 msgid "Maintainer"
-msgstr ""
+msgstr "Responsable"
 
 #: src/BatteryMonitor/config.py:118
 msgid "Cheers! Your battery is being monitored now."
@@ -73,7 +71,7 @@ msgstr ""
 #: src/BatteryMonitor/config.py:137 src/BatteryMonitor/config.py:189
 #: src/BatteryMonitor/ui/battery-monitor.ui:190
 msgid "Charging"
-msgstr ""
+msgstr "En carga"
 
 #: src/BatteryMonitor/config.py:138 src/BatteryMonitor/config.py:143
 #: src/BatteryMonitor/config.py:158 src/BatteryMonitor/config.py:168
@@ -86,7 +84,7 @@ msgstr ""
 #: src/BatteryMonitor/config.py:142 src/BatteryMonitor/config.py:190
 #: src/BatteryMonitor/ui/battery-monitor.ui:364
 msgid "Discharging"
-msgstr ""
+msgstr "En descarga"
 
 #: src/BatteryMonitor/config.py:147
 msgid "Fully Charged - Unplug your Charger"
@@ -99,11 +97,11 @@ msgstr ""
 
 #: src/BatteryMonitor/config.py:152
 msgid "Fully Charged"
-msgstr ""
+msgstr "Totalmente cargada"
 
 #: src/BatteryMonitor/config.py:157
 msgid "Low Battery"
-msgstr ""
+msgstr "Batería baja"
 
 #: src/BatteryMonitor/config.py:162
 msgid "Critically Low Battery"
@@ -132,7 +130,7 @@ msgstr ""
 
 #: src/BatteryMonitor/config.py:188
 msgid "Full"
-msgstr ""
+msgstr "Completa"
 
 #: src/BatteryMonitor/config.py:193
 msgid "00:10:12 remaining"
@@ -156,12 +154,11 @@ msgstr ""
 
 #: src/BatteryMonitor/gui.py:130
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Atajos de teclado"
 
-#. Add "Close" option in drop-down menu
 #: src/BatteryMonitor/gui.py:144
 msgid "Close Window"
-msgstr ""
+msgstr "Cerrar ventana"
 
 #: src/BatteryMonitor/gui.py:256
 msgid "Successfully Saved!"
@@ -173,7 +170,7 @@ msgstr ""
 
 #: src/BatteryMonitor/gui.py:266
 msgid "Validation Error!"
-msgstr ""
+msgstr "Error de validación"
 
 #: src/BatteryMonitor/gui.py:279
 msgid "Upper threshold Warning must be greater than zero."
@@ -237,13 +234,13 @@ msgstr ""
 
 #: src/BatteryMonitor/indicator.py:75 src/BatteryMonitor/ui/shortcuts.ui:41
 msgid "Settings"
-msgstr ""
+msgstr "Configuración"
 
 #: src/BatteryMonitor/indicator.py:86
 #: src/BatteryMonitor/ui/battery-monitor.ui:662
 #: src/BatteryMonitor/ui/shortcuts.ui:80
 msgid "Quit"
-msgstr ""
+msgstr "Salir"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:94
 msgid "Disable Success Notification:"
@@ -255,7 +252,7 @@ msgstr ""
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:125
 msgid "Battery"
-msgstr ""
+msgstr "Batería"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:162
 msgid "Upper Threshold Warning at:"
@@ -330,15 +327,15 @@ msgstr ""
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:478
 msgid "Sound"
-msgstr ""
+msgstr "Sonido"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:497
 msgid "Sound Configuration"
-msgstr ""
+msgstr "Configuración de sonido"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:540
 msgid "Notification Duration:"
-msgstr ""
+msgstr "Duración de la notificación:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:552
 #: src/BatteryMonitor/ui/battery-monitor.ui:577
@@ -352,12 +349,12 @@ msgstr ""
 #: src/BatteryMonitor/ui/battery-monitor.ui:591
 #: src/BatteryMonitor/ui/battery-monitor.ui:610
 msgid "Notification"
-msgstr ""
+msgstr "Notificación"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:634
 #: src/BatteryMonitor/ui/shortcuts.ui:53
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:638
 msgid "Saves current values as default settings."
@@ -377,7 +374,7 @@ msgstr ""
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:704
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:721
 msgid "Utility tool to notify the user about different battery states."
@@ -385,12 +382,12 @@ msgstr ""
 
 #: src/BatteryMonitor/ui/shortcuts.ui:46
 msgid "Reset"
-msgstr ""
+msgstr "Restablecer"
 
 #: src/BatteryMonitor/ui/shortcuts.ui:61
 msgid "Other Shortcuts"
-msgstr ""
+msgstr "Otros atajos"
 
 #: src/BatteryMonitor/ui/shortcuts.ui:73
 msgid "Shortcuts"
-msgstr ""
+msgstr "Atajos de teclado"

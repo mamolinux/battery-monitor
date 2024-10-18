@@ -1,21 +1,21 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the battery-monitor package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Bengali translation for mamolinux
+# Copyright (c) 2023 Rosetta Contributors and Canonical Ltd 2023
+# This file is distributed under the same license as the mamolinux package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: battery-monitor\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-17 19:52+0530\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: mamolinux\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2023-10-23 10:47+0530\n"
+"PO-Revision-Date: 2023-10-28 20:59+0000\n"
+"Last-Translator: Himadri Sekhar Basu <Unknown>\n"
+"Language-Team: Bengali <bn@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2024-10-18 11:24+0000\n"
+"X-Generator: Launchpad (build 01390110bd8387dc90dd69527e8fd8aaf2734aac)\n"
 
 #: data/battery-monitor-autostart.desktop.in:3
 msgid "Battery Monitor Indicator"
@@ -25,14 +25,14 @@ msgstr ""
 msgid "Start indicator for Battery Monitor."
 msgstr ""
 
-#: data/battery-monitor.desktop.in:3 src/BatteryMonitor/about_window.py:75
+#: data/battery-monitor.desktop.in:3 src/BatteryMonitor/about_window.py:74
 #: src/BatteryMonitor/config.py:117 src/BatteryMonitor/config.py:127
 #: src/BatteryMonitor/config.py:132 src/BatteryMonitor/gui.py:89
 #: src/BatteryMonitor/gui.py:402 src/BatteryMonitor/indicator.py:62
 #: src/BatteryMonitor/Notification.py:77
 #: src/BatteryMonitor/ui/battery-monitor.ui:720
 msgid "Battery Monitor"
-msgstr ""
+msgstr "ব্যাটারি মনিটর"
 
 #: data/battery-monitor.desktop.in:4
 msgid ""
@@ -40,23 +40,21 @@ msgid ""
 "state of the battery on Linux."
 msgstr ""
 
-#. Add "About" option in drop-down menu
-#: src/BatteryMonitor/about_window.py:72 src/BatteryMonitor/gui.py:138
+#: src/BatteryMonitor/about_window.py:71 src/BatteryMonitor/gui.py:138
 #: src/BatteryMonitor/indicator.py:81 src/BatteryMonitor/ui/shortcuts.ui:66
 msgid "About"
-msgstr ""
+msgstr "বিবরণ"
 
-#: src/BatteryMonitor/about_window.py:80
+#: src/BatteryMonitor/about_window.py:79
 msgid ""
 "Battery Monitor is a utility tool developed on Python3 and PyGtk3. It will "
 "notify the user about charging, discharging, not charging and critically low "
 "battery state of the battery on Linux (surely if the battery is present)."
 msgstr ""
 
-#. self.about_dialog.add_credit_section('AUR maintained by', ['Yochanan Marqos <https://github.com/yochananmarqos>'])
-#: src/BatteryMonitor/about_window.py:86
+#: src/BatteryMonitor/about_window.py:85
 msgid "Maintainer"
-msgstr ""
+msgstr "রক্ষণাবেক্ষণকারী"
 
 #: src/BatteryMonitor/config.py:118
 msgid "Cheers! Your battery is being monitored now."
@@ -73,7 +71,7 @@ msgstr ""
 #: src/BatteryMonitor/config.py:137 src/BatteryMonitor/config.py:189
 #: src/BatteryMonitor/ui/battery-monitor.ui:190
 msgid "Charging"
-msgstr ""
+msgstr "চার্জ হচ্ছে"
 
 #: src/BatteryMonitor/config.py:138 src/BatteryMonitor/config.py:143
 #: src/BatteryMonitor/config.py:158 src/BatteryMonitor/config.py:168
@@ -86,7 +84,7 @@ msgstr ""
 #: src/BatteryMonitor/config.py:142 src/BatteryMonitor/config.py:190
 #: src/BatteryMonitor/ui/battery-monitor.ui:364
 msgid "Discharging"
-msgstr ""
+msgstr "চার্জ কম হচ্ছে"
 
 #: src/BatteryMonitor/config.py:147
 msgid "Fully Charged - Unplug your Charger"
@@ -99,7 +97,7 @@ msgstr ""
 
 #: src/BatteryMonitor/config.py:152
 msgid "Fully Charged"
-msgstr ""
+msgstr "চার্জ পূর্ণ"
 
 #: src/BatteryMonitor/config.py:157
 msgid "Low Battery"
@@ -132,7 +130,7 @@ msgstr ""
 
 #: src/BatteryMonitor/config.py:188
 msgid "Full"
-msgstr ""
+msgstr "সম্পূর্ণ"
 
 #: src/BatteryMonitor/config.py:193
 msgid "00:10:12 remaining"
@@ -156,12 +154,11 @@ msgstr ""
 
 #: src/BatteryMonitor/gui.py:130
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "কীবোর্ড শর্টকাট"
 
-#. Add "Close" option in drop-down menu
 #: src/BatteryMonitor/gui.py:144
 msgid "Close Window"
-msgstr ""
+msgstr "উইন্ডো বন্ধ করুন"
 
 #: src/BatteryMonitor/gui.py:256
 msgid "Successfully Saved!"
@@ -173,7 +170,7 @@ msgstr ""
 
 #: src/BatteryMonitor/gui.py:266
 msgid "Validation Error!"
-msgstr ""
+msgstr "বৈধতার ভুল!"
 
 #: src/BatteryMonitor/gui.py:279
 msgid "Upper threshold Warning must be greater than zero."
@@ -237,13 +234,13 @@ msgstr ""
 
 #: src/BatteryMonitor/indicator.py:75 src/BatteryMonitor/ui/shortcuts.ui:41
 msgid "Settings"
-msgstr ""
+msgstr "সেটিংস"
 
 #: src/BatteryMonitor/indicator.py:86
 #: src/BatteryMonitor/ui/battery-monitor.ui:662
 #: src/BatteryMonitor/ui/shortcuts.ui:80
 msgid "Quit"
-msgstr ""
+msgstr "প্রস্থান"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:94
 msgid "Disable Success Notification:"
