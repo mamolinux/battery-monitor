@@ -3,11 +3,13 @@ Section: utils
 Priority: optional
 Maintainer: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 Build-Depends: debhelper-compat (= 13),
+               desktop-file-utils,
                dh-python,
                gettext,
                libglib2.0-bin,
+               libgtk-4-bin,
+               meson,
                python3,
-               python3-setuptools,
                python3-sphinx,
                python3-sphinx-argparse
 Standards-Version: 4.6.0
