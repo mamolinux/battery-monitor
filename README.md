@@ -133,8 +133,14 @@ In Settings menu, you can configure and adjust settings for Battery Monitor. Her
 ### Build Dependencies
 The following dependencies are required to build **Battery Monitor**.
 ```$
+gettext
+desktop-file-utils
+libglib2.0-bin
+libgtk-4-bin
+meson
 python3
-python3-setuptools
+python3-sphinx
+python3-sphinx-argparse
 ```
 ### Runtime Dependencies
 The following dependencies are required to run **Battery Monitor**.
@@ -151,7 +157,7 @@ python3-tldextract
 ```
 
 ### Debian/Ubuntu based distro
-To install dependencies on Debian/Ubuntu based systems, run:
+To install runtime dependencies on Debian/Ubuntu based systems, run:
 ```
 sudo apt install acpi gir1.2-appindicator3-0.1 gir1.2-gtk-3.0 \
 gir1.2-notify-0.7 python3 python3-configobj python3-gi \
@@ -168,7 +174,7 @@ Remove `apt install` in the command given in [Debian/Ubuntu based distros](#debi
 There are two ways, this app can be installed on a Debian/Ubuntu based system.
 
 ### 1. Download and install binary files
-Download the latest binary .deb files from [here](https://github.com/mamolinux/battery-monitor/releases/latest). Then install the GUI Frontend as
+Download the latest binary .deb files from [here](https://github.com/mamolinux/battery-monitor/releases/latest). Then install the GUI Frontend from terminal as
 ```$
 sudo dpkg -i battery-monitor*.deb
 sudo apt install -f
@@ -185,15 +191,26 @@ unzip master.zip
 cd battery-monitor-master
 ```
 
-1. **Option 1:** Manually copying necessary files to root (`/`). For that, follow the steps below:
-	1. Install python package using `pip3`:
+1. **Option 1:** Manually copying necessary files. For that, follow the steps below:
+	1. Install python package sources using `meson`:
 		```
-		sudo pip3 install .
+		rm -rf builddir
+		meson setup -Dprefix=$HOME/.local builddir
+		meson compile -C builddir --verbose
+		meson install -C builddir
 		```
-		It will install all files under `/usr/local/`
-	2. Compile `schemas` using:
+		It will install all files under `/home/<yourusername>/.local`.
+	2. To manually install for all users:
 		```
-		sudo glib-compile-schemas /usr/local/share/glib-2.0/schemas
+		rm -rf builddir
+		meson setup builddir
+		meson compile -C builddir --verbose
+		sudo meson install -C builddir
+		```
+		This step requires **Administrative Privilege**. So, be careful before using this.
+	3. To **remove** the locally (`/home/<yourusername>/.local`) installed files, run:
+		```
+		ninja uninstall -C builddir
 		```
 
 2. **Option 2:** Build a debian package and install it. To build a debian package on your own:
