@@ -3,11 +3,11 @@
 # output every command that modifies files on the build system.
 # export DH_VERBOSE = 1
 
-export PYBUILD_NAME=battery-monitor
-export PYBUILD_INSTALL_ARGS_python3=--install-scripts=usr/bin
+export PYBUILD_SYSTEM=meson
+# export PYBUILD_NAME=battery-monitor
 
 %:
-	dh ${@} --with python3,sphinxdoc --buildsystem=pybuild
+	dh ${@} --with python3,sphinxdoc --buildsystem=meson
 
 
 # If you need to rebuild the Sphinx documentation
@@ -17,17 +17,13 @@ export PYBUILD_INSTALL_ARGS_python3=--install-scripts=usr/bin
 override_dh_auto_build: export http_proxy=127.0.0.1:9
 override_dh_auto_build: export https_proxy=127.0.0.1:9
 override_dh_auto_build:
-	dh_auto_build -O--buildsystem=pybuild
+	dh_auto_build -O--buildsystem=meson
 	PYTHONPATH=. python3 -m sphinx -N -bhtml \
-	docs/ usr/share/html # HTML generator
+	docs/ usr/share/doc/battery-monitor/html # HTML generator
 	PYTHONPATH=. python3 -m sphinx -N -bman \
 	docs/ usr/share/man/man1 # Manpage generator
-	rm -rfv usr/share/html/.doctrees usr/share/man/man1/.doctrees
+	rm -rfv usr/share/doc/battery-monitor/html/.doctrees usr/share/man/man1/.doctrees
 
 override_dh_install:
-	dh_install -O--buildsystem=pybuild
-	install -D -m 0644 data/org.mamolinux.battery-monitor.gschema.xml.in debian/battery-monitor/usr/share/glib-2.0/schemas/org.mamolinux.battery-monitor.gschema.xml
+	dh_install -O--buildsystem=meson
 	install -D -m 0644 data/battery-monitor-autostart.desktop.in debian/battery-monitor/etc/xdg/autostart/battery-monitor-autostart.desktop
-
-override_dh_auto_install:
-	dh_auto_install --destdir=$(CURDIR)/$(DEB_SOURCE) -O--buildsystem=pybuild

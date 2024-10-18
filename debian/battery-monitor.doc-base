@@ -1,0 +1,13 @@
+Document: battery-monitor
+Title: Debian Battery Monitor Manual
+Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+Abstract: This manual describes what
+ Battery Monitor is and how it can be used
+ to monitor battery present on the system
+ or external devices like attached bluetooth
+ headphones.
+Section: System/Monitoring
+
+Format: HTML
+Index: /usr/share/doc/battery-monitor/html/index.html
+Files: /usr/share/doc/battery-monitor/html/*.html
