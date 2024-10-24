@@ -1,7 +1,5 @@
-#!/usr/bin/python3
-
 # Copyright: 2016-2020 Maksudur Rahman Maateen <maateen@outlook.com>
-#            2021-2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+#            2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of battery-monitor.
 #
@@ -37,10 +35,11 @@ from gi.repository import GObject
 from random import choice
 from threading import Thread
 
+# imports from current project
+from BatteryMonitor.cli_args import APP, LOCALE_DIR
+
 
 # i18n
-APP = 'battery-monitor'
-LOCALE_DIR = "/usr/share/locale"
 locale.bindtextdomain(APP, LOCALE_DIR)
 gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)

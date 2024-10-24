@@ -1,7 +1,5 @@
-#!/usr/bin/python3
-
 # Copyright: 2016-2020 Maksudur Rahman Maateen <maateen@outlook.com>
-#            2021-2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+#            2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of battery-monitor.
 #

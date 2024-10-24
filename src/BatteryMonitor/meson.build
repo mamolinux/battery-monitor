@@ -2,7 +2,7 @@ python_sources = [
   'about_window.py',
 	'bm_daemon.py',
 	'BMonitor.py',
-	'cmd_lines.py',
+	'cli_args.py',
 	'config.py',
 	'ErrorLib.py',
 	'gui.py',
@@ -20,8 +20,17 @@ version_file = configure_file(
   }
 )
 
+args_file = configure_file(
+  input: 'cli_args.py',
+  output: 'cli_args.py',
+  configuration: {
+    'appname': application_id,
+    'localedir': join_paths(prefix, get_option('localedir')),
+  }
+)
+
 python.install_sources(
-  python_sources, version_file,
+  python_sources, version_file, args_file,
   subdir: 'BatteryMonitor',
   preserve_path: true,
 )

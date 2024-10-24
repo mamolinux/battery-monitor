@@ -2,6 +2,6 @@ Description
 ===========
 
 .. argparse::
-   :module: BatteryMonitor.cmd_lines
+   :module: BatteryMonitor.cli_args
    :func: command_line_args
    :prog: battery-monitor

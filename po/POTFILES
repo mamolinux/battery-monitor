@@ -6,6 +6,7 @@ data/battery-monitor.desktop.in
 src/BatteryMonitor/about_window.py
 src/BatteryMonitor/bm_daemon.py
 src/BatteryMonitor/BMonitor.py
+src/BatteryMonitor/cli_args.py
 src/BatteryMonitor/config.py
 src/BatteryMonitor/ErrorLib.py
 src/BatteryMonitor/gui.py
