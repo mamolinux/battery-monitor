@@ -1,3 +1,5 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
 data/org.mamolinux.battery-monitor.gschema.xml.in
 data/battery-monitor-autostart.desktop.in
 data/battery-monitor.desktop.in

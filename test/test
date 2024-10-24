@@ -2,6 +2,6 @@
 rm -rf builddir
 meson setup -Dprefix=$HOME/.local builddir
 meson compile -C builddir --verbose
-meson install -C builddir
+meson install -C builddir # --dry-run
 battery-monitor -V
 ninja uninstall -C builddir
