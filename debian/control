@@ -9,6 +9,7 @@ Build-Depends: debhelper-compat (= 13),
                libglib2.0-bin,
                libgtk-4-bin,
                meson,
+               pybuild-plugin-pyproject,
                python3,
                python3-sphinx,
                python3-sphinx-argparse
