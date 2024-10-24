@@ -1,0 +1,4 @@
+configobj
+PyGObject
+setproctitle
+tldextract
