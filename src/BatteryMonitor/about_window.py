@@ -1,7 +1,5 @@
-#!/usr/bin/python3
-
 # Copyright: 2016-2020 Maksudur Rahman Maateen <maateen@outlook.com>
-#            2021-2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+#            2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of battery-monitor.
 #
@@ -33,7 +31,8 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 # imports from current project
-from BatteryMonitor.config import APP, LOCALE_DIR, __version__
+from BatteryMonitor.cli_args import APP, LOCALE_DIR, description
+from BatteryMonitor.config import __version__
 
 # i18n
 locale.bindtextdomain(APP, LOCALE_DIR)
@@ -56,7 +55,7 @@ class AboutWindow():
 			'Abdelhak BOUGOUFFA <https://abougouffa.github.io/>'
 		]
 		copyrights = "Copyright \xa9 2016-2018 Maksudur Rahman Maateen\n \
-			Copyright \xa9 2021-2022 Himadri Sekhar Basu"
+			Copyright \xa9 2021-2024 Himadri Sekhar Basu"
 		documenters = [
 			'Maksudur Rahman Maateen <https://maateen.me/>'
 		]
@@ -77,7 +76,7 @@ class AboutWindow():
 		
 		self.about_dialog.set_website_label('Official Website')
 		self.about_dialog.set_website('https://hsbasu.github.io/battery-monitor/')
-		self.about_dialog.set_comments(_('Battery Monitor is a utility tool developed on Python3 and PyGtk3. It will notify the user about charging, discharging, not charging and critically low battery state of the battery on Linux (surely if the battery is present).'))
+		self.about_dialog.set_comments(description)
 		self.about_dialog.set_copyright(copyrights)
 		
 		self.about_dialog.set_authors(authors)

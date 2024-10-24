@@ -1,5 +1,5 @@
 # Copyright: 2016-2020 Maksudur Rahman Maateen <maateen@outlook.com>
-#            2021-2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+#            2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of battery-monitor.
 #
@@ -34,7 +34,8 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 # imports from current project
-from BatteryMonitor.config import APP, _async, LOCALE_DIR
+from BatteryMonitor.cli_args import APP, LOCALE_DIR
+from BatteryMonitor.config import _async
 from BatteryMonitor.BMonitor import BMonitor
 from BatteryMonitor.Notification import get_notification
 
