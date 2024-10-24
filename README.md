@@ -199,7 +199,10 @@ cd battery-monitor-master
 		meson compile -C builddir --verbose
 		meson install -C builddir
 		```
-		It will install all files under `/home/<yourusername>/.local`.
+		It will install all files under `/home/<yourusername>/.local`. To **remove** the locally (`/home/<yourusername>/.local`) installed files, run:
+		```
+		ninja uninstall -C builddir
+		```
 	2. To manually install for all users:
 		```
 		rm -rf builddir
@@ -207,10 +210,9 @@ cd battery-monitor-master
 		meson compile -C builddir --verbose
 		sudo meson install -C builddir
 		```
-		This step requires **Administrative Privilege**. So, be careful before using this.
-	3. To **remove** the locally (`/home/<yourusername>/.local`) installed files, run:
+		The last step requires **Administrative Privilege**. So, be careful before using this. To **remove** the installed files, run:
 		```
-		ninja uninstall -C builddir
+		sudo ninja uninstall -C builddir
 		```
 
 2. **Option 2:** Build a debian package and install it. To build a debian package on your own:
@@ -246,7 +248,7 @@ If you are interested to contribute and enrich the code, you are most welcome. Y
 **NB:** Using the issue template or PR template is **not** mandatory.
 
 ### For Developers
-If you want to test **Battery Monitor**,
+I am managing these apps all by myself during my free time. There are times when I can't contribute for months. So a little help is always welcome. If you want to test **Battery Monitor**,
 1. Get the source package and unzip it using:
 	```
 	wget https://github.com/mamolinux/battery-monitor/archive/refs/heads/master.zip
