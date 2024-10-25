@@ -1,3 +1,55 @@
+battery-monitor (1.1.4) stable; urgency=medium
+
+  * Update readme from version 1.1.2 to 1.1.3 (#54)
+  * Start porting to meson python build (#55)
+  * Install python sources using meson build (#56)
+    - Setup meson to install python sources
+      during python and meson builds
+    - Install executable binary using meson
+      and avoid using python builds for now
+    - Remove unnecessary python packaging files
+  * Include data files in meson build (#57)
+    - Add icons, desktop files and schema files
+      using meson
+    - Update ci build
+  * Translate using meson (#58)
+    - Add necessary translation files
+    - Add bengali translation
+    - Add german translation
+    - Add british english translation
+    - Add spanish translation
+    - Update ci with latest ubuntu release
+      and build dependencies
+  * Update debian packaging with meson build (#59)
+    - Use meson buildsystem for debian packaging
+    - Update doc-base to remove lintian
+    - Add meson build dependencies
+  * Update readme with meson buildsystem (#60)
+    - Add meson build dependencies
+    - Update build instructions with meson
+  * Update documentation, test script and readme (#61)
+  * Update debian packaging (#62)
+    - Add pyproject dependency
+    - Update icon cache in postinst and postrm
+      scripts
+    - Read python dependencies from file requires.txt
+  * Fix building documentation using sphinx (#63)
+    - Import app id, description and locale
+      directory from cli_args
+    - Update copyright year to 2024
+    - Use meson to inject app id and locale
+      directory into cli_args
+    - Add cli_args to POTFILES for translation
+    - Update sphinx build scripts
+  * Update release workflow (#64)
+    - Use Ubuntu 24.04
+    - Update dependencies
+    - Update action version
+    - Mark as latest release
+    - Create announcement
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Fri, 25 Oct 2024 20:51:58 +0530
+
 battery-monitor (1.1.3) stable; urgency=medium
 
   * Update runner versions in workflows (#45)
