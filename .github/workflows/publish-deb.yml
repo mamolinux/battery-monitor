@@ -15,7 +15,7 @@ jobs:
   # This workflow contains a single job called "build-and-release"
   build-and-release:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         language: [ 'python' ]
@@ -37,8 +37,8 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt install -y build-essential debhelper devscripts dh-python \
-          gettext libglib2.0-bin python3 python3-setuptools python3-sphinx \
-          python3-sphinx-argparse
+          desktop-file-utils gettext libglib2.0-bin libgtk-4-bin meson python3 \
+          python3-sphinx python3-sphinx-argparse
       
       - name: build-deb
         run: |
@@ -51,12 +51,14 @@ jobs:
         run: echo "latesttag=$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
       
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.gettag.outputs.latesttag }}
           generate_release_notes: true
+          make_latest: true
           draft: false
           prerelease: false
+          discussion_category_name: Announcements
           files: |
             ../*.deb
             ../*.changes
