@@ -7,7 +7,7 @@ Build-Depends: debhelper-compat (= 13),
                dh-python,
                gettext,
                libglib2.0-bin,
-               libgtk-4-bin,
+               gtk-update-icon-cache,
                meson,
                pybuild-plugin-pyproject,
                python3,
@@ -23,7 +23,7 @@ Rules-Requires-Root: no
 Package: battery-monitor
 Architecture: all
 Depends: acpi,
-         gir1.2-appindicator3-0.1,
+         gir1.2-appindicator3-0.1 | gir1.2-ayatanaappindicatorglib-2.0,
          gir1.2-gtk-3.0,
          gir1.2-notify-0.7,
          ${python3:Depends},
@@ -35,9 +35,3 @@ Description: Monitor Laptop Battery
  state of the battery on Linux.
  .
  This package installs the gui library for Python 3.
-
-# Package: battery-monitor-doc
-# Architecture: all
-# Description: documentation for battery-monitor
-#  Documentations for GUI environment for
-#  Battery Monitor.
