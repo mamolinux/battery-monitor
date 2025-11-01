@@ -12,9 +12,9 @@ case "$1" in
         then
             glib-compile-schemas /usr/share/glib-2.0/schemas
         fi
-        if which gtk4-update-icon-cache >/dev/null 2>&1
+        if which gtk-update-icon-cache >/dev/null 2>&1
         then
-            gtk4-update-icon-cache -q -t -f /usr/share/icons/hicolor
+            gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
         fi
     ;;
 
