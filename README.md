@@ -133,10 +133,10 @@ In Settings menu, you can configure and adjust settings for Battery Monitor. Her
 ### Build Dependencies
 The following dependencies are required to build **Battery Monitor**.
 ```$
-gettext
 desktop-file-utils
+gettext
+gtk-update-icon-cache
 libglib2.0-bin
-libgtk-4-bin
 meson
 python3
 python3-sphinx
@@ -146,7 +146,7 @@ python3-sphinx-argparse
 The following dependencies are required to run **Battery Monitor**.
 ```$
 acpi
-gir1.2-appindicator3-0.1
+gir1.2-appindicator3-0.1 | gir1.2-ayatanaappindicatorglib-2.0
 gir1.2-gtk-3.0
 gir1.2-notify-0.7
 python3
@@ -158,10 +158,10 @@ python3-tldextract
 
 ### Debian/Ubuntu based distro
 To install runtime dependencies on Debian/Ubuntu based systems, run:
-```
+```bash
 sudo apt install acpi gir1.2-appindicator3-0.1 gir1.2-gtk-3.0 \
 gir1.2-notify-0.7 python3 python3-configobj python3-gi \
-python3-setproctitle python3-tldextract
+python3-setproctitle python3-tldextract gir1.2-ayatanaappindicatorglib-2.0
 ```
 **Note**: If you are using `gdebi` to install **Battery Monitor** from a `.deb` file, it will automatically install the dependencies and you can skip this step.
 
@@ -175,7 +175,7 @@ There are two ways, this app can be installed on a Debian/Ubuntu based system.
 
 ### 1. Download and install binary files
 Download the latest binary .deb files from [here](https://github.com/mamolinux/battery-monitor/releases/latest). Then install the GUI Frontend from terminal as
-```$
+```bash
 sudo dpkg -i battery-monitor*.deb
 sudo apt install -f
 ```
@@ -185,7 +185,7 @@ If you are having trouble installing the pre-built binary, build them from sourc
 
 #### Debian/Ubuntu based systems
 There are two methods, this app can be installed/used on a Debian/Ubuntu based system. First, download and unzip the source package using:
-```
+```bash
 wget https://github.com/mamolinux/battery-monitor/archive/refs/heads/master.zip
 unzip master.zip
 cd battery-monitor-master
@@ -193,37 +193,37 @@ cd battery-monitor-master
 
 1. **Option 1:** Manually copying necessary files. For that, follow the steps below:
 	1. Install python package sources using `meson`:
-		```
+		```bash
 		rm -rf builddir
 		meson setup -Dprefix=$HOME/.local builddir
 		meson compile -C builddir --verbose
 		meson install -C builddir
 		```
 		It will install all files under `/home/<yourusername>/.local`. To **remove** the locally (`/home/<yourusername>/.local`) installed files, run:
-		```
+		```bash
 		ninja uninstall -C builddir
 		```
 	2. To manually install for all users:
-		```
+		```bash
 		rm -rf builddir
 		meson setup builddir
 		meson compile -C builddir --verbose
 		sudo meson install -C builddir
 		```
 		The last step requires **Administrative Privilege**. So, be careful before using this. To **remove** the installed files, run:
-		```
+		```bash
 		sudo ninja uninstall -C builddir
 		```
 
 2. **Option 2:** Build a debian package and install it. To build a debian package on your own:
 	1. After using `cd battery-monitor-master`, run:
-		```
+		```bash
 		dpkg-buildpackage --no-sign
 		```
 		This will create a `battery-monitor_*.deb` package at `../battery-monitor-master`.
 		
 	2. Install the debian package using
-		```
+		```bash
 		sudo dpkg -i ../battery-monitor_*.deb
 		sudo apt install -f
 		```
@@ -250,7 +250,7 @@ If you are interested to contribute and enrich the code, you are most welcome. Y
 ### For Developers
 I am managing these apps all by myself during my free time. There are times when I can't contribute for months. So a little help is always welcome. If you want to test **Battery Monitor**,
 1. Get the source package and unzip it using:
-	```
+	```bash
 	wget https://github.com/mamolinux/battery-monitor/archive/refs/heads/master.zip
 	unzip master.zip
 	cd battery-monitor-master
@@ -258,12 +258,12 @@ I am managing these apps all by myself during my free time. There are times when
 2. Make desired modifications.
 3. Manually install using [option 2](#2-build-and-install-from-source).
 4. Test it by running in debug mode from terminal:
-	```
+	```bash
 	battery-monitor --verbose
 	```
 
 ### Translation
-All translations are done using using [Launchpad Translations](https://translations.launchpad.net/mamolinux). To help translate **Battery Monitor** in your favourite language follow these steps:
+All translations are done using using [Launchpad Translations](https://translations.launchpad.net/mamolinux/trunk/+templates). To help translate **Battery Monitor** in your favourite language follow these steps:
 1. Go to [translations page](https://translations.launchpad.net/mamolinux/trunk/+pots/battery-monitor) on Launchpad.
 2. Click on the language, you want to translate.
 3. Translate strings.
