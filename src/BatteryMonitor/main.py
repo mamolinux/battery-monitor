@@ -22,6 +22,7 @@
 import gettext
 import locale
 import logging
+import setproctitle
 import sys
 
 # imports from current project
@@ -37,12 +38,14 @@ gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
 
+setproctitle.setproctitle(APP)
+
 # Create logger
 logger = logging.getLogger('BatteryMonitor')
 # Set logging level
 logger.setLevel(logging.DEBUG)
 # create log formatter
-log_format = logging.Formatter('%(asctime)s %(name)s - %(levelname)s: %(message)s')
+log_format = logging.Formatter('%(asctime)s %(name)s:%(lineno)d - %(levelname)s: %(message)s')
 
 # create file handler which logs only info messages
 fHandler = logging.FileHandler(LOGFILE)
