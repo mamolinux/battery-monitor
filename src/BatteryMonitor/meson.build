@@ -1,16 +1,8 @@
-python_sources = [
-  'about_window.py',
-	'bm_daemon.py',
-	'BMonitor.py',
-	'cli_args.py',
-	'config.py',
-	'ErrorLib.py',
-	'gui.py',
-	'indicator.py',
-	'__init__.py',
-	'main.py',
-	'Notification.py',
-]
+python_sources = files(
+  run_command(
+    'find', '.', '-name', '*.py', '-not', '-name', 'cli_args*', check: true
+  ).stdout().strip().split('\n')
+)
 
 version_file = configure_file(
   input: 'VERSION.in',
@@ -36,15 +28,22 @@ python.install_sources(
 )
 
 # Install assets like ui and icons
-icons = files('icons/charging.png', 'icons/critical-battery.png', 'icons/discharging.png', 'icons/full-charge.png', 'icons/icon.png', 'icons/low-battery.png', 'icons/not-charging.png')
+icons = files(
+  run_command(
+    'find', 'icons', '-name', '*.png', check: true
+  ).stdout().strip().split('\n')
+)
 
 install_data(
   icons,
   install_dir: join_paths(pysrcinstalldir, 'BatteryMonitor', 'icons')
 )
 
-
-ui = files('ui/battery-monitor.ui', 'ui/logger.ui', 'ui/shortcuts.ui',)
+ui = files(
+  run_command(
+    'find', 'ui', '-name', '*.ui', check: true
+  ).stdout().strip().split('\n')
+)
 
 install_data(
   ui,
