@@ -62,18 +62,20 @@ def idle(func):
 
 ## Setup logfile
 def create_logfile():
-	logpath = '/tmp/'
 	dlimitter = '_'
 	username = getpass.getuser()
+	logpath = f'/tmp/runtime-{username}/'
 	random_code =  ''.join(choice(string.digits) for _ in range(4))
 	if len(glob.glob(logpath+APP+dlimitter+username+'*')) ==0:
 		logfile = logpath + APP + dlimitter + username + dlimitter + random_code + '.log'
 	else:
 		logfile = glob.glob(logpath+APP+dlimitter+username+'*')[0]
-	
-	return logfile
+
+	return logpath, logfile
+
 # Set the log filename
-LOGFILE = create_logfile()
+LOGPATH, LOGFILE = create_logfile()
+
 
 # logger
 module_logger = logging.getLogger('BatteryMonitor.config')
