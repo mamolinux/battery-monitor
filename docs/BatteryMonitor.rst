@@ -1,5 +1,5 @@
-Description
-===========
+Usage
+=====
 
 .. argparse::
    :module: BatteryMonitor.cli_args

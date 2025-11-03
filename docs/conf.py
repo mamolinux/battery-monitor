@@ -11,20 +11,28 @@
 #
 import os
 import sys
+from datetime import date
+
 sys.path.insert(0, os.path.abspath('../src'))
+year = date.today().year
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'battery-monitor'
-copyright = 'Copyright (C) 2024 Himadri Sekhar Basu'
+appname = 'battery-monitor'
+project = 'Battery Monitor'
+# copyright = '2021-%Y, Himadri Sekhar Basu'
+project_copyright = f'2021-{year}, Himadri Sekhar Basu'
+print(project_copyright)
 author = 'Himadri Sekhar Basu <hsb10@iitbbs.ac.in>'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-	'sphinxarg.ext'
+	"sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+	'sphinxarg.ext',
 ]
 
 templates_path = ['_templates']
@@ -36,12 +44,13 @@ exclude_patterns = []
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'alabaster'
-html_static_path = ['_static']
+html_static_path = []
+html_logo = '../data/icons/battery-monitor.svg'
 
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', project, 'Battery Monitor', [author], 1)
+    ('index', appname, project, [author], 1)
 ]
