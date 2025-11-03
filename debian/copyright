@@ -1,15 +1,15 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: battery-monitor
 Upstream-Contact: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-Source: https://www.github.com/hsbasu/battery-monitor
+Source: https://www.github.com/mamolinux/battery-monitor
 
 Files: *
 Copyright: 2016-2020 Maksudur Rahman Maateen <maateen@outlook.com>
-		   2021-2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+		   2021-2025 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 License: GPL-3.0+
 
 Files: debian/*
-Copyright: 2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+Copyright: 2022-2025 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 License: GPL-3.0+
 
 License: GPL-3.0+

@@ -1,5 +1,11 @@
 #!@PYTHON@
 # -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------------
+#  Battery Monitor – Maximize Your Battery Life.
+#  Copyright (C) 2021–2025 Himadri Sekhar Basu
+#  Licensed under GPLv3 or later (see <http://www.gnu.org/licenses/>)
+# -----------------------------------------------------------------------------
+
 import re
 import sys
 
