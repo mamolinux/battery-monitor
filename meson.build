@@ -18,6 +18,7 @@ datadir = get_option('datadir')
 subdir('data')
 subdir('po')
 subdir('src')
+subdir('docs')
 
 gnome.post_install(
      glib_compile_schemas: true,
