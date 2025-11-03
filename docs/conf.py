@@ -23,7 +23,6 @@ appname = 'battery-monitor'
 project = 'Battery Monitor'
 # copyright = '2021-%Y, Himadri Sekhar Basu'
 project_copyright = f'2021-{year}, Himadri Sekhar Basu'
-print(project_copyright)
 author = 'Himadri Sekhar Basu <hsb10@iitbbs.ac.in>'
 
 # -- General configuration ---------------------------------------------------

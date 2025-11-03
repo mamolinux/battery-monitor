@@ -1,8 +1,14 @@
-python_sources = files(
-  run_command(
-    'find', '.', '-name', '*.py', '-not', '-name', 'cli_args*', check: true
-  ).stdout().strip().split('\n')
-)
+srcs = run_command(
+  'find', '.', '-name', '*.py', '-not', '-name', 'cli_args*', check: true
+).stdout().strip().split('\n')
+
+stripped_sources = []
+foreach path : srcs
+  stripped_path = path.replace('./', '')
+  stripped_sources += stripped_path
+endforeach
+
+python_sources = files(stripped_sources)
 
 version_file = configure_file(
   input: 'VERSION.in',
