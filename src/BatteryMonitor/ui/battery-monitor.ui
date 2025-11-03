@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.38.2 
 
-Copyright (C) 2021 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-
-This file is part of battery-monitor.
-
-battery-monitor is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-battery-monitor is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with battery-monitor.  If not, see <http://www.gnu.org/licenses/>.
-
-Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+Battery Monitor – Maximize Your Battery Life.
+Copyright (C) 2021–2025 Himadri Sekhar Basu
+Licensed under GPLv3 or later (see <http://www.gnu.org/licenses/>)
 
 -->
 <interface>
@@ -26,7 +11,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
   <!-- interface-license-type gplv3 -->
   <!-- interface-name battery-monitor -->
   <!-- interface-description Battery Monitor is a utility tool to notify the user about charging, discharging, not charging and critically low battery state of the battery on Linux (surely if the battery is present). -->
-  <!-- interface-copyright 2021 Himadri Sekhar Basu <hsb10@iitbbs.ac.in> -->
+  <!-- interface-copyright 2021-2025 Himadri Sekhar Basu <hsb10@iitbbs.ac.in> -->
   <!-- interface-authors Himadri Sekhar Basu <hsb10@iitbbs.ac.in> -->
   <object class="GtkMenu" id="main_menu">
     <property name="visible">True</property>
