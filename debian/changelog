@@ -1,3 +1,35 @@
+battery-monitor (1.1.5) stable; urgency=medium
+
+  * Update dependencies and workflows (#69)
+    - Update workflows
+    - Add glib dependencies to d/control
+    - Update CI builds with dependencies
+  * Update debian installation scripts (#70)
+  * Update indicator instances (#71)
+    - Allow running only one indicator instance. If
+      there is an existing instance running quit it
+      and run a fresh instance (fixes #6)
+    - Update logging path. Fallback to user runtime
+      path in /tmp
+  * Set process title and update logger (#72)
+    - Include line number in logs
+    - Check and create log path
+  * Dynamically select files using meson (#73)
+    - Dynamically define python sources, ui files and
+      icon assets
+  * Install docs using meson (#74)
+    - Build html and man pages using meson
+    - Modify indexing in html docs.
+  * Let meson handle documentation (#75)
+    - documentation is installed using meson build
+    - Add pkgconf as dependency
+    - Refactor meson build scripts documentation build
+      scripts
+  * Update copyright in all possible files (#76)
+    - Update copyright year and message.
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sun, 21 Dec 2025 19:32:41 +0530
+
 battery-monitor (1.1.4) stable; urgency=medium
 
   * Update readme from version 1.1.2 to 1.1.3 (#54)
