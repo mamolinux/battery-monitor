@@ -1,16 +1,16 @@
-# German translation for mamolinux
-# Copyright (c) 2024 Rosetta Contributors and Canonical Ltd 2024
+# Lao translation for mamolinux
+# Copyright (c) 2025 Rosetta Contributors and Canonical Ltd 2025
 # This file is distributed under the same license as the mamolinux package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mamolinux\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2024-10-17 19:52+0530\n"
-"PO-Revision-Date: 2024-04-06 07:15+0000\n"
-"Last-Translator: Dr. Peter Netz <Unknown>\n"
-"Language-Team: German <de@li.org>\n"
+"PO-Revision-Date: 2025-11-02 13:33+0000\n"
+"Last-Translator: boneni <Unknown>\n"
+"Language-Team: Lao <lo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: data/battery-monitor-autostart.desktop.in:3
 msgid "Battery Monitor Indicator"
-msgstr "Akkuüberwachungsindikator"
+msgstr "ຕົວຊີ້ບອກສະຖານະແບັດເຕີຣີ"
 
 #: data/battery-monitor-autostart.desktop.in:4
 msgid "Start indicator for Battery Monitor."
-msgstr ""
+msgstr "ເລີ່ມຕົວຊີ້ບອກສະຖານະແບັດເຕີຣີ."
 
 #: data/battery-monitor.desktop.in:3 src/BatteryMonitor/about_window.py:75
 #: src/BatteryMonitor/config.py:117 src/BatteryMonitor/config.py:127
@@ -32,19 +32,21 @@ msgstr ""
 #: src/BatteryMonitor/Notification.py:77
 #: src/BatteryMonitor/ui/battery-monitor.ui:720
 msgid "Battery Monitor"
-msgstr "Akkuüberwachung"
+msgstr "ຕົວຕິດຕາມແບັດເຕີຣີ"
 
 #: data/battery-monitor.desktop.in:4
 msgid ""
 "A utility tool, notifies user about charging, discharging and not charging "
 "state of the battery on Linux."
 msgstr ""
+"ເຄື່ອງມືອຸປະໂພກ, ແຈ້ງເຕືອນຜູ້ໃຊ້ກ່ຽວກັບສະຖານະການສາກ, ການໃຊ້ງານ ແລະ "
+"ບໍ່ໄດ້ສາກແບັດເຕີຣີເທິງ Linux."
 
 #. Add "About" option in drop-down menu
 #: src/BatteryMonitor/about_window.py:72 src/BatteryMonitor/gui.py:138
 #: src/BatteryMonitor/indicator.py:81 src/BatteryMonitor/ui/shortcuts.ui:66
 msgid "About"
-msgstr "Über"
+msgstr "ກ່ຽວກັບ"
 
 #: src/BatteryMonitor/about_window.py:80
 msgid ""
@@ -52,28 +54,31 @@ msgid ""
 "notify the user about charging, discharging, not charging and critically low "
 "battery state of the battery on Linux (surely if the battery is present)."
 msgstr ""
+"ຕົວຕິດຕາມແບັດເຕີຣີ ເປັນເຄື່ອງມືອຸປະໂພກທີ່ພັດທະນາດ້ວຍ Python3 ແລະ PyGtk3. "
+"ມັນຈະແຈ້ງເຕືອນຜູ້ໃຊ້ກ່ຽວກັບການສາກ, ການໃຊ້ງານ, ບໍ່ໄດ້ສາກ ແລະ "
+"ສະຖານະແບັດເຕີຣີເຫຼືອໜ້ອຍວິກິດໃນ Linux (ຖ້າມີແບັດເຕີຣີຕິດຕັ້ງຢູ່)."
 
 #. self.about_dialog.add_credit_section('AUR maintained by', ['Yochanan Marqos <https://github.com/yochananmarqos>'])
 #: src/BatteryMonitor/about_window.py:86
 msgid "Maintainer"
-msgstr "Betreuer"
+msgstr "ຜູ້ດູແລ"
 
 #: src/BatteryMonitor/config.py:118
 msgid "Cheers! Your battery is being monitored now."
-msgstr ""
+msgstr "ສຳເລັດ! ຕອນນີ້ແບັດເຕີຣີຂອງທ່ານກຳລັງຖືກຕິດຕາມຢູ່."
 
 #: src/BatteryMonitor/config.py:128
 msgid "Alas! Battery is not yet present!"
-msgstr ""
+msgstr "ຂໍອະໄພ! ຍັງບໍ່ມີແບັດເຕີຣີ!"
 
 #: src/BatteryMonitor/config.py:133
 msgid "Dependency Error! acpi is not installed."
-msgstr ""
+msgstr "ຜິດພາດດ້ານສ່ວນປະກອບ! ຍັງບໍ່ໄດ້ຕິດຕັ້ງ acpi."
 
 #: src/BatteryMonitor/config.py:137 src/BatteryMonitor/config.py:189
 #: src/BatteryMonitor/ui/battery-monitor.ui:190
 msgid "Charging"
-msgstr "Lädt"
+msgstr "ກຳລັງສາກ"
 
 #: src/BatteryMonitor/config.py:138 src/BatteryMonitor/config.py:143
 #: src/BatteryMonitor/config.py:158 src/BatteryMonitor/config.py:168
@@ -81,316 +86,325 @@ msgstr "Lädt"
 #: src/BatteryMonitor/config.py:182
 #, python-brace-format
 msgid "Now {battery_percentage} %, {remaining_time}"
-msgstr ""
+msgstr "ຕອນນີ້ {battery_percentage} %, {remaining_time}"
 
 #: src/BatteryMonitor/config.py:142 src/BatteryMonitor/config.py:190
 #: src/BatteryMonitor/ui/battery-monitor.ui:364
 msgid "Discharging"
-msgstr "Entlädt"
+msgstr "ກຳລັງໃຊ້ງານ"
 
 #: src/BatteryMonitor/config.py:147
 msgid "Fully Charged - Unplug your Charger"
-msgstr ""
+msgstr "ສາກເຕັມແລ້ວ - ກະລຸນາຖອດສາຍສາກອອກ"
 
 #: src/BatteryMonitor/config.py:148 src/BatteryMonitor/config.py:153
 #, python-brace-format
 msgid "{battery_percentage} % Remaining"
-msgstr "{battery_percentage} % Verbleibend"
+msgstr "ເຫຼືອ {battery_percentage} %"
 
 #: src/BatteryMonitor/config.py:152
 msgid "Fully Charged"
-msgstr "Vollständig geladen"
+msgstr "ສາກເຕັມແລ້ວ"
 
 #: src/BatteryMonitor/config.py:157
 msgid "Low Battery"
-msgstr "Niedriger Akkuladestand"
+msgstr "ແບັດເຕີຣີເຫຼືອໜ້ອຍ"
 
 #: src/BatteryMonitor/config.py:162
 msgid "Critically Low Battery"
-msgstr ""
+msgstr "ແບັດເຕີຣີເຫຼືອໜ້ອຍວິກິດ"
 
 #: src/BatteryMonitor/config.py:163
 #, python-brace-format
 msgid "Only {battery_percentage} %, {remaining_time}"
-msgstr ""
+msgstr "ເຫຼືອພຽງ {battery_percentage} %, {remaining_time}"
 
 #: src/BatteryMonitor/config.py:167
 msgid "First Custom Warning"
-msgstr ""
+msgstr "ການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີໜຶ່ງ"
 
 #: src/BatteryMonitor/config.py:172
 msgid "Second Custom Warning"
-msgstr ""
+msgstr "ການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີສອງ"
 
 #: src/BatteryMonitor/config.py:177
 msgid "Third Custom Warning"
-msgstr ""
+msgstr "ການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີສາມ"
 
 #: src/BatteryMonitor/config.py:181
 msgid "Upper Threshold Warning - Unplug your Charger"
-msgstr ""
+msgstr "ເຕືອນລະດັບສູງສຸດ - ກະລຸນາຖອດສາຍສາກອອກ"
 
 #: src/BatteryMonitor/config.py:188
 msgid "Full"
-msgstr "Voll"
+msgstr "ເຕັມ"
 
 #: src/BatteryMonitor/config.py:193
 msgid "00:10:12 remaining"
-msgstr ""
+msgstr "ເຫຼືອເວລາ 00:10:12"
 
 #: src/BatteryMonitor/config.py:194
 msgid "01:47:31 remaining"
-msgstr ""
+msgstr "ເຫຼືອເວລາ 01:47:31"
 
 #: src/BatteryMonitor/config.py:195
 msgid "02:33:47 remaining"
-msgstr ""
+msgstr "ເຫຼືອເວລາ 02:33:47"
 
 #: src/BatteryMonitor/config.py:196
 msgid "03:24:25 remaining"
-msgstr ""
+msgstr "ເຫຼືອເວລາ 03:24:25"
 
 #: src/BatteryMonitor/config.py:197
 msgid "discharging at zero rate - will never fully discharge"
-msgstr ""
+msgstr "ກຳລັງໃຊ້ງານໃນອັດຕາສູນ - ຈະບໍ່ມີວັນໝົດ"
 
 #: src/BatteryMonitor/gui.py:130
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "ປຸ່ມລັດ"
 
 #. Add "Close" option in drop-down menu
 #: src/BatteryMonitor/gui.py:144
 msgid "Close Window"
-msgstr ""
+msgstr "ປິດໜ້າຕ່າງ"
 
 #: src/BatteryMonitor/gui.py:256
 msgid "Successfully Saved!"
-msgstr ""
+msgstr "ບັນທຶກສຳເລັດ!"
 
 #: src/BatteryMonitor/gui.py:257
 msgid "Your settings have been saved successfully."
-msgstr ""
+msgstr "ການຕັ້ງຄ່າຂອງທ່ານໄດ້ຖືກບັນທຶກສຳເລັດແລ້ວ."
 
 #: src/BatteryMonitor/gui.py:266
 msgid "Validation Error!"
-msgstr ""
+msgstr "ການກວດສອບຜິດພາດ!"
 
 #: src/BatteryMonitor/gui.py:279
 msgid "Upper threshold Warning must be greater than zero."
-msgstr ""
+msgstr "ການເຕືອນລະດັບສູງສຸດຕ້ອງໃຫຍ່ກວ່າສູນ."
 
 #: src/BatteryMonitor/gui.py:283
 msgid ""
 "The value of first custom warning must be greater than then value of second "
 "custom warning."
 msgstr ""
+"ຄ່າຂອງການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີໜຶ່ງຕ້ອງໃຫຍ່ກວ່າຄ່າຂອງການເຕືອນທີ່ກຳນົດເອງຄັ້ງທ"
+"ີສອງ."
 
 #: src/BatteryMonitor/gui.py:287
 msgid ""
 "The value of second custom warning must be greater than the value 0f third "
 "custom warning."
 msgstr ""
+"ຄ່າຂອງການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີສອງຕ້ອງໃຫຍ່ກວ່າຄ່າຂອງການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີ"
+"ສາມ."
 
 #: src/BatteryMonitor/gui.py:291
 msgid ""
 "The value of third custom warning must be greater than the value of low "
 "battery warning."
 msgstr ""
+"ຄ່າຂອງການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີສາມຕ້ອງໃຫຍ່ກວ່າຄ່າຂອງການເຕືອນແບັດເຕີຣີເຫຼືອໜ້ອ"
+"ຍ."
 
 #: src/BatteryMonitor/gui.py:295
 msgid ""
 "The value of low battery warning must be greater than the value of critical "
 "battery warning."
 msgstr ""
+"ຄ່າຂອງການເຕືອນແບັດເຕີຣີເຫຼືອໜ້ອຍຕ້ອງໃຫຍ່ກວ່າຄ່າຂອງການເຕືອນແບັດເຕີຣີວິກິດ."
 
 #: src/BatteryMonitor/gui.py:298
 msgid "Low battery warning can not be empty."
-msgstr ""
+msgstr "ການເຕືອນແບັດເຕີຣີເຫຼືອໜ້ອຍບໍ່ສາມາດເປັນຄ່າຫວ່າງໄດ້."
 
 #: src/BatteryMonitor/gui.py:300
 msgid "Critical battery warning can not be empty."
-msgstr ""
+msgstr "ການເຕືອນແບັດເຕີຣີວິກິດບໍ່ສາມາດເປັນຄ່າຫວ່າງໄດ້."
 
 #: src/BatteryMonitor/gui.py:304
 msgid "Notification stability time must be greater than zero."
-msgstr ""
+msgstr "ໄລຍະເວລາຄົງທີ່ຂອງການແຈ້ງເຕືອນຕ້ອງໃຫຍ່ກວ່າສູນ."
 
 #: src/BatteryMonitor/gui.py:306
 msgid "Notification stability time can not be empty."
-msgstr ""
+msgstr "ໄລຍະເວລາຄົງທີ່ຂອງການແຈ້ງເຕືອນບໍ່ສາມາດເປັນຄ່າຫວ່າງໄດ້."
 
 #: src/BatteryMonitor/gui.py:310
 msgid "Notification count must be greater than zero."
-msgstr ""
+msgstr "ຈຳນວນການແຈ້ງເຕືອນຕ້ອງໃຫຍ່ກວ່າສູນ."
 
 #: src/BatteryMonitor/gui.py:312
 msgid "Notification count can not be empty."
-msgstr ""
+msgstr "ຈຳນວນການແຈ້ງເຕືອນບໍ່ສາມາດເປັນຄ່າຫວ່າງໄດ້."
 
 #: src/BatteryMonitor/gui.py:321
 msgid "Restore default settings?"
-msgstr ""
+msgstr "ຟື້ນຄືນຄ່າເລີ່ມຕົ້ນບໍ່?"
 
 #: src/BatteryMonitor/gui.py:322
 msgid "Click ok to restore and save default settings successfully."
-msgstr ""
+msgstr "ກົດ ຕົກລົງ ເພື່ອຟື້ນຄືນ ແລະ ບັນທຶກຄ່າເລີ່ມຕົ້ນ."
 
 #: src/BatteryMonitor/indicator.py:75 src/BatteryMonitor/ui/shortcuts.ui:41
 msgid "Settings"
-msgstr ""
+msgstr "ການຕັ້ງຄ່າ"
 
 #: src/BatteryMonitor/indicator.py:86
 #: src/BatteryMonitor/ui/battery-monitor.ui:662
 #: src/BatteryMonitor/ui/shortcuts.ui:80
 msgid "Quit"
-msgstr ""
+msgstr "ອອກ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:94
 msgid "Disable Success Notification:"
-msgstr ""
+msgstr "ປິດການແຈ້ງເຕືອນຄວາມສຳເລັດ:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:107
 msgid "Enable/disable to show/hide success notification at startup."
-msgstr ""
+msgstr "ເປີດ/ປິດ ເພື່ອສະແດງ/ເຊື່ອງ ການແຈ້ງເຕືອນຄວາມສຳເລັດຕອນເລີ່ມຕົ້ນລະບົບ."
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:125
 msgid "Battery"
-msgstr ""
+msgstr "ແບັດເຕີຣີ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:162
 msgid "Upper Threshold Warning at:"
-msgstr ""
+msgstr "ເຕືອນລະດັບສູງສຸດທີ່:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:174
 msgid ""
 "Indicates whether success notification has been shown. Make it no/No/NO to "
 "show the success notification.\t"
 msgstr ""
+"ຊີ້ບອກວ່າການແຈ້ງເຕືອນຄວາມສຳເລັດໄດ້ຖືກສະແດງແລ້ວບໍ່. ຕັ້ງເປັນ no/No/NO "
+"ເພື່ອສະແດງການແຈ້ງເຕືອນຄວາມສຳເລັດ.\t"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:228
 msgid "First Custom Warning at:"
-msgstr ""
+msgstr "ການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີໜຶ່ງທີ່:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:241
 msgid "Set in percentage, must be greater than Second Custom Warning"
-msgstr ""
+msgstr "ຕັ້ງຄ່າເປັນເປີເຊັນ, ຕ້ອງໃຫຍ່ກວ່າການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີສອງ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:255
 msgid "Second Custom Warning at:"
-msgstr ""
+msgstr "ການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີສອງທີ່:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:267
 msgid "Set in percentage, must be greater than Third Custom Warning"
-msgstr ""
+msgstr "ຕັ້ງຄ່າເປັນເປີເຊັນ, ຕ້ອງໃຫຍ່ກວ່າການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີສາມ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:281
 msgid "Third Custom Warning at:"
-msgstr ""
+msgstr "ການເຕືອນທີ່ກຳນົດເອງຄັ້ງທີສາມທີ່:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:293
 msgid "Set in percentage, must be smaller than Other Warnings."
-msgstr ""
+msgstr "ຕັ້ງຄ່າເປັນເປີເຊັນ, ຕ້ອງນ້ອຍກວ່າການເຕືອນອື່ນໆ."
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:307
 msgid "Low Battery Warning at:"
-msgstr ""
+msgstr "ເຕືອນແບັດເຕີຣີເຫຼືອໜ້ອຍທີ່:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:320
 #: src/BatteryMonitor/ui/battery-monitor.ui:347
 msgid "Set in percentage."
-msgstr ""
+msgstr "ຕັ້ງຄ່າເປັນເປີເຊັນ."
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:334
 msgid "Critical Battery Warning at:"
-msgstr ""
+msgstr "ເຕືອນແບັດເຕີຣີວິກິດທີ່:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:380
 msgid "Battery Configuration"
-msgstr ""
+msgstr "ການກຳນົດຄ່າແບັດເຕີຣີ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:423
 msgid "Disable Notification Sound:"
-msgstr ""
+msgstr "ປິດສຽງແຈ້ງເຕືອນ:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:436
 msgid "Enable/Disable notification sound."
-msgstr ""
+msgstr "ເປີດ/ປິດ ສຽງແຈ້ງເຕືອນ."
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:451
 msgid "Select Custom Sound File:"
-msgstr ""
+msgstr "ເລືອກໄຟລ໌ສຽງທີ່ກຳນົດເອງ:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:463
 msgid "Select an Audio file to be played while showing notification."
-msgstr ""
+msgstr "ເລືອກໄຟລ໌ສຽງເພື່ອຫຼິ້ນໃນຂະນະທີ່ສະແດງການແຈ້ງເຕືອນ."
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:465
 msgid "Select an audio file"
-msgstr ""
+msgstr "ເລືອກໄຟລ໌ສຽງ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:478
 msgid "Sound"
-msgstr ""
+msgstr "ສຽງ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:497
 msgid "Sound Configuration"
-msgstr ""
+msgstr "ການກຳນົດຄ່າສຽງ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:540
 msgid "Notification Duration:"
-msgstr ""
+msgstr "ໄລຍະເວລາແຈ້ງເຕືອນ:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:552
 #: src/BatteryMonitor/ui/battery-monitor.ui:577
 msgid "Set in second"
-msgstr ""
+msgstr "ຕັ້ງຄ່າເປັນວິນາທີ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:565
 msgid "Notification Count:"
-msgstr ""
+msgstr "ຈຳນວນການແຈ້ງເຕືອນ:"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:591
 #: src/BatteryMonitor/ui/battery-monitor.ui:610
 msgid "Notification"
-msgstr ""
+msgstr "ການແຈ້ງເຕືອນ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:634
 #: src/BatteryMonitor/ui/shortcuts.ui:53
 msgid "Save"
-msgstr ""
+msgstr "ບັນທຶກ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:638
 msgid "Saves current values as default settings."
-msgstr ""
+msgstr "ບັນທຶກຄ່າປັດຈຸບັນເປັນຄ່າເລີ່ມຕົ້ນ."
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:648
 msgid "Reset to defaults"
-msgstr ""
+msgstr "ຕັ້ງຄ່າເລີ່ມຕົ້ນຄືນໃໝ່"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:652
 msgid "Resets current values to default settings."
-msgstr ""
+msgstr "ຕັ້ງຄ່າປັດຈຸບັນຄືນເປັນຄ່າເລີ່ມຕົ້ນ."
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:666
 msgid "Close this Window(Press Ctrl+W)"
-msgstr ""
+msgstr "ປິດໜ້າຕ່າງນີ້ (ກົດ Ctrl+W)"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:704
 msgid "Status"
-msgstr ""
+msgstr "ສະຖານະ"
 
 #: src/BatteryMonitor/ui/battery-monitor.ui:721
 msgid "Utility tool to notify the user about different battery states."
-msgstr ""
+msgstr "ເຄື່ອງມືອຸປະໂພກເພື່ອແຈ້ງເຕືອນຜູ້ໃຊ້ກ່ຽວກັບສະຖານະຕ່າງໆຂອງແບັດເຕີຣີ."
 
 #: src/BatteryMonitor/ui/shortcuts.ui:46
 msgid "Reset"
-msgstr ""
+msgstr "ຕັ້ງຄ່າໃໝ່"
 
 #: src/BatteryMonitor/ui/shortcuts.ui:61
 msgid "Other Shortcuts"
-msgstr ""
+msgstr "ປຸ່ມລັດອື່ນໆ"
 
 #: src/BatteryMonitor/ui/shortcuts.ui:73
 msgid "Shortcuts"
-msgstr ""
+msgstr "ປຸ່ມລັດ"
