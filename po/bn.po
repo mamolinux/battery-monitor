@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mamolinux\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2023-10-23 10:47+0530\n"
+"POT-Creation-Date: 2024-10-17 19:52+0530\n"
 "PO-Revision-Date: 2023-10-28 20:59+0000\n"
 "Last-Translator: Himadri Sekhar Basu <Unknown>\n"
 "Language-Team: Bengali <bn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2024-10-18 11:24+0000\n"
-"X-Generator: Launchpad (build 01390110bd8387dc90dd69527e8fd8aaf2734aac)\n"
+"X-Launchpad-Export-Date: 2026-01-25 17:12+0000\n"
+"X-Generator: Launchpad (build 9fcfff1971229ac997140f06b41a902ac8ec69f4)\n"
 
 #: data/battery-monitor-autostart.desktop.in:3
 msgid "Battery Monitor Indicator"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Start indicator for Battery Monitor."
 msgstr ""
 
-#: data/battery-monitor.desktop.in:3 src/BatteryMonitor/about_window.py:74
+#: data/battery-monitor.desktop.in:3 src/BatteryMonitor/about_window.py:75
 #: src/BatteryMonitor/config.py:117 src/BatteryMonitor/config.py:127
 #: src/BatteryMonitor/config.py:132 src/BatteryMonitor/gui.py:89
 #: src/BatteryMonitor/gui.py:402 src/BatteryMonitor/indicator.py:62
@@ -40,19 +40,21 @@ msgid ""
 "state of the battery on Linux."
 msgstr ""
 
-#: src/BatteryMonitor/about_window.py:71 src/BatteryMonitor/gui.py:138
+#. Add "About" option in drop-down menu
+#: src/BatteryMonitor/about_window.py:72 src/BatteryMonitor/gui.py:138
 #: src/BatteryMonitor/indicator.py:81 src/BatteryMonitor/ui/shortcuts.ui:66
 msgid "About"
 msgstr "বিবরণ"
 
-#: src/BatteryMonitor/about_window.py:79
+#: src/BatteryMonitor/about_window.py:80
 msgid ""
 "Battery Monitor is a utility tool developed on Python3 and PyGtk3. It will "
 "notify the user about charging, discharging, not charging and critically low "
 "battery state of the battery on Linux (surely if the battery is present)."
 msgstr ""
 
-#: src/BatteryMonitor/about_window.py:85
+#. self.about_dialog.add_credit_section('AUR maintained by', ['Yochanan Marqos <https://github.com/yochananmarqos>'])
+#: src/BatteryMonitor/about_window.py:86
 msgid "Maintainer"
 msgstr "রক্ষণাবেক্ষণকারী"
 
@@ -156,6 +158,7 @@ msgstr ""
 msgid "Keyboard Shortcuts"
 msgstr "কীবোর্ড শর্টকাট"
 
+#. Add "Close" option in drop-down menu
 #: src/BatteryMonitor/gui.py:144
 msgid "Close Window"
 msgstr "উইন্ডো বন্ধ করুন"
