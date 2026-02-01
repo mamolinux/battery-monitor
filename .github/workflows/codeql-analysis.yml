@@ -13,6 +13,8 @@ name: "CodeQL"
 
 on:
   # Triggers the workflow on push or pull request events but only for all branches
+  push:
+    branches: [ 'master' ]
   pull_request:
     branches: [ '**' ]
 
