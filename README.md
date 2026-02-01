@@ -5,6 +5,12 @@
 </p>
 
 <p align="center">
+	<a href="https://github.com/mamolinux/battery-monitor/actions/workflows/ci.yml">
+		<img src="https://img.shields.io/github/actions/workflow/status/mamolinux/battery-monitor/ci.yml?branch=master&label=CI%20Build" alt="CI build">
+	</a>
+	<a href="https://github.com/mamolinux/battery-monitor/actions/workflows/codeql-analysis.yml">
+		<img src="https://img.shields.io/github/actions/workflow/status/mamolinux/battery-monitor/codeql-analysis.yml?branch=master&label=CodeQL%20Build" alt="CodeQL build">
+	</a>
 	<a href="https://github.com/mamolinux/battery-monitor/blob/master/LICENSE">
 		<img src="https://img.shields.io/github/license/mamolinux/battery-monitor?label=License" alt="License">
 	</a>
